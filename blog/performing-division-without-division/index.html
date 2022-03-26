@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Performing division without division
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="Suppose, we live in a world where there was no ..." />
+        <meta name="twitter:title" content="Performing division without division" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/performing-division-without-division" />
+        <meta property="og:url" content="https://bewakes.com/blog/performing-division-without-division" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Performing division without division" />
+        <meta property="og:description"   content="Suppose, we live in a world where there was no ..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Performing division without division</span>
+                                <div id="blogpost-date">Jan. 5, 2021</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Mathematics">Mathematics</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=ComputerScience">ComputerScience</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><p>Suppose, we live in a world where there was no division operator like we have for
+addition, subtraction and multiplication. In fact, we don't need to suppose
+this scenario, because in highly efficient computers such as supercomputers,
+using a division operator takes significantly more time than multiplication,
+addition and subtraction. Fortunately, division can be done just by using
+multiplication and subtraction, and with proper initial guess, within 6 steps in general. Interesting
+isn't it?</p>
+<h2>Enter Newton Raphson Method</h2>
+<p>It is an iterative method to find out roots of an equation. For example, we can find the roots of the equation: 
+$$x^2 - 2x + 5 = 0$$ 
+$$or, f(x) = x^2 - 2x + 5 = 0$$
+without performing analytical operations like factoring.</p>
+<p>The steps are: </p>
+<ul>
+<li>Find the derivative of the function analytically. In the above case it is $$f'(x) = 2x - 2$$</li>
+<li>Start with a guess for $x$.</li>
+<li>The next value for $x$ is given by $$x_{i+1} = x_i - f(x_i)/f'(x_i)$$ where $i$ is iteration number initially 0.</li>
+<li>Repeat the above process until the values obtained for $x$ seem to converge.</li>
+</ul>
+<h2>But how does this help our division?</h2>
+<p>We can think of division $a/b$ as $a * (1/b)$ that is, multiplication of $a$ and the inverse of $b$. Hence our task is just to find out the inverse of $b$.</p>
+<p>If $x$ is the inverse of $b$, we have:
+$$x = 1 / b$$
+$$or, b = 1/x$$
+that is,
+$$f(x) = 1/x - b = 0$$
+The derivative $$f'(x) = -1/x^2$$</p>
+<p>So far so good.
+Unless...
+You notice that the formula for $x_{i+1}$ itself involves division: $\frac{f(x_i)}{f'(x_i)}$.</p>
+<p>We'll simplify it!</p>
+<p>Continuing with our inverse calculation, and using the formula for iteration we have:
+$$x_{i+1} = x_i - f(x_i)/f'(x_i)$$
+$$or, x_{i+1} = x_i - \frac{1/x_i - b}{-1/x_i^2}$$
+$$or, x_{i+1} = x_i + x_i^2(1/x_i - b)$$
+$$or, x_{i+1} = x_i + x_i - b x_i^2$$
+$$or, x_{i+1} = 2x_i - b x_i^2$$</p>
+<p>That's it. No division!</p>
+<h2>Seeing it in action</h2>
+<p>Let's find out the inverse of 5.
+$$b = 5$$
+Start with an initial guess $x_0 = 0.1$ </p>
+<p><strong>Note:</strong> There are lookup tables for finding out initial guess(And initial guess does matter!) But a general rule of thumb is that we can use 0.1 for single digit number, 0.01 for two digit numbers, 0.001 for 3 digit numbers and so on.</p>
+<p>So, with our initial guess of 0.1, the next values for $x$ will be
+$$x_1 = 2 x_0 - 5 x_0^2 = 2 * 0.1 - 5 * 0.1^2 = 0.19$$
+$$x_2 = 2 x_1 - 5 x_1^2 = 2 * 0.19 - 5* 0.19^2 = 0.1995$$
+$$x_3 = 2 x_2 - 5 x_2^2 = 2 * 0.1995 - 5 * 0.1995^2 = 0.2000$$</p>
+<p>In just 3 steps ! Without division.</p>
+<p>I hope this was interesting.</p>
+<p><a href="http://nm.mathforcollege.com/topics/newton_raphson.html">Reference</a> </p>
+<p><em>[Tuesday, January 5 2021. Bharatpur]</em></p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/yet-another-unicode-demystification/" title="Yet another Unicode Demystification">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/performing-division-without-division',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

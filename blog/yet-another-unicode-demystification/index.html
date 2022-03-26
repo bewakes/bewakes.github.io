@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Yet another Unicode Demystification
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="&gt; String is an array of characters. Each charac..." />
+        <meta name="twitter:title" content="Yet another Unicode Demystification" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/yet-another-unicode-demystification" />
+        <meta property="og:url" content="https://bewakes.com/blog/yet-another-unicode-demystification" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Yet another Unicode Demystification" />
+        <meta property="og:description"   content="&gt; String is an array of characters. Each charac..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Yet another Unicode Demystification</span>
+                                <div id="blogpost-date">Oct. 14, 2020</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=ComputerScience">ComputerScience</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><blockquote>
+<p>String is an array of characters. Each character is 1 byte.</p>
+</blockquote>
+<p>But there's more to texts.</p>
+<h2>Binary machines and ASCII</h2>
+<p>Computer memories are binary: slots which can store just zeros and ones.
+Numbers and binaries get along pretty well. But for charecters and alphabets, we need
+some way of encoding them into binary sequences.</p>
+<p>A widespread encoding for alphabetic characters is <strong>ASCII</strong>(American Standard Code
+for Information Interchange). It consists all the uppercase and lowercase
+    English letters, numeric digits, some special characters like punctuations
+    and some unprintable characters. We can see what the table looks like
+    <a href="https://en.wikipedia.org/wiki/Ascii">here</a>.</p>
+<p>ASCII table basically maps each alphabet/character to a number which can then
+be stored in computer. There are 128 different ASCII characters which can be
+represented by 7 bits. So, the word "Tom" would be represented in ASCII as:
+<code>1010100 1101111 1101101</code></p>
+<p>Note that, when ASCII characters are represented as bytes then the first bit is
+always <strong>0</strong>.</p>
+<p>This representation was going all well in the past until computers were adopted
+world wide. Different parts of world used different encodings for their
+character sets.</p>
+<h2>Mighty Unicode</h2>
+<p>This unmoderated encodings being used all over the world produced many
+incompatible systems as a result of which <a href="https://en.wikipedia.org/wiki/Unicode_Consortium">The Unicode
+Consortium</a> was established
+to collect and catalog all the alphabets of all spoken languages in the world.
+This was the first step towards a standard system for worldwide interchange,
+processing and display of texts in various languages.</p>
+<p>Strictly speaking, the standard organizes characters into <strong>scripts instead of
+languages</strong> because different languages can use one script. For example, Latin
+script can be used by many European and American languages.</p>
+<p>Now, every character in each script has a unique identifying number which we
+call a <strong>code point</strong>, usually written in hexadecimal and preceeded by <strong>U+</strong>.
+For example, Unicode Codepoint for the character 'A'(<code>67 = 0x43</code>) is <code>U+0043</code>.
+Corresponding to each code point is a <strong><em>glyph</em></strong>, which is the graphic
+representation of the symbol. For example, the unicode value for the glyph
+<strong>क</strong> in Devnagari script is <code>U+0915</code>.</p>
+<p>The range of Unicode code space is <code>0</code> to <code>10FFFF</code> which is <code>21</code> bits. Because
+computer memory is normally organized into 8-bit bytes, it would be possible to
+use 3 bytes to store each code point with leading 3 bits unused. However, most
+computers process information in chunks of 32 or 64 bits[as of 2020], it will
+be effective to store each code point in a 32 bit(4 bytes) chunk even if the
+leading <code>11</code> bits would useless and set to zero. This method of encoding is what
+we've known or heard as <strong>UTF-32</strong>, UTF meaning <em>Unicode Transfer Format</em>.</p>
+<blockquote>
+<p>As an example, let's see how the letter <code>z</code> is stored in UTF-32. It's ASCII
+value is <code>0x7A</code> which gives the code point <em>U+007A</em>. Now we just need to
+prefix the leading zeroes to get <code>0000 0000 0000 0000 0111 1010</code></p>
+</blockquote>
+<p>But!!</p>
+<p>While UTF-32 is effective for processing texts, it is inefficient for storing
+and transmitting them. If we have a file with mostly ASCII characters, three
+fourth of the file space will be occupied by zeros.</p>
+<h2>UTF-8 to the rescue</h2>
+<p>We must have seen utf-8 almost everywhere. This is a
+very popular encoding which can represent the unicode code points with one to 3
+bytes, using a single byte for ASCII, without loosing compatibility with ASCII
+at all.</p>
+<p>Here are the rules for UTF-8 encoding:</p>
+<p><strong>Code points from U+0000 to U+007F</strong> </p>
+<p>These consist of our old ASCII friends. The first bit is 0 and the rest 7  bits
+represent the characters.</p>
+<p><strong>Code points over U+007F</strong> </p>
+<p>These obviously require more than <code>1</code> byte. The
+<strong>first byte</strong> contains information about how many bytes will be used as well
+as some text data. The subsequent bytes, called as <strong>continuation bytes</strong> will
+have first two bits set as <code>10</code> meaning this is a continuation byte and last 6
+bits to store codepoint data.</p>
+<p>Now the first byte. If total of two bytes will be used, it will be prefixed by
+<code>110</code>, for 3 bytes it will be prefixed by <code>1110</code> and for 4 btes it will be
+prefixed by <code>11110</code>. You can see the pattern here. The number of <code>1</code>s in the
+prefix denote the number of bytes. The <code>1</code>s are immediately followed by a 0
+after which the remaining bits of the first byte are used for data. The
+remaining bits are distributed to subsequent continuation bytes.</p>
+<p>The following table clarifies the concept. Note that the <code>x</code>s denote data bits
+for the codepoint.  <img alt="" src="https://bewakes.com/media/UnicodeTable.png" />
+    <em>Source at the bottom</em></p>
+<h2>An Example doesn't hurt</h2>
+<p>Now let's try it out with a code point <strong>U+1F923</strong> whose corresponding emoticon
+is '🤣' [Laughing at programmer's misery]. </p>
+<ul>
+<li>First, note that it lies between <strong>U+10000</strong>  and <strong>U+1FFFFF</strong>.</li>
+<li>So, we need 4 bytes to represent this code point.</li>
+<li>The 21 bits are: <code>0 0001 1111 1001 0010 0011</code> each corresponding to 1, F, 9,
+  2 and 3.</li>
+<li>The first byte becomes <code>11110 000</code>. Note the four leading 1's followed by a
+  zero. The last 3 zeros are first 3 bits from above 21 bits.</li>
+<li>Let's construct second byte which is a continuation by prefixing with <code>10</code>.
+  We get: <code>10 01 1111</code>.</li>
+<li>Similarly, the third byte becomes: <code>10 1001 00</code>.</li>
+<li>And the last byte: <code>10 10 0011</code>.</li>
+<li>Combining all of them, the UTF-8 bits are: <code>11110000 10011111 10100100
+  10100011</code> which, in hex, is: <code>0xF09F A4A3</code>.</li>
+</ul>
+<p>Pheww!! That was something. I hope Unicodes are now friendlier than
+before.</p>
+<p><strong>Summarized from</strong> <em>Computer Systems, J. Stanley Warford: Chapter 3</em></p>
+<p><em>[October 14 2020. Bharatpur]</em></p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/implementing-dictionaries-as-functionsjavascript/" title="Implementing dictionaries as functions(Javascript)">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/yet-another-unicode-demystification',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

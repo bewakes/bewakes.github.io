@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Well Ordering Principle
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="&quot;Well Ordering Principle&quot; is a very simple conc..." />
+        <meta name="twitter:title" content="Well Ordering Principle" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/well-ordering-principle" />
+        <meta property="og:url" content="https://bewakes.com/blog/well-ordering-principle" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Well Ordering Principle" />
+        <meta property="og:description"   content="&quot;Well Ordering Principle&quot; is a very simple conc..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Well Ordering Principle</span>
+                                <div id="blogpost-date">July 13, 2017</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Mathematics">Mathematics</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><p>"Well Ordering Principle" is a very simple concept. It just says,</p>
+<blockquote>
+<p>Every non-empty subset of Natural Numbers is well ordered i.e. every such subset of Natural Numbers contains a least element. </p>
+</blockquote>
+<p>See, nothing could be more trivial. And if you are wondering is this even useful? Believe me, I did that the first time I heard about it and now I am its fan. 
+Another trivial looking principle is <strong>Pigeonhole Principle</strong> which I won't talk in detail about here though. It says, <strong><em>If there are N holes and N+$1$ pigeons then the pigeons cannot have a hole for each, two pigeons must share a single hole.</em></strong> </p>
+<p>Now let's prove a theorem using well ordering principle.  </p>
+<h2>(<strong>Theorem</strong>) Let $n$ be a positive integer such that $n&gt;1$ then $n=p_1p_2...p_k$ where all $p_i$s are prime numbers.</h2>
+<p><strong><em>PROOF:</em></strong><br />
+Let $S$ be  a set of positive integers that cannot be written as product of primes. By the well ordering principle $S$ has a least element, say $a$. Now, if the factors of $a$ are $a$ and $1$ then $a$ is a prime number and thus, this is a contradiction(since $S$ consists of elements which don't have prime factors). </p>
+<p>Next, if a is not prime, let $a_1$ and $a_2$ are the factors of $a$. If both of them are prime then it again results in contradiction because $a$ can be written as product of primes. 
+Now, it is obvious $a_1 &lt; a$ and $a_2 &lt; a$. If either of $a_1$ or $a_2$ can not be written as product of primes then, either $a_1 \in S$ or $a_2 \in S$. But we already said that $a$ is the smallest element in $S$. So, $a_1$ and $a_2$ must be product of primes i.e. $a_1=p_1p_2...p_r$ and $a_2=q_1q_2...q_s$. Thus, $$a = a_1.a_2 = p_1...p_r.q_1...q_s$$ which is a prime product. This again created a contradiction that $a \in S$.<br />
+Thus, it can be concluded that there is no positive integer &gt; $1$ that can not be written as prime products.  </p>
+<p><em>Well Ordering Principle</em> is pretty cool, right?</p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/first-days-as-computer-engineering-student/" title="First Days as Computer Engineering student">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    <a href="/blog/what-linking-actually-is/" title="What linking actually is">Next &gt;&gt;</a>
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/well-ordering-principle',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

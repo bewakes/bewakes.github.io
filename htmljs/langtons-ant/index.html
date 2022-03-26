@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <title>Langton's Ant</title>
+        <style type="text/css">
+            body {
+                max-width:100%;
+                margin:0px;
+                background-color:#dddddd;
+                overflow-x:hidden;
+            }
+            canvas {
+                border:solid 1px;
+                margin-left:10px;
+            }
+            td,th {
+                border: solid 1px black;
+                padding:0px;
+                margin:0px;
+            }
+            button.start-stop {
+                width:100%;
+                padding:0px;
+                border-radius:3px;
+                background-color:skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <b><i color="green"> &lt;-<a href="https://bewakes.com"> Back to Home </a>&lt;-</i></b>
+        <h2># Steps: <span id="counter"></span></h2>
+        <hr>
+        <div style="min-width:50%;max-width:50%;float:left">
+            <canvas id="grid" style=""></canvas>
+        </div>
+        <div style="max-width:50%;float:left">
+            <div>
+                <h2> Define rules:</h2>
+                <div>
+                    Sample rule (Note state should be color recognized by html)<br>
+                    <table>
+                        <tr><th>IN STATE</th><th>TO STATE</th><th>TURN</th></tr>
+                        <tr><td>white</td><td>blue</td><td>left</td></tr>
+                        <tr><td>blue</td><td>red</td><td>right</td></tr>
+                        <tr><td>red</td><td>white</td><td>left</td></tr>
+                    </table>
+                    <br>
+                </div>
+                <table>
+                    <tr>
+                        <th>IN State(Color)</th>
+                        <th>Change State(color) TO:</th>
+                        <th>TURN (left/right) and move forward</th>
+                        <th>Action</th>
+                    </tr>
+                    <tbody id="rule">
+                        <tr>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><button onclick="this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)">Remove Rule</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><button onclick="this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)">Remove Rule</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><button onclick="this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)">Remove Rule</button></td>
+                        </tr>
+                    </tbody>
+                    <tr>
+                        <td><button class="start-stop" onclick="startAnt()"><b style="color:green"><i>Start!!</i></b></button></td>
+                        <td><button class="start-stop" style="color:blue" onclick="addRule()"><b>Add Rule</b></button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+    <script src="grid.js"></script>
+    <script>
+        function addRule() {
+            var tr = document.createElement('tr');
+            for(var x=0;x<3;x++) {
+                var i1 = document.createElement('input');
+                var td1 = document.createElement('td');
+                td1.appendChild(i1);
+                tr.appendChild(td1);
+            }
+            var td4 = document.createElement('td');
+            var removebutton = document.createElement('button');
+            removebutton.innerHTML="Remove Rule";
+            removebutton.setAttribute("onclick",
+                "this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);");
+            td4.appendChild(removebutton);
+
+            tr.appendChild(td4);
+            document.getElementById('rule').appendChild(tr);
+        }
+
+        var grid;
+
+        function startAnt() {
+            var colors = {};
+            var color_counter = 0;
+            var ruleelem = document.getElementById('rule');
+            var children = ruleelem.children;
+            var rule = {};
+            for(x in children) {
+                try {
+                    var color = children[x].children[0].children[0].value;
+                    if(colors[color]==undefined) {
+                        colors[color] = color_counter;
+                        color_counter++;
+                    }
+                    var changecolor = children[x].children[1].children[0].value;
+                    var move = children[x].children[2].children[0].value;
+                    rule[color] = {state:changecolor, move:move};
+                }
+                catch(err) {
+                }
+            }
+            // now we have rule
+            try {
+                grid.stop();
+            }catch(err){};
+
+            grid = Grid('grid', rule, colors);
+            grid.initialize();
+        }
+
+        //var grid = Grid('grid', rule);
+        //grid.initialize();
+    </script>
+</html>

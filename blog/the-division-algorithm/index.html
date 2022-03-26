@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> The Division Algorithm
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="Like many things in life, there are many little..." />
+        <meta name="twitter:title" content="The Division Algorithm" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/the-division-algorithm" />
+        <meta property="og:url" content="https://bewakes.com/blog/the-division-algorithm" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="The Division Algorithm" />
+        <meta property="og:description"   content="Like many things in life, there are many little..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> The Division Algorithm</span>
+                                <div id="blogpost-date">Aug. 24, 2020</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Mathematics">Mathematics</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><p>Like many things in life, there are many little things in mathematics that we take for granted. We hardly take a moment to look at them, see the beauty that they contain and that they create. The <strong>Division Algorithm</strong>, I  think,  is one of those beautiful little pieces in mathematics that deserves to be mentioned.</p>
+<blockquote>
+<p>Let $a$ and $b$ be integers with $b &gt; 0$. Then there exist unique integers $q$ and $r$ such that
+$$a = bq + r$$ where $0 \leq r &lt; b$</p>
+</blockquote>
+<p>This is so simple and obvious that we never bothered why is it even true.</p>
+<h2><strong>Existence of $q$ and $r$</strong></h2>
+<p>We deal with the uniqueness later on. Let</p>
+<p>$$S = { a - bk :  k \in Z,  a - b \geq 0 }$$
+Now if $0 \in S$ then $ a-bk = 0$ and thus $a = bk \Rightarrow r=0$.</p>
+<p>But if $0 \notin S$ then we first show $S$ is non-empty.
+If $a$ is positive, $a-b.0 = a \in S$.
+If $a$ is negative, $a - b(2a) = a(1-2b) \in S$. We see that $S$ is non-empty either ways.</p>
+<p>Let's recall <a href="https://bewakes.com/blog/well-ordering-principle/"><strong>Well ordering principle</strong></a> which states <em>Every non-empty set of natural numbers contains a minimum element, that is, it is well ordered.</em></p>
+<p>Following the principle, $S$ must have a minimum element, say $r$. Let, $r = a - bq \Rightarrow a = bq + r$,    $r \geq 0$.</p>
+<p>We now show $r &lt; b$. Suppose $r &gt; b$ then,
+$r-b = a - bq - b = a - b(q + 1)$ which is of the form $a -bk$. Thus, $r-b \in S$ and obviously $r-b &lt; r$. </p>
+<p>But, this contradicts with the fact that r is the smallest in $S$, led by our assumption $r &gt; b$.
+Thus, $r &lt; b$. This proves the existence of $r$ and $q$ such that $a = bq + r, 0\leq r &lt; b$.</p>
+<h2><strong>Uniqueness of $q$ and $r$</strong></h2>
+<p>Suppose we have another pair $q'$ and $r'$ such that $a=bq' + r', 0 \leq r' &lt; b$. Then,
+$$bq + r = bq' + r' \Rightarrow
+ b(q - q') = r -r'$$
+ Let $r&gt;r'$ then we have $b$ dividing $r-r'$ but,
+ $$0 \leq r-r' \leq r &lt; b$$
+ This is possible only if $r-r'=0$.
+Thus, $r'=r$ and $q'=q$.</p>
+<h2><strong>Conclusion</strong></h2>
+<p>The seemingly <em>can-be-taken-for-granted</em> statement involves pretty beautiful and not very straightforward proof. So much to learn from mathematics! I hope this was an interesting read.</p>
+<p><strong><em>NOTE: The proof comes from <a href="https://github.com/twjudson/aata">Abstract Algebra Theory and Applications</a></em></strong></p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/relatively-prime-probability/" title="Probability that any two numbers are relatively prime">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    <a href="/blog/implementing-dictionaries-as-functionsjavascript/" title="Implementing dictionaries as functions(Javascript)">Next &gt;&gt;</a>
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/the-division-algorithm',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

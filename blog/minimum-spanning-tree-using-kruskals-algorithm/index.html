@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Minimum Spanning Tree using Kruskal&#39;s algorithm
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="Hey there!! Now we are heading off to finding a..." />
+        <meta name="twitter:title" content="Minimum Spanning Tree using Kruskal&#39;s algorithm" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/minimum-spanning-tree-using-kruskals-algorithm" />
+        <meta property="og:url" content="https://bewakes.com/blog/minimum-spanning-tree-using-kruskals-algorithm" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Minimum Spanning Tree using Kruskal&#39;s algorithm" />
+        <meta property="og:description"   content="Hey there!! Now we are heading off to finding a..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Minimum Spanning Tree using Kruskal&#39;s algorithm</span>
+                                <div id="blogpost-date">May 6, 2017</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Programming">Programming</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Python">Python</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Algorithm">Algorithm</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Graph">Graph</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><p>Hey there!! Now we are heading off to finding a minimal spanning tree for an undirected graph. It is recommended to go through my previous post on <a href="https://bewakes.udghos.com/blog/disjoint-set-data-structure/">Disjoint Set Data Structure</a> </p>
+<p>It is assumed that the reader knows about <a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)"><strong>Graph</strong></a>, a very important data structure in computer science with lots of applications(social networks, computer networks, digital circuits, and many more). </p>
+<p>An <strong>undirected graph</strong> has no sense of directions in edges. For example, if we have an edge connecting two vertices A and B, that edge can be called as connecting A to B or B to A. The <a href="https://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrix</a> for the graph is symmetric.<br />
+<img alt="graph" src="https://bewakes.com/media/blog-images/kruskals-graph.png" /> </p>
+<p>Above is a simple small graph(hand made by me, no wonder why the graph edges are zig-zagged). The adjacency matrix for the graph is thus, </p>
+<div class="codehilite"><pre><span></span><span class="c1"># the infinity</span>
+<span class="n">INF</span> <span class="o">=</span> <span class="mi">99999999</span>
+<span class="c1"># our adjacency matrix</span>
+<span class="n">adjacency</span> <span class="o">=</span> \
+<span class="p">[[</span><span class="n">INF</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="n">INF</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">INF</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">INF</span><span class="p">]]</span>
+</pre></div>
+
+
+<p>I have chosen adjacency matrix for graph representation here. And as mentioned earlier, the adjacency matrix is symmetric because it is an undirected graph. <em>INF</em> means infinity and is the weight of the vertices that are not connected. Ignore the blue edges for now. </p>
+<p>Kruskal's algorithm goes like this: </p>
+<ul>
+<li>List out the edges of the graph.</li>
+<li>For each edge, make a set containing only the edge. If there are <em>n</em> edges then, there will be <em>n</em> sets(partitions) at this step.</li>
+<li>Take an edge with smallest weight value and check if the vertices connected by it are in same set. If not, union them, else continue with the next smallest edge.</li>
+<li>Repeat till all vertices are contained in a single set. </li>
+</ul>
+<h2><strong>Code</strong></h2>
+<p>Lets directly go into the code for the implementation is very very easy. </p>
+<div class="codehilite"><pre><span></span><span class="c1"># number of vertices</span>
+<span class="n">v</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">adjacency</span><span class="p">)</span>
+
+<span class="c1"># now get the edges</span>
+<span class="c1"># an edge is a tuple (vertex 1, vertex 2, weight)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">adjacency</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">if</span> <span class="n">adjacency</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">!=</span><span class="n">INF</span><span class="p">]</span>
+
+<span class="c1"># sort edges</span>
+<span class="c1"># because we need to take out smallest edges first.</span>
+<span class="n">edges</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># CREATE a disjoint set datastructure</span>
+<span class="c1"># The constructor will automaticall create separate set for each vertex</span>
+<span class="n">disset</span> <span class="o">=</span> <span class="n">DisjointSet</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="c1"># v is number of vertices</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># counter</span>
+<span class="n">wts</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># total weight of the final spanning treee</span>
+<span class="n">final_edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">):</span>
+    <span class="n">edge</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+    <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">disset</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">!=</span> <span class="n">disset</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
+        <span class="n">wts</span><span class="o">+=</span><span class="n">w</span>
+        <span class="n">disset</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="n">final_edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">+=</span><span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">final_edges</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Running the above code for the graph shown above, we get the output: 
+<code>[(1, 3, 1), (0, 2, 2), (1, 2, 4)]</code> which are the blue edges in the figure.<br />
+That's all about the Kruskal's Algorithm. Easy, ain't it??</p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/disjoint-set-data-structure/" title="Disjoint Set data structure">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    <a href="/blog/happiness/" title="Happiness">Next &gt;&gt;</a>
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/minimum-spanning-tree-using-kruskals-algorithm',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

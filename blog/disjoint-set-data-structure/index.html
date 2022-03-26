@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Disjoint Set data structure
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="As the name suggests, it is a data structure to..." />
+        <meta name="twitter:title" content="Disjoint Set data structure" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/disjoint-set-data-structure" />
+        <meta property="og:url" content="https://bewakes.com/blog/disjoint-set-data-structure" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Disjoint Set data structure" />
+        <meta property="og:description"   content="As the name suggests, it is a data structure to..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Disjoint Set data structure</span>
+                                <div id="blogpost-date">May 5, 2017</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Programming">Programming</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=DataStructure">DataStructure</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Python">Python</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><p>As the name suggests, it is a data structure to keep track of the disjoint partitions formed in a set. In case the data structure sounds like 'WAT??' or 'I have not heard about it. Is it useful?', rest assured, we'll be seeing the practical application of disjoint set in the next post: finding a <a href="https://bewakes.udghos.com/blog/minimum-spanning-tree-using-kruskals-algorithm/"><strong>Minimal Spanning Tree</strong></a> for an undirected graph.  </p>
+<p>Here, we will be seeing its implementation in <a href="https://www.python.org"><strong>Python</strong></a> which is my favourite language(I kind of had love at first sight with python :D ). It is assumed that the reader knows basics of python, and what set, partition, tree, array and list mean(not in depth).</p>
+<p>Okay, now into the technicality of the data structure. It basically provides the following three  functions:  </p>
+<ul>
+<li>
+<p><strong>make_set(e):</strong> It adds a partition to the set. The partition consists of a single element <em>e</em>. For example, consider a set $A = \lbrace a,b,c,d \rbrace$ with partitions $ \lbrace a,b \rbrace$ and $\lbrace c,d\rbrace$. After the operation, $A=\lbrace a,b,c,d,e\rbrace$ and a new partition $\lbrace e\rbrace$.  </p>
+</li>
+<li>
+<p><strong>find(e):</strong> It finds/returns the identification of the partition that <em>e</em> lies in. For example, if the set is $ A = \lbrace a,b,c \rbrace$ , and partitions are $B=\lbrace a \rbrace $ and $ C=\lbrace b, c\rbrace $, <em>find(b)</em> will return <em>C</em> [ <em>We'll have some very easy ways to identify a set. Don't worry about it now.</em> ]  </p>
+</li>
+<li>
+<p><strong>union(a, b):</strong> And this wonderful operation will union the sets that contain elements <em>a</em> and <em>b</em>. For example, if the given set is $A=\lbrace a,b,c, d,e \rbrace $ and the partitions are $\lbrace a,b \rbrace$, $\lbrace c \rbrace $ and $ \lbrace d, e\rbrace$, <em>union(c, e)</em> will result in the partitions $\lbrace a, b\rbrace$ and $\lbrace c, d, e \rbrace$.  </p>
+</li>
+</ul>
+<h1><strong>Implementation</strong></h1>
+<p>We will implement the data structure using tree(implemented as array, <strong>relax!! </strong>). A tree represents a set. The root of the tree is the identification of the set. Now, two elements are in same set if they have same root element.  </p>
+<p>Lets begin with the basic list to hold the sets. We call it <code>parents_array</code> which holds the parent of an element. Let <code>n</code> be the total elements in our set.  </p>
+<div class="codehilite"><pre><span></span><span class="n">parents_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>For example, if <code>parents_array = [2 0 2 2 4]</code>, this means that there are 5 elements and: </p>
+<ul>
+<li>2 is parent of 0,</li>
+<li>0 is parent of 1,</li>
+<li>2 is parent of 2 and is the root,</li>
+<li>2 is parent of 3,</li>
+<li>4 is parent of 4 and is the root and the only element.</li>
+</ul>
+<p>Okay, now let's implement <code>make_set()</code> function. 
+Since the function is supposed to make a single set of an element, it takes a number as parameter.  </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">make_set</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">parents_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+</pre></div>
+
+
+<p>That's it. 
+What this does is, sets the parent of an element to itself, which means, that is the set consisting of only that element. </p>
+<p>Now, <code>find()</code> function, which finds the parent of an element. </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">parents_array</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="o">!=</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">parents_array</span><span class="p">[</span><span class="n">e</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">e</span>
+</pre></div>
+
+
+<p>Here, the tree is traversed until the root element is found (an element is root if its parent is itself). </p>
+<p>We're almost there, only <code>union()</code> remains which unions the sets containing the input elements. The idea is that, we find the root elements of both elements. Union means both elements having same root. So, we make one root the parent of other. Here's the basic implementation:  </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="n">ir</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># root(set id) of element i</span>
+    <span class="n">jr</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="c1"># root(set id) of element j</span>
+
+    <span class="k">if</span> <span class="n">ir</span> <span class="o">==</span> <span class="n">jr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="c1"># same roots means they are in same set</span>
+
+    <span class="c1"># set one element as parent of other</span>
+    <span class="n">parents_array</span><span class="p">[</span><span class="n">ir</span><span class="p">]</span> <span class="o">=</span> <span class="n">jr</span>
+    <span class="c1"># or parents_array[jr] = ir, we&#39;ll talk about efficincy later</span>
+    <span class="c1"># that&#39;s it</span>
+</pre></div>
+
+
+<p>However, we would like to make our data structure and operations on it as optimal as possible, right? First thing we need to be clear is that, we want the <code>find()</code> operation to be as fast as possible. This is obtained when the height of tree is low i.e, reaching the root element from child  requires as less steps as possible.  </p>
+<h2><strong>Optimization</strong></h2>
+<p>Now, imagine a situation in which we are doing union. We append one set(tree) as the child of the other so that both have same root. Appending a shorter tree to the longer one will result in a tree with height same as the initial height of the longer tree. If we did otherwise, the height of the shorter tree would be increased by 1.  </p>
+<p>So, to keep track of the heights(also called ranks) of the trees, we introduce another array <code>ranks_array</code> which is initialized as:</p>
+<div class="codehilite"><pre><span></span><span class="n">ranks_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="c1"># initial height is zero</span>
+</pre></div>
+
+
+<p>Now,  <code>make_set()</code>  becomes, </p>
+<div class="codehilite"><pre><span></span> <span class="k">def</span> <span class="nf">make_set</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">parents_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="n">ranks_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># height of single element tree is zero, of course</span>
+</pre></div>
+
+
+<p>In <code>union()</code>, we append shorter tree to the longer one and if they have same rank(height) we can append in any way. But, we need to be careful to increase the height of the parent tree by 1(You guess why). Changed implementation of <code>union()</code> will be included in the full code below, which implements Disjoint Set as class.</p>
+<h2>Full code</h2>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">DisjointSet</span><span class="p">:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Implementation of disjoint sets</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        n is the number of elements</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># create different sets where each is a unique set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parents_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="c1"># initial rank is zero for all</span>
+
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        find the parent of the element (0 indexed)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents_array</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parents_array</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">p</span>
+
+    <span class="k">def</span> <span class="nf">make_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        assign element i to its own set</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parents_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        i and j are 0 indexed elements which are to be unioned</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">i_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">j_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">i_root</span> <span class="o">==</span> <span class="n">j_root</span><span class="p">:</span>
+            <span class="c1"># nothing to be done already in same set</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span><span class="p">[</span><span class="n">i_root</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span><span class="p">[</span><span class="n">j_root</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parents_array</span><span class="p">[</span><span class="n">i_root</span><span class="p">]</span> <span class="o">=</span> <span class="n">j_root</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parents_array</span><span class="p">[</span><span class="n">j_root</span><span class="p">]</span> <span class="o">=</span> <span class="n">i_root</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span><span class="p">[</span><span class="n">i_root</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span><span class="p">[</span><span class="n">j_root</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ranks_array</span><span class="p">[</span><span class="n">i_root</span><span class="p">]</span><span class="o">+=</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>I hope that was helpful. Feel free to contact me if there are any problems.</p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/project-euler-problem-25-solution/" title="Project Euler Problem 25 Solution">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    <a href="/blog/minimum-spanning-tree-using-kruskals-algorithm/" title="Minimum Spanning Tree using Kruskal&#39;s algorithm">Next &gt;&gt;</a>
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/disjoint-set-data-structure',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

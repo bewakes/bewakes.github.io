@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Decoration with Decorators(Python)
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="Decorators let us decorate and make things beau..." />
+        <meta name="twitter:title" content="Decoration with Decorators(Python)" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/decoration-with-decoratorspython" />
+        <meta property="og:url" content="https://bewakes.com/blog/decoration-with-decoratorspython" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Decoration with Decorators(Python)" />
+        <meta property="og:description"   content="Decorators let us decorate and make things beau..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Decoration with Decorators(Python)</span>
+                                <div id="blogpost-date">March 12, 2018</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Programming">Programming</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Python">Python</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><p>Decorators let us decorate and make things beautiful.
+So does python. It lets us decorate functions and classes. Let's see how. </p>
+<h1>Functions are 'first class citizens'</h1>
+<p><em>First class citizens</em> is just a fancy name for things in a computer program that can be treated as 'values', assigned to, passed around functions, returned from function and so on. The easiest and the most basic first class citizen that we can think of in python is an integer. Consider <em>5</em>, which is an integer and can be assigned to variables, sent to functions or returned from functions.  </p>
+<p>To understand why functions are first class citizens, let's create some functions: </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+</pre></div>
+
+
+<p>I know, I know. There's nothing new with them. Everybody knows how to define functions. Let's define another function: </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Now this is something. With the <code>apply</code> function, we can do things like: </p>
+<div class="codehilite"><pre><span></span><span class="nb">apply</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># &gt;&gt;&gt; 7</span>
+<span class="nb">apply</span><span class="p">(</span><span class="n">subtract</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">1994</span><span class="p">)</span>
+<span class="c1"># &gt;&gt;&gt; 24</span>
+</pre></div>
+
+
+<p>See, we've passed our functions <code>add</code> and <code>subtract</code> to the function <code>apply</code> just like we've passed in <code>3</code>, <code>4</code> and <code>2018</code>, <code>1994</code>. One reason why functions are <em>first class citizens</em>. </p>
+<p>Let's write some more functions. </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_function</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;add&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">add</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;subtract&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">subtract</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;multiply&#39;</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+        <span class="c1"># Congratulations! we&#39;ve just assigned a function(lambda) to a value(f)</span>
+        <span class="c1"># The lambda expression is equivalent to:</span>
+        <span class="c1"># def f(x, y)</span>
+        <span class="c1">#  return x*y</span>
+        <span class="c1"># The values before &#39;:&#39; are arguments and after &#39;:&#39; is the return value.</span>
+        <span class="k">return</span> <span class="n">f</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;divide&#39;</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>  <span class="c1"># Yes, we can define a function inside a function.</span>
+            <span class="k">return</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span>
+        <span class="c1"># However, we can&#39;t call &#39;divide&#39; outside &#39;get_function&#39;, but we can return &#39;divide&#39;. Of course!!</span>
+        <span class="k">return</span> <span class="n">divide</span>
+</pre></div>
+
+
+<p>Contratulations!! we've returned function from a function. Next reason why functions are <em>first class citizens</em>. Why not see it in action? </p>
+<div class="codehilite"><pre><span></span><span class="n">add_function</span> <span class="o">=</span> <span class="n">get_function</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
+<span class="n">add_function</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="c1"># &gt;&gt;&gt; 11</span>
+<span class="n">get_function</span><span class="p">(</span><span class="s1">&#39;subtract&#39;</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># This evaluates to: subtract(3, 4)</span>
+<span class="c1"># &gt;&gt;&gt; -1</span>
+<span class="n">get_function</span><span class="p">(</span><span class="s1">&#39;multiply&#39;</span><span class="p">)(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="c1"># &gt;&gt;&gt; 88</span>
+</pre></div>
+
+
+<h1>Decorators</h1>
+<p>Decorators are functions, which return another function. It often happens in python that we want to add some common but extra functionality to python functions. Let's say we want to print how long a function took to execute. We can do this: </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">my_function_to_be_tracked</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The value passed is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+<span class="c1"># code to track time for our function</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">my_function_to_be_tracked</span><span class="p">(</span><span class="s2">&quot;hello there&quot;</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;elapsed time: &quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">end</span><span class="p">)</span>
+<span class="c1"># &gt;&gt;&gt; hello there</span>
+<span class="c1"># &gt;&gt;&gt; elapsed time: 123.33 ms</span>
+</pre></div>
+
+
+<p>Yukk!! It works, but I am not going to write this mess for every function I am going to time track.  </p>
+<p>A better approach would be: </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tracker</span><span class="p">(</span><span class="n">func_to_be_tracked</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">function_to_be_tracked</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;elapsed time: &quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">end</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="c1"># now we can do this</span>
+<span class="n">tracked_func</span> <span class="o">=</span> <span class="n">tracker</span><span class="p">(</span><span class="n">my_function_to_be_tracked</span><span class="p">)</span>
+<span class="n">tracked_func</span><span class="p">(</span><span class="s2">&quot;hello there&quot;</span><span class="p">)</span>  <span class="c1"># This works!!</span>
+<span class="c1"># &gt;&gt;&gt; hello there</span>
+<span class="c1"># &gt;&gt;&gt; elapsed time: 123.33 ms</span>
+<span class="n">another_tracked_function</span> <span class="o">=</span> <span class="n">tracker</span><span class="p">(</span><span class="n">another_function_with_single_arg</span><span class="p">)</span>  <span class="c1"># This works like charm as well.</span>
+</pre></div>
+
+
+<p>Quite clean, right? Python lets even cleaner code: </p>
+<div class="codehilite"><pre><span></span><span class="nd">@tracker</span>  <span class="c1"># this is actually decorator syntax</span>
+<span class="k">def</span> <span class="nf">my_function_to_be_tracked</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;The value passed is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+<span class="c1"># it will be equivalent to</span>
+<span class="n">my_function_to_be_tracked</span> <span class="o">=</span> <span class="n">tracker</span><span class="p">(</span><span class="n">my_function_to_be_tracked</span><span class="p">)</span>
+<span class="c1"># and we can now call it as</span>
+<span class="n">my_function_to_be_tracked</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+<span class="c1"># &gt;&gt;&gt; hello</span>
+<span class="c1"># &gt;&gt;&gt; elapsed time: 123.11 ms</span>
+</pre></div>
+
+
+<p>That's all about decorators. Just a syntactic sugar to the wrapper function and renaming the returned function to the wrapped function's name.<br />
+However, the <code>tracker</code> wrapper can wrap only the functions with single argument. It is because the <code>wrapper</code> function inside takes only single parameter. We can generalize this to function taking any parameters using the sweet python constructs <code>*args</code> and <code>**kwargs</code> as: </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tracker</span><span class="p">(</span><span class="n">func_to_be_tracked</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">function_to_be_tracked</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;elapsed time: &quot;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">end</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+
+
+<p>Cool!! Now we're ready to write codes with decorators. I'll write about decorators taking arguments next time.<br />
+Till then, keep decorating !!</p>
+<p>[2018 March 12, Patan Dhoka]</p>
+<blockquote>
+<p>This article is inspired by <a href="https://realpython.com/blog/python/primer-on-python-decorators/">this article</a></p>
+</blockquote></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/divisibility-test-for-9-how-and-why-is-it-so/" title="Divisibility Test for 9: How and Why is it so?">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    <a href="/blog/remembering-physics-olympiad-2012/" title="Remembering Physics Olympiad 2012">Next &gt;&gt;</a>
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/decoration-with-decoratorspython',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+

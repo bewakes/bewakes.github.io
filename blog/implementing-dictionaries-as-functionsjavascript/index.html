@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Implementing dictionaries as functions(Javascript)
+            
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="&gt;  **Warning: ** Please don&#39;t try this at produ..." />
+        <meta name="twitter:title" content="Implementing dictionaries as functions(Javascript)" />
+        <meta name="twitter:url" content="https://bewakes.com/blog/implementing-dictionaries-as-functionsjavascript" />
+        <meta property="og:url" content="https://bewakes.com/blog/implementing-dictionaries-as-functionsjavascript" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Implementing dictionaries as functions(Javascript)" />
+        <meta property="og:description"   content="&gt;  **Warning: ** Please don&#39;t try this at produ..." />
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bitter|Noto+Serif|Lato|Vollkorn">
+        <link rel="stylesheet" type="text/css" href="/static/custom.css">
+        <link rel="stylesheet" type="text/css" href="/static/default.css">
+    </head>
+
+    <body>
+        
+        <div id="page-header">
+            <div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+                <div class="jumbotron p-2 pt-5 text-white" style="background-color: #232328 !important; border-radius: 0px;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div id="blog-title" class="col-lg-4 text-center">
+                            <h1 style="color: white; font-size: 4.4rem;"> BeWakes</h1>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-dark justify-content-center" style="background-color: transparent !important">
+                        <!-- Toggler/collapsibe Button -->
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                          <i class="fas fa-bars" style="font-size:2rem; color: white; border: solid 1px white; padding:5px; border-radius: 4px;"></i>
+                      </button>
+                      <!-- Links -->
+                      <div class="navbar-collapse collapse text-center" id="collapsibleNavbar" style="flex-grow: unset">
+                          <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">HOME</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/posts/">POSTS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/misc/">MISC</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/games/">GAMES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/tags/">TAGS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact/">CONTACT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about/">ABOUT</a>
+                                </li>
+                          </ul>
+                      </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script type="text/javascript" async
+              src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+          </script>
+        
+        <div id="contents">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-0"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div id="article">
+                            <div id="article-title">
+                                <span id="article-title-text"> Implementing dictionaries as functions(Javascript)</span>
+                                <div id="blogpost-date">Sept. 15, 2020</div> 
+                            </div>
+                            <div id="tags"> 
+                                <ul class="list-inline">
+                                    <i class="fas fa-tags" style="margin-right:6px;color:#777"></i>&nbsp;
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=FunctionalProgramming">FunctionalProgramming</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=Programming">Programming</a> 
+                                        
+                                         , 
+                                        
+                                    </li>
+                                    
+                                    <li class="tag-element">
+                                        <a href="/blog/posts/?tag=ComputerScience">ComputerScience</a> 
+                                        
+                                        
+                                        
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div id="article-content" class="text-justify">
+                                
+                                
+                                <p><blockquote>
+<p><strong>Warning: </strong> Please don't try this at production. This is just for demonstration purpose.</p>
+</blockquote>
+<p>This article was concieved when <a href="https://gnikesh.com/">my friend</a> introduced me to the concept of <code>dictionaries as functions</code>. </p>
+<p>Imagine a language very similar to <code>javascript</code> which did not have <code>objects</code> or say <code>dictionaries</code> in it. Dictionaries are the data structures that store <code>key-value</code> pairs and the values are accessed by specifying keys which we call <code>lookup</code>. Lookups in dictionary are constant time operations[not in the one we are implementing]. But we sure won't bother with hashing and all.</p>
+<h2>Recap of JS arrow syntax</h2>
+<p>Arrow syntax comes with javascript es6. There are tons of articles about that. Let's just recap the basic notation here.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// Traditional function</span>
+<span class="kd">function</span> <span class="nx">myFucntion</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Equivalent to</span>
+<span class="kr">const</span> <span class="nx">myFunction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Another traditional function</span>
+<span class="kd">function</span> <span class="nx">getInitialObject</span><span class="p">(</span><span class="nx">arg1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Equivalent to                   v------ Note the braces before object initialization</span>
+<span class="kr">const</span> <span class="nx">getInitialObject</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arg1</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span><span class="nx">a</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">b</span><span class="o">:</span> <span class="mi">2</span><span class="p">});</span>  <span class="c1">// We don&#39;t need return statement</span>
+
+<span class="c1">// Function returning function</span>
+<span class="kd">function</span> <span class="nx">getArithmeticFunction</span><span class="p">(</span><span class="nx">operation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">reurn</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// This is an anonymous function</span>
+            <span class="k">return</span> <span class="nx">operation</span> <span class="o">==</span> <span class="s1">&#39;add&#39;</span> <span class="o">?</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">:</span> <span class="nx">x</span> <span class="o">-</span> <span class="nx">y</span><span class="p">;</span>
+        <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Equivalent to</span>
+<span class="c1">//  Function argument -------------v           v--------- Returned function arguments</span>
+<span class="kr">const</span> <span class="nx">getArithmeticFunction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">operation</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">operation</span> <span class="o">==</span> <span class="s1">&#39;add&#39;</span> <span class="o">?</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">:</span> <span class="nx">x</span> <span class="o">-</span> <span class="nx">y</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>Our Dictionary Implementation</h2>
+<p>Our dictionary is just going to be a function that takes a key and returns the value if present else <code>undefined</code>. Let's create a constructor function that returns a new dictionary.</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">newDict</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="kc">undefined</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">dict</span> <span class="o">=</span> <span class="nx">newDict</span><span class="p">();</span>
+</pre></div>
+
+
+<p>So far so easy. The function <code>newDict</code> returns another function, our dictionary, that returns undefined for any key because it does not have any entries in it now.</p>
+<p>Lookup is very easy, just call the dictionary function.</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">val</span> <span class="o">=</span> <span class="nx">dict</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="c1">// dict(&quot;anykey&quot;) --&gt; undefined, because dictionary is empty</span>
+</pre></div>
+
+
+<p>Let's create a function that inserts some key value to our dictionary.</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">insert</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">==</span> <span class="nx">k</span> <span class="o">?</span> <span class="nx">v</span> <span class="o">:</span> <span class="nx">dict</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+
+<span class="nx">dict</span> <span class="o">=</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="s2">&quot;newkey&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// Now holds value for &quot;newkey&quot;</span>
+<span class="nx">dict</span> <span class="o">=</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="s2">&quot;anotherkey&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// Now holds value for &quot;another key&quot;</span>
+<span class="c1">// dict(&quot;newkey&quot;) --&gt; 5</span>
+<span class="c1">// dict(&quot;anotherkey&quot;) --&gt; 10</span>
+<span class="c1">// dict(&quot;any other key&quot;) --&gt; undefined</span>
+</pre></div>
+
+
+<p>This <code>insert</code> function takes in a dictionary, key and a value and returns a dictionary(which should be another function). Note that the original dictionary is not modified at all. We completely return a new dictionary function.</p>
+<p>There we go! A fully functional dictionary where we can insert and lookup values. Why not try popping keys out?</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">pop</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">==</span> <span class="nx">k</span> <span class="o">?</span> <span class="kc">undefined</span> <span class="o">:</span> <span class="nx">dict</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<span class="nx">dict</span> <span class="o">=</span> <span class="nx">pop</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="s2">&quot;newkey&quot;</span><span class="p">);</span>
+<span class="c1">// dict(&quot;newkey&quot;) --&gt; undefined</span>
+<span class="c1">// dict(&quot;anotherkey&quot;) --&gt; 10</span>
+<span class="c1">// dict(&quot;any other key&quot;) --&gt; undefined</span>
+</pre></div>
+
+
+<h2>Limitations</h2>
+<p>It's highly important to be aware of the limitations though. Our dictionary cannot list out the keys and values present. To support that we need to modify the structure quite a bit. I don't think that's much fun though.</p>
+<h2>Bonus</h2>
+<p>What if we want to transform all the values of the dictionary by a function, say squaring the values(assuming number values)? Well that's pretty straightforward and cool!</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">mapDictionary</span> <span class="o">=</span> <span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="nx">mapFunction</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">originalValue</span> <span class="o">=</span> <span class="nx">dict</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">originalValue</span> <span class="o">&amp;&amp;</span> <span class="nx">mapFunction</span><span class="p">(</span><span class="nx">originalValue</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">dict</span> <span class="o">=</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="nx">dict</span> <span class="o">=</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="s2">&quot;six&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">square</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">squaredDictionary</span> <span class="o">=</span> <span class="nx">mapDictionary</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="nx">square</span><span class="p">);</span>
+<span class="nx">squaredDictionary</span><span class="p">(</span><span class="s2">&quot;five&quot;</span><span class="p">);</span> <span class="c1">// 25</span>
+<span class="nx">squaredDictionary</span><span class="p">(</span><span class="s2">&quot;bla&quot;</span><span class="p">);</span> <span class="c1">// undefined because this key does not exist</span>
+
+<span class="c1">// One more example</span>
+<span class="kr">const</span> <span class="nx">isEven</span> <span class="o">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">isEvenDictionary</span> <span class="o">=</span> <span class="nx">mapDictionary</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="nx">isEven</span><span class="p">);</span>
+<span class="nx">isEvenDictionary</span><span class="p">(</span><span class="s2">&quot;five&quot;</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nx">isEvenDictionary</span><span class="p">(</span><span class="s2">&quot;six&quot;</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">isEvenDictionary</span><span class="p">(</span><span class="s2">&quot;bla&quot;</span><span class="p">);</span> <span class="c1">// undefined</span>
+</pre></div>
+
+
+<p>This, I think, is one of the many many beauties of functional programming.</p>
+<p><em>[September 15, Tuesday 2020. Bharatpur]</em></p></p>
+                                
+                                <hr>
+
+                                <div class="row">
+                                    <span class="col-md-3 arrow-left">
+                                    
+                                        <a href="/blog/the-division-algorithm/" title="The Division Algorithm">&lt;&lt; Previous</a>
+                                    
+                                    </span>
+                                    <span class="col-md-6 text-center">
+                                        <div style="margin-top:25px" class="fb-like" data-href="http://bewakes.udghos.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                    </span>
+
+                                    <span class="arrow-right col-md-3 text-right">
+                                    
+                                    <a href="/blog/yet-another-unicode-demystification/" title="Yet another Unicode Demystification">Next &gt;&gt;</a>
+                                    
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-0"></div>
+                    <!--<div class="col-md-3">
+                        <div id="side-pane">
+                            <h2><u>Recent posts</u></h2><br>
+                            <ul class="list-unstyled">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    -->
+            </div>
+        </div>
+
+        
+            <div class="row">
+                <div class="col-lg-3 col-md-1"></div>
+                <div class="col-lg-6 col-md-10">
+                    <div id="disqus_thread"></div>
+                    <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bewakes-com.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                <div class="col-lg-3 col-md-1"></div>
+            </div>
+        
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="text-center aboutme-content">
+                            <b>Copyright &copy; 2020</b><br>
+                            <span ><a class="undecorated-a" href="/about/">bewakes</a></span><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </footer>
+        </body>
+        <script src="/static/custom.js"></script>
+
+        <script>
+            (function () {
+                var elem = document.getElementsByTagName('footer')[0];
+                console.log(document.body.scrollHeight);
+                console.log(window.innerHeight);
+                if(document.body.scrollHeight <= window.innerHeight) {
+                    elem.style.position = "absolute";
+                    elem.style.bottom= "0";
+                    elem.style.width = "100%";
+                }
+            })();
+            $.post(
+                'https://graph.facebook.com',
+                {
+                    id: 'https://bewakes.com/blog/implementing-dictionaries-as-functionsjavascript',
+                    scrape: true
+                },
+                function(response){
+                    console.log(response);
+                }
+            );
+    </script>
+        
+        
+    </html>
+
