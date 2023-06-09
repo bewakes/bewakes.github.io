@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel='stylesheet' type='text/css'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+        const DELAY_TIME = 1800;
+
+        function showStory(i) {
+            if (i >= storyLines.length) return;
+            $('#story').text(storyLines[i]);
+            $('#story')
+            .fadeIn(DELAY_TIME*2)
+            .delay(DELAY_TIME/2)
+            .fadeOut(DELAY_TIME*2, function () {
+                showStory(i+1);
+            });
+        }
+
+        function hideGreetings() {
+            $('#dear').fadeOut(DELAY_TIME, function() {
+                $('#hbd')
+                .stop()
+                .fadeOut(DELAY_TIME)
+                .delay(DELAY_TIME/2, function() { showStory(0);});
+            });
+        }
+
+        function showhbd() {
+            $('#hbd')
+            .fadeIn(DELAY_TIME*3.2)
+            .delay(DELAY_TIME*2, hideGreetings);
+        }
+
+        function onClickMe() {
+            $('#hbd-song')[0].play();
+            $('#mask').fadeOut(DELAY_TIME/2);
+            $('#stars-container').show();
+            $('#dear').fadeIn(DELAY_TIME*2.4, showhbd);
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-slate-50">
+    <div id="mask">
+        <div id="start-button" onclick="onClickMe()">
+            Click me!
+        </div>
+    </div>
+    <div id="stars-container">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+    </div>
+    <div id='title'>
+        <span id="dear">
+            Hey
+        </span>
+        <br>
+        <span id="hbd">
+            HAPPIEST BIRTHDAY TO YOU!!
+        </span>
+        <div id="story">
+        </div>
+    </div>
+     <audio id="hbd-song">
+        <source src="assets/happy-birthday-instrumental-compressed.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+<script>
+    var storyLines = `Of all the days, today,
+to the funniest, prettiest and the smartest person
+who brightens up my day,
+I wish a year full of joy, blessings and fond memories.
+May each day bring you closer
+to your dreams and the peace you've wished for...
+guffadi मुन्छेको गफ सधैँ सुन्न पाम्
+सधैँ हाँसेको, खुशीसाथ बाँचेको देख्न पाम््
+यति भन्दै दुइ शब्द यहीँ रोकेँ
+`.split("\n");
+</script>
+</body>
+</html>
+
