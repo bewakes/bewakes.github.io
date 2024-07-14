@@ -1,9 +1,15 @@
+$if(identicon)$
+<img src="/$identicon$"></img>
+$endif$
 <article>
     <section class="header">
-        $date$
-        $if(author)$
+        <h1>$title$</h1>
+        <small>
+            $date$
+            $if(author)$
             by $author$
-        $endif$
+            $endif$
+        </small>
     </section>
     <section>
         $body$

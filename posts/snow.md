@@ -1,7 +1,9 @@
 ---
-title: snow
+title: Snow
 date: March 30, 2014
 location: IOE pulchowk campus hostel
+tags: poem
+author: Bibek
 ---
 
 Snow,
