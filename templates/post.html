@@ -1,6 +1,6 @@
 <article>
     <section class="header">
-        Posted on $date$
+        $date$
         $if(author)$
             by $author$
         $endif$
@@ -8,4 +8,10 @@
     <section>
         $body$
     </section>
+    <div>
+        <i>$date$</i>
+         $if(location)$
+         <i> @ $location$</i>
+         $endif$
+    </div>
 </article>
