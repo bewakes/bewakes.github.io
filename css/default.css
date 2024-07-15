@@ -97,6 +97,23 @@ th {
   }
 }
 
+/* Blockquote styling */
+blockquote {
+    position: relative;
+    padding: 1em 1.5em;
+    margin: 0 0 1em;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    color: #777;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    border-radius: 5px;
+}
+
+blockquote p {
+    display: inline;
+}
+
 @media (min-width: 320px) {
   body {
     width: 90%;
