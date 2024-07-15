@@ -2,9 +2,12 @@
 title: Snow
 date: March 30, 2014
 location: IOE pulchowk campus hostel
-tags: poem
+tags:
+    - poem
 author: Bibek
 ---
+
+> This is probably the first poem I ever wrote. And I highly doubt that I'll write one again.
 
 Snow,
 

@@ -4,9 +4,10 @@ html {
 
 body {
   font-family: Baskerville;
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   color: #000;
   line-height: 2.3rem;
+  text-align: justify;
 }
 
 header {
@@ -15,6 +16,10 @@ header {
 
 nav {
   text-align: right;
+}
+
+code {
+    font-size: 1.4rem;
 }
 
 nav a {
@@ -103,7 +108,7 @@ blockquote {
     padding: 1em 1.5em;
     margin: 0 0 1em;
     line-height: 1.6;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #777;
     background: #f9f9f9;
     border-left: 10px solid #ccc;
@@ -145,13 +150,13 @@ blockquote p {
 
 @media (min-width: 640px) {
   body {
-    width: 60rem;
+    width: 55rem;
     margin: 0 auto;
     padding: 0;
   }
 
   img {
-    max-width: 60rem;
+    max-width: 55rem;
     overflow: hidden;
   }
   header {

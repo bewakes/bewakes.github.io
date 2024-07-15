@@ -3,8 +3,12 @@
 
 import Data.Monoid ((<>))
 import Hakyll
+import System.FilePath (replaceExtension, takeBaseName, takeDirectory, (</>))
 import System.Process
-import System.FilePath (takeBaseName, (</>), takeDirectory, replaceExtension)
+import Text.Pandoc (ReaderOptions (readerExtensions), WriterOptions (writerExtensions))
+import Text.Pandoc.Extensions (enableExtension)
+import Text.Pandoc.Highlighting (Style, breezeDark, espresso, styleToCss)
+import Text.Pandoc.Options
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -22,11 +26,9 @@ main = hakyll $ do
     compile $ do
       path <- getResourceFilePath
       unsafeCompiler $ do
-          putStrLn "****************************8"
-          putStrLn path
-          generateIdenticon path
+        generateIdenticon path
       let identiconCtx = generateIdenticonCtx path
-      pandocCompiler
+      pandocCompilerWith hakyllReaderOptions hakyllWriterOptions
         >>= loadAndApplyTemplate "templates/post.html" (postCtx <> identiconCtx)
         >>= loadAndApplyTemplate "templates/default.html" postCtx
         >>= relativizeUrls
@@ -44,6 +46,11 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
         >>= loadAndApplyTemplate "templates/default.html" archiveCtx
         >>= relativizeUrls
+
+    create ["css/syntax.css"] $ do
+        route idRoute
+        compile $ do
+            makeItem $ styleToCss pandocCodeStyle
 
   match "index.html" $ do
     route idRoute
@@ -68,6 +75,32 @@ main = hakyll $ do
 
   match "templates/*" $ compile templateBodyCompiler
 
+hakyllReaderOptions :: ReaderOptions
+hakyllReaderOptions =
+  defaultHakyllReaderOptions
+    { readerExtensions =
+        enableExtension Ext_tex_math_dollars
+          . enableExtension Ext_latex_macros
+          . enableExtension Ext_tex_math_double_backslash
+          . enableExtension Ext_tex_math_single_backslash
+          $ readerExtensions defaultHakyllReaderOptions
+    }
+
+hakyllWriterOptions :: WriterOptions
+hakyllWriterOptions =
+  defaultHakyllWriterOptions
+    { writerExtensions =
+        enableExtension Ext_tex_math_dollars
+          . enableExtension Ext_latex_macros
+          . enableExtension Ext_tex_math_double_backslash
+          . enableExtension Ext_tex_math_single_backslash
+          $ writerExtensions defaultHakyllWriterOptions,
+      writerHighlightStyle = Just pandocCodeStyle
+    }
+
+pandocCodeStyle :: Style
+pandocCodeStyle = espresso
+
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
@@ -78,13 +111,11 @@ generateIdenticon :: FilePath -> IO ()
 generateIdenticon route = do
   callCommand $ "python3 scripts/identicon.py " ++ route
 
-generateIdenticonCtx :: FilePath  -> Context String
-generateIdenticonCtx path =  constField "identicon" (transformPath path) <> defaultContext
+generateIdenticonCtx :: FilePath -> Context String
+generateIdenticonCtx path = constField "identicon" (transformPath path) <> defaultContext
 
 -- Function to transform a markdown file path to an image file path
 transformPath :: FilePath -> FilePath
 transformPath mdPath =
-    let baseName = takeBaseName mdPath
-    in "/images" </> (baseName ++ ".png")
-
-
+  let baseName = takeBaseName mdPath
+   in "/images" </> (baseName ++ ".png")
