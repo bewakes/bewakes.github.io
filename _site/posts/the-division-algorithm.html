@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bewakes - The division algorithm</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="stylesheet" href="/css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">bewakes</a>
+            </div>
+            <nav>
+                <a href="/now">now</a>
+                <a href="/posts">posts</a>
+                <!-- <a href="/book-reviews">book reviews</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            
+<img src="/images/the-division-algorithm.png"></img>
+
+<article>
+    <section class="header">
+        <h1>The division algorithm</h1>
+        <small>
+            August  4, 2020
+            
+        </small>
+    </section>
+    <section>
+        <p>TODO… fix this</p>
+<p>Like many things in life, there are many little things in mathematics that we take for granted. We hardly take a moment to look at them, see the beauty that they contain and that they create. The Division Algorithm, I think, is one of those beautiful little pieces in mathematics that deserves to be mentioned.</p>
+<blockquote>
+<p>Let a</p>
+<p>and b be integers with b&gt;0. Then there exist unique integers q and r such that a=bq+r where 0≤r&lt;b</p>
+</blockquote>
+<p>This is so simple and obvious that we never bothered why is it even true.</p>
+<h3 id="existence-of-q-and-r">Existence of q and r</h3>
+<p>We deal with the uniqueness later on. Let</p>
+<p>S=a−bk:k∈Z,a−b≥0</p>
+<p>Now if 0∈S then a−bk=0 and thus a=bk⇒r=0.</p>
+<p>But if 0∉S, then we first show S is non-empty. If a is positive, a−b.0=a∈S. If a is negative, a−b(2a)=a(1−2b)∈S. We see that S is non-empty either ways.</p>
+<p>Let’s recall Well ordering principle which states Every non-empty set of natural numbers contains a minimum element, that is, it is well ordered.</p>
+<p>Following the principle, S must have a minimum element, say r. Let, r=a−bq⇒a=bq+r, r≥0.</p>
+<p>We now show r&lt;b. Suppose r&gt;b then, r−b=a−bq−b=a−b(q+1) which is of the form a−bk. Thus, r−b∈S and obviously r−b&lt;r.</p>
+<p>But, this contradicts with the fact that r is the smallest in S, led by our assumption r&gt;b. Thus, r&lt;b. This proves the existence of r and q such that a=bq+r,0≤r&lt;b.</p>
+<h3 id="uniqueness-of-q-and-r">Uniqueness of q and r</h3>
+<p>Suppose we have another pair q′
+and r′ such that a=bq′+r′,0≤r′&lt;b. Then, bq+r=bq′+r′⇒b(q−q′)=r−r′ Let r&gt;r′ then we have b dividing r−r′ but, 0≤r−r′≤r&lt;b This is possible only if r−r′=0. Thus, r′=r and q′=q.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>The seemingly can-be-taken-for-granted statement involves pretty beautiful and not very straightforward proof. So much to learn from mathematics! I hope this was an interesting read.</p>
+<p>NOTE: The proof comes from <a href="https://github.com/twjudson/aata">Abstract Algebra Theory and Applications</a></p>
+    </section>
+    <small style="color: #777">
+         August  4, 2020
+
+         
+    </small>
+</article>
+
+        </main>
+
+        <footer>
+            Build with love by Bibek Pandey. <br/>
+            <br/>
+            © 2017 - 2024
+        </footer>
+    </body>
+</html>

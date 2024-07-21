@@ -1,0 +1,9 @@
+<h2>$title$</h2>
+$for(posts)$
+    <div class="list-item">
+        <a href="$url$">$title$</a>
+        $if(date)$
+            <small class="date">$date$</small>
+        $endif$
+    </div>
+$endfor$

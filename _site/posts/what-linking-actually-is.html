@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bewakes - What linking actually is</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="stylesheet" href="/css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">bewakes</a>
+            </div>
+            <nav>
+                <a href="/now">now</a>
+                <a href="/posts">posts</a>
+                <!-- <a href="/book-reviews">book reviews</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            
+<img src="/images/what-linking-actually-is.png"></img>
+
+<article>
+    <section class="header">
+        <h1>What linking actually is</h1>
+        <small>
+            July 27, 2017
+            
+        </small>
+    </section>
+    <section>
+        <p><em>program.. C program.. compiler.. gcc.. library.. object file.. linker.. linking.. linkinpark.. In the end.. it doesn’t even matter.. and now, I’ve become so numb..(cries)</em></p>
+<p>It’s very easy to get carried away and frustrated while ‘thinking’ about ‘linking’.
+<br/>
+NOTE: I am a great fan of LinkinPark.</p>
+<p>If you have once been a beginner C programmer or are one now, then you must have once been confused by the concept of ‘linking’ and ‘compiling’. ‘Compiling’ does not bug as much as ‘linking’ does(at least for me) because, simply speaking, it is a process of converting the code that we have written in high level languages into the code(binary) that the computer understands.</p>
+<h3 id="libraries">Libraries</h3>
+<p>It often happens that, for many programs that we write, some of the functionalities are common(like mathematical functions used during computational programs, graphics functionalities used during making games or user interfaces, etc). These common functionalities are also implemented as code, but we call them libraries which can be used by different people without having to rewrite themselves.</p>
+<h3 id="object-files">Object files</h3>
+<p>So, for libraries we just include and use them; rest is handled by compiler and linker. A library is available as an object file. An object file is a compiled file that contain the definition of library functions that we use in our programs.</p>
+<h3 id="linking">Linking</h3>
+<p>Now, when we compile our code, it is compiled by compiler to object file. The object file in our case has references to the library functions that we have used(of course, we have not written definitions for the library functions so there’s no way the definitions are available in our object file). Thus, our program’s object file contains void space(not literally, but you got the point..) to be filled by the definitions of library functions. The linker then fills in the void i.e. combines our object file and the object files of the library and finally an executable is created which is complete and can be run. Note that, linker is also a program like a compiler.</p>
+<p>That’s all that is happening between the time we write our code and finally run it.</p>
+<h3 id="some-more..">Some more..</h3>
+<h4 id="static-and-dynamic-linking">Static and dynamic linking</h4>
+<p>I won’t dwell into details about static and dynamic linking. In static linking, the library object file is merged with our object file into a single executable. The executable is fast and it does not require the presence of the library on the system where it is run. But the executable size is large. And also, if there are different programs using the library, same copy of library object is merged into all of the programs, which is quite redundant. The .a files in linux/unix and .lib files in windows are static libraries.</p>
+<p>In dynamic linking, library object file is not merged with our object file. Instead, it is directly loaded into memory together with our object file and library function definition is referenced within the memory. This allows multiple programs to share the library and also keeps our executable file size smaller and upgrading of code easier. However, the library needs to be present wherever our executable file is moved. Dynamic linking is slower than static linking. Also, it can cause compatibility issues if versions do not match. The .so files in linux/unix and .dll in windows are dynamic libraries.</p>
+    </section>
+    <small style="color: #777">
+         July 27, 2017
+
+         
+             @ Patan Dhoka
+         
+    </small>
+</article>
+
+        </main>
+
+        <footer>
+            Build with love by Bibek Pandey. <br/>
+            <br/>
+            © 2017 - 2024
+        </footer>
+    </body>
+</html>

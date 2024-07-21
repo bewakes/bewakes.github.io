@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bewakes - Decoration with Decorators(Python)</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="stylesheet" href="/css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">bewakes</a>
+            </div>
+            <nav>
+                <a href="/now">now</a>
+                <a href="/posts">posts</a>
+                <!-- <a href="/book-reviews">book reviews</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            
+<img src="/images/decoration-in-python.png"></img>
+
+<article>
+    <section class="header">
+        <h1>Decoration with Decorators(Python)</h1>
+        <small>
+            March 12, 2018
+            
+        </small>
+    </section>
+    <section>
+        <p>Decorators let us decorate and make things beautiful. So does python. It lets us decorate functions and classes. Let’s see how.</p>
+<h3 id="functions-are-first-class-citizens">Functions are ‘first class citizens’</h3>
+<p>First class citizens is just a fancy name for things in a computer program that can be treated as ‘values’, assigned to, passed around functions, returned from function and so on. The easiest and the most basic first class citizen that we can think of in python is an integer. Consider 5, which is an integer and can be assigned to variables, sent to functions or returned from functions.</p>
+<p>To understand why functions are first class citizens, let’s create some functions:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(x, y):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> subtract(x, y):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">-</span> y</span></code></pre></div>
+<p>I know, I know. There’s nothing new with them. Everybody knows how to define functions. Let’s define another function:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="bu">apply</span>(function, x, y):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> function(x, y)</span></code></pre></div>
+<p>Now this is something. With the apply function, we can do things like:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">apply</span>(add, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; 7</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">apply</span>(subtract, <span class="dv">2018</span>, <span class="dv">1994</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; 24</span></span></code></pre></div>
+<p>See, we’ve passed our functions add and subtract to the function apply just like we’ve passed in 3, 4 and 2018, 1994. One reason why functions are first class citizens.</p>
+<p>Let’s write some more functions.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_function(name):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="op">==</span> <span class="st">&#39;add&#39;</span>:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> add</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> name <span class="op">==</span> <span class="st">&#39;subtract&#39;</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> subtract</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> name <span class="op">==</span> <span class="st">&#39;multiply&#39;</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        f <span class="op">=</span> <span class="kw">lambda</span> x, y: x<span class="op">*</span>y</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Congratulations! we&#39;ve just assigned a function(lambda) to a value(f)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># The lambda expression is equivalent to:</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># def f(x, y)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">#  return x*y</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># The values before &#39;:&#39; are arguments and after &#39;:&#39; is the return value.</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> f</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> name <span class="op">==</span> <span class="st">&#39;divide&#39;</span>:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> divide(x, y):  <span class="co"># Yes, we can define a function inside a function.</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> x<span class="op">/</span>y</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># However, we can&#39;t call &#39;divide&#39; outside &#39;get_function&#39;, but we can return &#39;divide&#39;. Of course!!</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> divide</span></code></pre></div>
+<p>Contratulations!! we’ve returned function from a function. Next reason why functions are first class citizens. Why not see it in action?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>add_function <span class="op">=</span> get_function(<span class="st">&#39;add&#39;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>add_function(<span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; 11</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>get_function(<span class="st">&#39;subtract&#39;</span>)(<span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This evaluates to: subtract(3, 4)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; -1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>get_function(<span class="st">&#39;multiply&#39;</span>)(<span class="dv">8</span>, <span class="dv">11</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; 88</span></span></code></pre></div>
+<h3 id="decorators">Decorators</h3>
+<p>Decorators are functions, which return another function. It often happens in python that we want to add some common but extra functionality to python functions. Let’s say we want to print how long a function took to execute. We can do this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function_to_be_tracked(value):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;The value passed is </span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(value))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># code to track time for our function</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>my_function_to_be_tracked(<span class="st">&quot;hello there&quot;</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> time.time()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;elapsed time: &quot;</span>, start <span class="op">-</span> end)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; hello there</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; elapsed time: 123.33 ms</span></span></code></pre></div>
+<p>Yukk!! It works, but I am not going to write this mess for every function I am going to time track.</p>
+<p>A better approach would be:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tracker(func_to_be_tracked):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper(value):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        function_to_be_tracked(value)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> time.time()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;elapsed time: &quot;</span>, start <span class="op">-</span> end, <span class="st">&quot;ms&quot;</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can do this</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>tracked_func <span class="op">=</span> tracker(my_function_to_be_tracked)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>tracked_func(<span class="st">&quot;hello there&quot;</span>)  <span class="co"># This works!!</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; hello there</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; elapsed time: 123.33 ms</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>another_tracked_function <span class="op">=</span> tracker(another_function_with_single_arg)  <span class="co"># This works like charm as well.</span></span></code></pre></div>
+<p>Quite clean, right? Python lets even cleaner code:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@tracker</span>  <span class="co"># this is actually decorator syntax</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_function_to_be_tracked(value):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;The value passed is </span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(value))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># it will be equivalent to</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>my_function_to_be_tracked <span class="op">=</span> tracker(my_function_to_be_tracked)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># and we can now call it as</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>my_function_to_be_tracked(<span class="st">&#39;hello&#39;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; hello</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt;&gt;&gt; elapsed time: 123.11 ms</span></span></code></pre></div>
+<p>That’s all about decorators. Just a syntactic sugar to the wrapper function and renaming the returned function to the wrapped function’s name.
+However, the tracker wrapper can wrap only the functions with single argument. It is because the wrapper function inside takes only single parameter. We can generalize this to function taking any parameters using the sweet python constructs *args and **kwargs as:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tracker(func_to_be_tracked):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        function_to_be_tracked(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> time.time()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;elapsed time: &quot;</span>, start <span class="op">-</span> end, <span class="st">&quot;ms&quot;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span></code></pre></div>
+<p>Cool!! Now we’re ready to write codes with decorators. I’ll write about decorators taking arguments next time.
+Till then, keep decorating !!</p>
+<blockquote>
+<p>This article is inspired by <a href="https://realpython.com/blog/python/primer-on-python-decorators/">this article</a></p>
+</blockquote>
+    </section>
+    <small style="color: #777">
+         March 12, 2018
+
+         
+    </small>
+</article>
+
+        </main>
+
+        <footer>
+            Build with love by Bibek Pandey. <br/>
+            <br/>
+            © 2017 - 2024
+        </footer>
+    </body>
+</html>

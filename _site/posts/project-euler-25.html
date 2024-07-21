@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bewakes - Project Euler problem 25 solution</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="stylesheet" href="/css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">bewakes</a>
+            </div>
+            <nav>
+                <a href="/now">now</a>
+                <a href="/posts">posts</a>
+                <!-- <a href="/book-reviews">book reviews</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            
+<img src="/images/project-euler-25.png"></img>
+
+<article>
+    <section class="header">
+        <h1>Project Euler problem 25 solution</h1>
+        <small>
+            February 25, 2017
+            
+            by Bibek
+            
+        </small>
+    </section>
+    <section>
+        <blockquote>
+<p>What is the index of the first term in the Fibonacci sequence to contain 1000 digits?</p>
+</blockquote>
+<p>The question actually asks to find the first fibonacci term, whose number of digits crosses 1000.</p>
+<p>An obvious way to solve it is to brute force all the way to find Fn
+(nth Fibonacci number) such that <span class="math inline"><em>l</em><em>o</em><em>g</em><sub>10</sub>(<em>F</em><sub><em>n</em></sub>)</span> is 1000.
+The solution becomes too easy if we use the Golden ratio <span class="math inline"><em>ϕ</em> = 1.61803398875</span></p>
+<p>After some research on Golden ratio and Fibonacci numbers, we can find out an important fact that</p>
+<blockquote>
+<p><span class="math inline"><em>ϕ</em><sup><em>n</em> − 2</sup> ≤ <em>F</em><sub><em>n</em></sub></span></p>
+</blockquote>
+<p>Now, if a number N has n digits in it then, <span class="math inline"><em>l</em><em>o</em><em>g</em><sub>10</sub><em>N</em> = <em>n</em> − 1</span>
+. For example, <span class="math inline"><em>l</em><em>o</em><em>g</em><sub>10</sub>100 = 2</span> and <span class="math inline"><em>l</em><em>o</em><em>g</em><sub>10</sub>999 = 2.999</span>.
+So, for 1000 digits, its logarithm is 999
+because both 100 and 999 have 3 digits.</p>
+<p>Using this fact in the above inequality(greater than sign is omitted as we are concerned with the first number to have 1000 digits),</p>
+<p><span class="math inline"><em>l</em><em>o</em><em>g</em>(<em>ϕ</em><sup><em>n</em> − 2</sup>) = 999</span></p>
+<p><span class="math inline"><em>o</em><em>r</em>, (<em>n</em> − 2) ∗ <em>l</em><em>o</em><em>g</em>(<em>ϕ</em>) = 999</span></p>
+<p><span class="math inline"><em>o</em><em>r</em>, (<em>n</em> − 2) ∗ 0.2089 = 999</span></p>
+<p>which gives <span class="math inline"><em>n</em> = 4782</span>, our answer.
+Cheers!!</p>
+    </section>
+    <small style="color: #777">
+         February 25, 2017
+
+         
+    </small>
+</article>
+
+        </main>
+
+        <footer>
+            Build with love by Bibek Pandey. <br/>
+            <br/>
+            © 2017 - 2024
+        </footer>
+    </body>
+</html>

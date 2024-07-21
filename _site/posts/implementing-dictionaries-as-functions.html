@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bewakes - Implementing dictionaries as functions(Javascript)</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="stylesheet" href="/css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">bewakes</a>
+            </div>
+            <nav>
+                <a href="/now">now</a>
+                <a href="/posts">posts</a>
+                <!-- <a href="/book-reviews">book reviews</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            
+<img src="/images/implementing-dictionaries-as-functions.png"></img>
+
+<article>
+    <section class="header">
+        <h1>Implementing dictionaries as functions(Javascript)</h1>
+        <small>
+            September 15, 2020
+            
+        </small>
+    </section>
+    <section>
+        <blockquote>
+<p>Warning: Please don’t try this at production. This is just for demonstration purpose.</p>
+</blockquote>
+<p>This article was concieved when <a href="https://gnikesh.com/">my friend</a> introduced me to the concept of dictionaries as functions.</p>
+<p>Imagine a language very similar to javascript which did not have objects or say dictionaries in it. Dictionaries are the data structures that store key-value pairs and the values are accessed by specifying keys which we call lookup. Lookups in dictionary are constant time operations[not in the one we are implementing]. But we sure won’t bother with hashing and all.
+Recap of JS arrow syntax</p>
+<p>Arrow syntax comes with javascript es6. There are tons of articles about that. Let’s just recap the basic notation here.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Traditional function</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">myFucntion</span>(arg1<span class="op">,</span> arg2) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// do something</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Equivalent to</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myFunction <span class="op">=</span> (arg1<span class="op">,</span> arg2) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// do something</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Another traditional function</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getInitialObject</span>(arg1) {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">b</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">// Equivalent to                   v------ Note the braces before object initialization</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getInitialObject <span class="op">=</span> (arg1) <span class="kw">=&gt;</span> ({<span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">;</span>  <span class="co">// We don&#39;t need return statement</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">// Function returning function</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getArithmeticFunction</span>(operation) {</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        reurn <span class="kw">function</span>(x<span class="op">,</span> y) {  <span class="co">// This is an anonymous function</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> operation <span class="op">==</span> <span class="st">&#39;add&#39;</span> <span class="op">?</span> x <span class="op">+</span> y <span class="op">:</span> x <span class="op">-</span> y<span class="op">;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">// Equivalent to</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">//  Function argument -------------v           v--------- Returned function arguments</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> getArithmeticFunction <span class="op">=</span> (operation) <span class="kw">=&gt;</span> (x<span class="op">,</span> y) <span class="kw">=&gt;</span> operation <span class="op">==</span> <span class="st">&#39;add&#39;</span> <span class="op">?</span> x <span class="op">+</span> y <span class="op">:</span> x <span class="op">-</span> y<span class="op">;</span></span></code></pre></div>
+<h3 id="our-dictionary-implementation">Our Dictionary Implementation</h3>
+<p>Our dictionary is just going to be a function that takes a key and returns the value if present else undefined. Let’s create a constructor function that returns a new dictionary.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> newDict <span class="op">=</span> () <span class="kw">=&gt;</span> (key) <span class="kw">=&gt;</span> <span class="kw">undefined</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> dict <span class="op">=</span> <span class="fu">newDict</span>()<span class="op">;</span></span></code></pre></div>
+<p>So far so easy. The function newDict returns another function, our dictionary, that returns undefined for any key because it does not have any entries in it now.</p>
+<p>Lookup is very easy, just call the dictionary function.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> val <span class="op">=</span> <span class="fu">dict</span>(key)<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;anykey&quot;) --&gt; undefined, because dictionary is empty</span></span></code></pre></div>
+<p>Let’s create a function that inserts some key value to our dictionary.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> insert <span class="op">=</span> (dict<span class="op">,</span> k<span class="op">,</span> v) <span class="kw">=&gt;</span> (x) <span class="kw">=&gt;</span> x <span class="op">==</span> k <span class="op">?</span> v <span class="op">:</span> <span class="fu">dict</span>(x)<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dict <span class="op">=</span> <span class="fu">insert</span>(dict<span class="op">,</span> <span class="st">&quot;newkey&quot;</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span> <span class="co">// Now holds value for &quot;newkey&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>dict <span class="op">=</span> <span class="fu">insert</span>(dict<span class="op">,</span> <span class="st">&quot;anotherkey&quot;</span><span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span> <span class="co">// Now holds value for &quot;another key&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;newkey&quot;) --&gt; 5</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;anotherkey&quot;) --&gt; 10</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;any other key&quot;) --&gt; undefined</span></span></code></pre></div>
+<p>This insert function takes in a dictionary, key and a value and returns a dictionary(which should be another function). Note that the original dictionary is not modified at all. We completely return a new dictionary function.</p>
+<p>There we go! A fully functional dictionary where we can insert and lookup values. Why not try popping keys out?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> pop <span class="op">=</span> (dict<span class="op">,</span> k) <span class="kw">=&gt;</span> (x) <span class="kw">=&gt;</span> x <span class="op">==</span> k <span class="op">?</span> <span class="kw">undefined</span> <span class="op">:</span> <span class="fu">dict</span>(x)<span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dict <span class="op">=</span> <span class="fu">pop</span>(dict<span class="op">,</span> <span class="st">&quot;newkey&quot;</span>)<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;newkey&quot;) --&gt; undefined</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;anotherkey&quot;) --&gt; 10</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">// dict(&quot;any other key&quot;) --&gt; undefined</span></span></code></pre></div>
+<h3 id="limitations">Limitations</h3>
+<p>It’s highly important to be aware of the limitations though. Our dictionary cannot list out the keys and values present. To support that we need to modify the structure quite a bit. I don’t think that’s much fun though.</p>
+<h3 id="bonus">Bonus</h3>
+<p>What if we want to transform all the values of the dictionary by a function, say squaring the values(assuming number values)? Well that’s pretty straightforward and cool!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> mapDictionary <span class="op">=</span> (dict<span class="op">,</span> mapFunction) <span class="kw">=&gt;</span> (x) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> originalValue <span class="op">=</span> <span class="fu">dict</span>(x)<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> originalValue <span class="op">&amp;&amp;</span> <span class="fu">mapFunction</span>(originalValue)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dict <span class="op">=</span> <span class="fu">insert</span>(dict<span class="op">,</span> <span class="st">&quot;five&quot;</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>dict <span class="op">=</span> <span class="fu">insert</span>(dict<span class="op">,</span> <span class="st">&quot;six&quot;</span><span class="op">,</span> <span class="dv">6</span>)<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> square <span class="op">=</span> (x) <span class="kw">=&gt;</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> squaredDictionary <span class="op">=</span> <span class="fu">mapDictionary</span>(dict<span class="op">,</span> square)<span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">squaredDictionary</span>(<span class="st">&quot;five&quot;</span>)<span class="op">;</span> <span class="co">// 25</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">squaredDictionary</span>(<span class="st">&quot;bla&quot;</span>)<span class="op">;</span> <span class="co">// undefined because this key does not exist</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">// One more example</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> isEven <span class="op">=</span> (x) <span class="kw">=&gt;</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> isEvenDictionary <span class="op">=</span> <span class="fu">mapDictionary</span>(dict<span class="op">,</span> isEven)<span class="op">;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">isEvenDictionary</span>(<span class="st">&quot;five&quot;</span>)<span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">isEvenDictionary</span>(<span class="st">&quot;six&quot;</span>)<span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">isEvenDictionary</span>(<span class="st">&quot;bla&quot;</span>)<span class="op">;</span> <span class="co">// undefined</span></span></code></pre></div>
+<p>This, I think, is one of the many many beauties of functional programming.</p>
+    </section>
+    <small style="color: #777">
+         September 15, 2020
+
+         
+    </small>
+</article>
+
+        </main>
+
+        <footer>
+            Build with love by Bibek Pandey. <br/>
+            <br/>
+            © 2017 - 2024
+        </footer>
+    </body>
+</html>

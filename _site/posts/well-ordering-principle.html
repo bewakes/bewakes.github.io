@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bewakes - Well ordering Principle</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="stylesheet" href="/css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/">bewakes</a>
+            </div>
+            <nav>
+                <a href="/now">now</a>
+                <a href="/posts">posts</a>
+                <!-- <a href="/book-reviews">book reviews</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            
+<img src="/images/well-ordering-principle.png"></img>
+
+<article>
+    <section class="header">
+        <h1>Well ordering Principle</h1>
+        <small>
+            July 13, 2017
+            
+        </small>
+    </section>
+    <section>
+        <p>“Well Ordering Principle” is a very simple concept. It just says,</p>
+<blockquote>
+<p>Every non-empty subset of Natural Numbers is well ordered i.e. every such subset of Natural Numbers contains a least element.</p>
+</blockquote>
+<p>See, nothing could be more trivial. And if you are wondering is this even
+useful? Believe me, I did that the first time I heard about it and now I am its
+fan. Another trivial looking principle is Pigeonhole Principle which I won’t
+talk in detail about here though. It says, If there are N holes and N+1
+pigeons then the pigeons cannot have a hole for each, two pigeons must share a single hole.</p>
+<p>Now let’s prove a theorem using well ordering principle.
+(Theorem) Let n be a positive integer such that n&gt;1 then <span class="math inline"><em>n</em> = <em>p</em><sub>1</sub><em>p</em><sub>2</sub>...<em>p</em><sub><em>k</em></sub></span> where all <span class="math inline"><em>p</em><sub><em>i</em></sub></span>s are prime numbers.</p>
+<h3 id="proof">Proof</h3>
+<p>Let S be a set of positive integers that cannot be written as product of
+primes. By the well ordering principle S has a least element, say a. Now, if
+the factors of a are a and 1 then a is a prime number and thus, this is a
+contradiction(since S consists of elements which don’t have prime factors).</p>
+<p>Next, if <span class="math inline"><em>a</em></span> is not prime, let <span class="math inline"><em>a</em><sub>1</sub></span> and <span class="math inline"><em>a</em><sub>2</sub></span> are the factors of $a). If both of them
+are prime then it again results in contradiction because <span class="math inline"><em>a</em></span> can be written as
+product of primes.</p>
+<p>Now, it is obvious <span class="math inline"><em>a</em><sub>1</sub> &lt; <em>a</em></span> and <span class="math inline"><em>a</em><sub>2</sub> &lt; <em>a</em></span>. If either of <span class="math inline"><em>a</em><sub>1</sub></span> or <span class="math inline"><em>a</em><sub>2</sub></span> can
+not be written as product of primes then, either <span class="math inline"><em>a</em><sub>1</sub> ∈ <em>S</em></span> or <span class="math inline"><em>a</em><sub>2</sub> ∈ <em>S</em></span>. But we already
+said that <span class="math inline"><em>a</em></span> is the smallest element in <span class="math inline"><em>S</em></span>. So, <span class="math inline"><em>a</em><sub>1</sub></span> and <span class="math inline"><em>a</em><sub>2</sub></span> must be product of
+primes i.e. <span class="math inline"><em>a</em><sub>1</sub> = <em>p</em><sub>1</sub><em>p</em><sub>2</sub>...<em>p</em><sub><em>r</em></sub></span> and <span class="math inline"><em>a</em><sub>2</sub> = <em>q</em><sub>1</sub><em>q</em><sub>2</sub>...<em>q</em><sub><em>s</em></sub></span>. Thus, <span class="math inline"><em>a</em> = <em>a</em><sub>1</sub>.<em>a</em><sub>2</sub> = <em>p</em><sub>1</sub>...<em>p</em><sub><em>r</em></sub>.<em>q</em><sub>1</sub>...<em>q</em><sub><em>s</em></sub></span> which
+is a prime product.</p>
+<p>This again created a contradiction that <span class="math inline"><em>a</em> ∈ <em>S</em></span>. Thus, it can
+be concluded that there is no positive integer &gt; 1 that can not be written as
+prime products.</p>
+<p>Well Ordering Principle is pretty cool, right?</p>
+    </section>
+    <small style="color: #777">
+         July 13, 2017
+
+         
+    </small>
+</article>
+
+        </main>
+
+        <footer>
+            Build with love by Bibek Pandey. <br/>
+            <br/>
+            © 2017 - 2024
+        </footer>
+    </body>
+</html>

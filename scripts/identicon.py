@@ -1,5 +1,7 @@
+import os
 import sys
 import hashlib
+from pathlib import Path
 from PIL import Image, ImageDraw
 
 def generate_hashes_until_length(inp: str, n: int) -> str:
@@ -96,7 +98,13 @@ if __name__ == "__main__":
     filename = filepath.split("/")[-1]
     name = filename.split(".")[0]
 
-    target_path = "_site/images/" + name + ".png"
+    target_dir = Path("_site/images/")
+    target_name = Path(name + ".png")
+
+    if not os.path.exists(target_dir):
+        os.mkdir(target_dir)
+
+    target_path = target_dir / target_name
 
     width = 1000
     height = 200
