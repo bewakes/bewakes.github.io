@@ -30,6 +30,9 @@ main = hakyllWith config $ do
     route idRoute
     compile compressCssCompiler
 
+  -- Compile posts and extract tags
+  tags <- buildTags "posts/*" (fromCapture "tags/*.html")
+
   match "posts/*" $ do
     route $ setExtension "html"
     compile $ do
@@ -38,11 +41,8 @@ main = hakyllWith config $ do
         generateIdenticon path
       let identiconCtx = getIdenticonCtx path
       pandocCompilerWith hakyllReaderOptions hakyllWriterOptions
-        >>= loadAndApplyTemplate "templates/post.html" (postCtx <> identiconCtx)
+        >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags <> identiconCtx)
         >>= loadAndApplyTemplate "templates/default.html" postCtx
-
-  -- Compile posts and extract tags
-  tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
   tagsRules tags $ \tag pattern -> do
     let title = "Tagged: " ++ tag
@@ -151,7 +151,7 @@ transformPath mdPath =
    in "images" </> (baseName ++ ".png")
 
 postCtxWithTags :: Tags -> Context String
-postCtxWithTags tags = tagsField "tags" tags <> defaultContext
+postCtxWithTags tags = postCtx <> tagsField "tags" tags <> defaultContext
 
 -- Custom route to remove .html extension
 cleanRoute :: Routes
