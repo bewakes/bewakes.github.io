@@ -14,9 +14,14 @@ import Hakyll.Core.Logger (debug)
 import Debug.Trace (trace)
 import System.FilePath.Posix (takeFileName, dropExtension)
 
+config :: Configuration
+config = defaultConfiguration
+  { destinationDirectory = "docs"
+  }
+
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
   match "images/*" $ do
     route idRoute
     compile copyFileCompiler

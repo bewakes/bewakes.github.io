@@ -98,7 +98,7 @@ if __name__ == "__main__":
     filename = filepath.split("/")[-1]
     name = filename.split(".")[0]
 
-    target_dir = Path("_site/images/")
+    target_dir = Path("docs/images/")
     target_name = Path(name + ".png")
 
     if not os.path.exists(target_dir):
