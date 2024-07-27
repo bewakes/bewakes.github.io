@@ -3,11 +3,10 @@ html {
 }
 
 body {
-  font-family: Baskerville;
+  font-family: Baskerville, Georgia, serif;
   font-size: 1.75rem;
   color: #000;
   line-height: 2.3rem;
-  text-align: justify;
 }
 
 header {
@@ -20,6 +19,10 @@ h3 {
 
 nav {
   text-align: right;
+}
+
+section p {
+    text-align: justify;
 }
 
 code {
@@ -66,10 +69,10 @@ ul.items-list {
     padding: 0;
 }
 .list-item {
-    line-height: 3.4rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 0.8rem;
 }
 
 .list-item a {
@@ -119,6 +122,9 @@ th {
   nav a {
     display: block;
     line-height: 1.6;
+  }
+  small {
+      font-size: 0.9rem;
   }
 }
 
