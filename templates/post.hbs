@@ -1,0 +1,20 @@
+<div class="markdown-content">
+    <header>
+      <h1 class="title text-4xl text-center">{{meta.title}}</h1>
+      <p class="post-date text-base text-gray-600 dark:text-gray-400">{{meta.formatted_full_date}}</p>
+    </header>
+    <section class="pt-0 mt-2 mb-8">
+      <div class="flex flex-wrap gap-3">
+        {{#each post.metadata.tags}}
+            <a href="/tags/{{this}}.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                {{this}}
+            </a>
+        {{/each}}
+      </div>
+    </section>
+
+
+    <article class="prose text-xl/8 dark:prose-invert lg:prose-lg max-w-none">
+        {{{post.html_content}}}
+    </article>
+</div>

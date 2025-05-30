@@ -1,0 +1,23 @@
+<!-- Tag Header -->
+<section class="mb-8">
+  <h1 class="text-3xl font-bold mb-2">Posts tagged with "{{tag}}"</h1>
+  <p class="text-gray-600 dark:text-gray-400">{{posts_count}} {{#if (eq posts_count 1)}}post{{else}}posts{{/if}} found</p>
+</section>
+
+<!-- Year Group -->
+{{#each posts_by_year}}
+<section class="mb-8">
+  <h2 class="text-xl font-bold border-b pb-1 border-gray-300 dark:border-gray-700 mb-4">{{year}}</h2>
+  <ul class="space-y-2">
+    {{#each posts}}
+    <li>
+      <span class="text-gray-500 dark:text-gray-400 mr-2">{{formatted_date}}</span>
+      <a href="../posts/{{slug}}.html" class="hover:underline text-blue-600 dark:text-blue-400">{{title}}</a>
+      {{#if excerpt}}
+      <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 ml-20">{{excerpt}}</p>
+      {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/each}}

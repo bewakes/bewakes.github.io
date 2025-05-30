@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind = {
+      config: {
+        darkMode: 'class'
+      }
+    };
+  </script>
+  <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+  <link rel="stylesheet" href="/style.css"/>
+
+
+    <style>
+        /* Code block font size override - needs high specificity */
+        pre[class*="language-"],
+        pre[class*="language-"] code,
+        code[class*="language-"] {
+            font-size: 1rem !important;
+            line-height: 1.4 !important;
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+        }
+
+        /* Additional code styling improvements */
+        pre[class*="language-"] {
+            margin: 0.5em 0 !important;
+            padding-left: 5px !important;
+            border-radius: 0.375rem !important; /* rounded-md */
+        }
+
+        /* Dark mode toggle styling improvements */
+        .dark-toggle {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          cursor: pointer;
+        }
+
+        .dark-toggle input {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .toggle-bg {
+          width: 44px;
+          height: 24px;
+          background-color: #d1d5db;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .dark .toggle-bg {
+          background-color: #374151;
+        }
+
+        .toggle-dot {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border-radius: 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .dark .toggle-dot {
+          background-color: #f3f4f6;
+          transform: translateX(20px);
+        }
+    </style>
+
+</head>
+
+<body class="font-serif bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <!-- Header -->
+  <!-- Header -->
+<header class="border-b border-gray-200 dark:border-gray-700">
+  <div class="max-w-3xl mx-auto px-4 py-6 flex justify-between items-center">
+    <h1 class="text-2xl font-semibold">
+        <a class="text-decoration-none" href="/" style="font-family: Open Sans">bewakes</a>
+    </h1>
+    
+    <!-- Navigation Menu -->
+    <nav class="hidden md:flex items-center space-x-6" style="font-family: Open Sans">
+      <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuToggle" class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <!-- Toggle Switch -->
+      <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <div class="toggle-bg">
+          <div class="toggle-dot"></div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-3xl mx-auto px-4 py-4 space-y-2">
+      <a href="/about.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </div>
+  </div>
+</header>
+
+
+  <main class="max-w-3xl mx-auto px-4 py-10 space-y-10">
+
+    <div class="markdown-content">
+    <header>
+      <h1 class="title text-4xl text-center">That day I went to another exam center</h1>
+      <p class="post-date text-base text-gray-600 dark:text-gray-400">Aug 14 2017</p>
+    </header>
+    <section class="pt-0 mt-2 mb-8">
+      <div class="flex flex-wrap gap-3">
+            <a href="/tags/life.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                life
+            </a>
+            <a href="/tags/experience.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                experience
+            </a>
+      </div>
+    </section>
+
+
+    <article class="prose text-xl/8 dark:prose-invert lg:prose-lg max-w-none">
+        <p>Not by choice!</p>
+<p>It was my cerebrum messing with me, which it still does every now and then.</p>
+<p>5 years ago, it was the time when I was appearing the second IOE Entrance Examination. I am from the lucky batch who got chance to take Entrance Examination twice. Twice, because some &quot;great&quot; and &quot;brave&quot; people had leaked question paper of the first entrance exam.</p>
+<p>Now into the real event.</p>
+<p>After having some sleepless nights(I am insomniac sometimes) and re-preparations after the first exam, on the day of second exam, I collected my admit card, pen, pencil, calculator and went to the examination centre in Dhapakhel.</p>
+<p>A bit nervous, a bit excited and a bit happy(because I would be free from preparations that day), I reached the exam centre which was Kantipur Engineering College, a beautiful place. I met my friends, excited and happy. We had some talks about how we were quite nervous and excited and how we had prepared for that exam.</p>
+<p>Afterwards, 10 minutes to exam, we went to check our room and seat numbers. I checked for my admit number 2963. My eyes scanned the list on the wall from top to bottom. But I could not find my admit number.</p>
+<p>I was cool, and was thinking that the number must be in another list. So I went for another list. I scanned it from top to bottom and from bottom to top. I really could not find my number.</p>
+<p>I started feeling a bit cold. I took out my admit card to check for my admit number.</p>
+<p>Holy Shit !! The number in my admit card was 2693 !!</p>
+<p>I was never so much shocked before in my life. My friends said that the center for number 2693 was Himalayan College of Engineering, Chyasal.</p>
+<p>I could have run. But I did not run. Because I knew it was far and I did not have any idea where exactly it lies and how exactly I would reach there.</p>
+<p>I could have caught a bus, taxi, tempo, aeroplane, or even a rocket!! There were none around.</p>
+<p>And I stood there, completely panicked and hopeless. There was hardly 10 minutes before the exam would begin.</p>
+<p>Suddenly I came to picture my future(I had planned to become a Computer Engineer). And literally, I pictured it black. The future that I had been dreaming seemed completely dark and black that moment. I got a feeling about what people meant when &quot;somebody's future is dark&quot;.</p>
+<p>Then I remembered my father. All these years, my parents worked tirelessly so that I could study well the subject of my choice. I was heart broken.</p>
+<p>Not knowing how to go to my &quot;actual exam centre&quot; but knowing about the clock which was saying &quot;Oh little boy, there are just a couple of minutes left for the exam to begin!!&quot;, I was standing there with short but heavy breaths, while other had already been seated in their exam halls.</p>
+<p>But I controlled myself. I looked around, panting a little less.</p>
+<p>I saw some people in a nearby tea shop(I actually don't remember what the shop was). I went near a man, and asked him &quot;Dai, I am on the wrong centre. The examination is starting in very short time and my actual centre is in Chyasal, which I don't know how to reach and there is nothing around that can take me there. Can you please help me get there?&quot;.</p>
+<p>There are good people in this Earth. Without any questions and queries, he replied &quot;Sure Bhai. I don't exactly know where it is, but I'll take you there.&quot;</p>
+<p>My happiness had no bounds. That was the first time in a while when I inhaled a good amount of air. All those darkness started to fade out.</p>
+<p>He quickly started his bike, and I quickly got onto it. Within some seconds, we were rocketing in the streets. On the way, he asked me questions. I don't remember what things exactly he asked me( obviously because, had I a good memory I would not be on his bike). But I do remember him asking my name, home and about the preparation. He told me he was also an engineering student in third year. And he also told me not to worry, that I would do well in the exam, and that we would reach there in time. I was relieved by those words.</p>
+<p>So, after querying some people and making some guesses, we reached Himalayan College of Engineering after around 20-25 minutes. I got off the bike, thanked him so much. He smiled and said, &quot;I am also an engineering student, I understand a to-be-engineer's sorrow. All the very best Bhai.&quot; Before running towards examination hall, I asked his name.</p>
+<p>His name was <strong>Sailesh Dhakal</strong>. No matter how bad my memory is, there was no chance I could forget that name.</p>
+<p>So he went back, and I went running towards hall. I don't remember which floor it was, but I had to climb stairs. I met some teachers on my way whom I asked where my room was. They, instead of not letting me through, told me &quot;It is not much late, about 25 minutes have passed. You can go and do it well. Your room is that way Babu.&quot;</p>
+<p>By this time, my future had already started brightening up, at least in my thoughts.</p>
+<p>I went into my exam hall and looking at the expressions of the students, I guessed they too hadn't done much of the paper. The questions were perhaps harder. But who cares!! I was finally on the examination hall.</p>
+<p>I sat, and started solving. The questions were indeed harder than the first examination. Taking deep breaths and being happy about being &quot;rescued&quot;, I attemped all the questions.
+Somehow the middle 69 of my actual admit number 2693 was replaced by 96 resulting in <strong>2963</strong>. This is where I blame my cerebrum. Mathematics says, 2963 is greater than <strong>2693</strong>. Not much greater but in my case, it was great enough to change the examination centre.</p>
+<p>And yes, I am now a computer engineer who is, was and will be very very grateful to Sailesh Dai for what he did for me.</p>
+
+    </article>
+</div>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+    &copy; 2025 bewakes.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+
+    // Function to load Prism theme
+    function loadPrismTheme(isDark) {
+      // Remove existing theme
+      const existingTheme = document.querySelector('link[data-prism-theme]');
+      if (existingTheme) {
+        existingTheme.remove();
+      }
+
+      // Add new theme
+      const themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.setAttribute('data-prism-theme', 'true');
+      
+      if (isDark) {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
+      } else {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+      }
+      
+      document.head.appendChild(themeLink);
+      
+      // Re-highlight after theme loads and Prism is ready
+      themeLink.onload = function() {
+        setTimeout(() => {
+          if (typeof Prism !== 'undefined') {
+            Prism.highlightAll();
+          }
+        }, 50);
+      };
+    }
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Initialize theme
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      htmlEl.classList.add('dark');
+      toggle.checked = true;
+      loadPrismTheme(true);
+    } else {
+      htmlEl.classList.remove('dark');
+      toggle.checked = false;
+      loadPrismTheme(false);
+    }
+
+    // Toggle event listener
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        loadPrismTheme(true);
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        loadPrismTheme(false);
+      }
+    });
+  </script>
+
+  <!-- Prism.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // Configure autoloader path
+        Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
+
+    </script>
+  <!-- END Prism.js JavaScript -->
+    <script>
+        // Mobile menu toggle functionality
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobileMenu');
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const mobileMenu = document.getElementById('mobileMenu');
+          const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+          
+          if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+    </script>
+
+</body>
+</html>

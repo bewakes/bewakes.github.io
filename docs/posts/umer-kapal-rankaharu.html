@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind = {
+      config: {
+        darkMode: 'class'
+      }
+    };
+  </script>
+  <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+  <link rel="stylesheet" href="/style.css"/>
+
+
+    <style>
+        /* Code block font size override - needs high specificity */
+        pre[class*="language-"],
+        pre[class*="language-"] code,
+        code[class*="language-"] {
+            font-size: 1rem !important;
+            line-height: 1.4 !important;
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+        }
+
+        /* Additional code styling improvements */
+        pre[class*="language-"] {
+            margin: 0.5em 0 !important;
+            padding-left: 5px !important;
+            border-radius: 0.375rem !important; /* rounded-md */
+        }
+
+        /* Dark mode toggle styling improvements */
+        .dark-toggle {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          cursor: pointer;
+        }
+
+        .dark-toggle input {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .toggle-bg {
+          width: 44px;
+          height: 24px;
+          background-color: #d1d5db;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .dark .toggle-bg {
+          background-color: #374151;
+        }
+
+        .toggle-dot {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border-radius: 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .dark .toggle-dot {
+          background-color: #f3f4f6;
+          transform: translateX(20px);
+        }
+    </style>
+
+</head>
+
+<body class="font-serif bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <!-- Header -->
+  <!-- Header -->
+<header class="border-b border-gray-200 dark:border-gray-700">
+  <div class="max-w-3xl mx-auto px-4 py-6 flex justify-between items-center">
+    <h1 class="text-2xl font-semibold">
+        <a class="text-decoration-none" href="/" style="font-family: Open Sans">bewakes</a>
+    </h1>
+    
+    <!-- Navigation Menu -->
+    <nav class="hidden md:flex items-center space-x-6" style="font-family: Open Sans">
+      <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuToggle" class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <!-- Toggle Switch -->
+      <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <div class="toggle-bg">
+          <div class="toggle-dot"></div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-3xl mx-auto px-4 py-4 space-y-2">
+      <a href="/about.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </div>
+  </div>
+</header>
+
+
+  <main class="max-w-3xl mx-auto px-4 py-10 space-y-10">
+
+    <div class="markdown-content">
+    <header>
+      <h1 class="title text-4xl text-center">उमेर, कपाल र रन्काहरु</h1>
+      <p class="post-date text-base text-gray-600 dark:text-gray-400">Apr 14 2019</p>
+    </header>
+    <section class="pt-0 mt-2 mb-8">
+      <div class="flex flex-wrap gap-3">
+            <a href="/tags/humor.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                humor
+            </a>
+            <a href="/tags/life.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                life
+            </a>
+      </div>
+    </section>
+
+
+    <article class="prose text-xl/8 dark:prose-invert lg:prose-lg max-w-none">
+        <p>&quot;हेर त्यो कपाल!!&quot; आमा कराउन थाल्नुभो ।</p>
+<p>&quot;काट् त, ए काटिहाल्!! कती फोहोरी देख्खेको हो ।भर्खर गाँजा तानेर आएजस्तो!!&quot; थप्दै हुनुहुन्थ्यो ।</p>
+<p>&quot;ह्या आमा, रहर लाग्यो त क गर्नु, नाइ पाल्ने हो पुरै, कपाल बानेर हिँड्ने हो ।&quot; दिएँ मैले नि ।</p>
+<p>&quot;कस्तो नबुझेको होला, अनुहार हेर त । कती बैरागी देख्खेछ, ब्या गर्ने बेलामा नि ।&quot; अझै कराउँदै थिइन् बुढी ।</p>
+<p>बहिनी आइपुगी ।</p>
+<p>&quot;हो तनि, हि.... दाइ, केटिहरु नि भाग्छन के हजुर लाई देखेर । छ्या छ्या त्यो कपाल ।&quot; कुर्लिन थाली त्यो पनि ।</p>
+<p>एकैछिनमा नारा बाजी नै हुन थाल्यो । काका, काकि, छिमेकी अंकल अन्टि, भाईहरु, सबै थपिन थाले । ज्ञानेन्द्र जस्तो फील भैराथ्यो, जनान्दोलन २०६३ ।६४ ताकाको । डन्डा लिएर पुलिस आउन मात्र बाँकी थ्यो ।</p>
+<p>तेसै हार मान्ने वाला त म छैन, कपाल नकाट्ने ढृढ संकल्पमा अटल रहँदै एक दुइ दिनमा फुत्केर काठमाडौं फर्किएँ । राजा हो र म, आन्दोलन देखेर तर्सिने ? जस्ट किडिङ् !!</p>
+<p>हेर्नोस्, यो २४ कटेसी बहुत कठिन कोइ कोइ ठिटाहरुलाई । पैले इस्कुल्मा सरहरुले ठोक्छन् भनेर कपाल पाल्न पाइएन, अब अहिले केटिहरु भाग्छन् रे भनेर । तेती मात्र कहाँ हो र, बल्लतल्ल ब्यचेलोर सकेर एसो गोडा दुइ एक पैसो हात पर्न के थालेथ्यो, &quot;अब त बेला भयो त, खोजेर राखेछस् कि हाम्ले खोज्नी हो ?&quot; जस्ता नेपाली बिसयमा आउने लामो प्रश्न भन्दा नि गाह्रा कोईश्चन आउन थाल्छन् । छु भनम् भने, तेइ भएर दुब्लाको भन्लान् भन्ने पिर्, अब छैन भनम् भने ट्वेन्टी फर्स्ट सेन्चुरिले नै स्विकार नगर्ला भन्ने त्रास् । लौ हेर्नोस् त, नखाम् भने दिनभरिको सिकार, खाम त भने कान्छा बाबुको अनुहार ।</p>
+<p>अर्को फेरी बहुतै मिठो खुल्दुली हुन्छ कसैको । &quot;अब त रहर लाग्ने बेला भयो त केटो, मायाको फील गर्न परो, रमाउन परो नि उमेर छँदै ।&quot; कुन्नी कता गर्नी हैच कुन्नी फील्, उता साइँला साइँली ४० कटेसी रमाउने भनिराछन्, मलाई के हतार २४ मै । तर गाह्रो छ हनुमान जि, गाह्रो छ ।</p>
+<p>आजकल त काठमाडौंबाट त्यहिँ पल्तिर चितवन घर जाँदा नि अष्ट्रेलियाबाट फर्केको मान्छेझैँ लाग्छ । सबको डिमान्ड बाफ्रे । भाई बहिनिहरुलाई भाउजु, हजुरबा हजुर आमालाई नातीनी बुहारी, बाआमालाई बुहारी । सब भन्दा एक्स्साइटेड र डिमान्डिङ् त छिमेकी आन्टिहरु, मानौँ कि म साँच्चिकै अष्ट्रेलिया बाट सुट्केस का सुट्केस आईफोन र आइप्याड ल्याउँदै छु ।</p>
+<p>आफुलाई यहाँ कैले कपाल लामो होला र जोन स्नो जस्तै लूक्स लिएर ट्याक ट्याक बाटो हिनम्ला जस्तो भैराछ ।
+<br/>
+कसैका रन्काहरु,
+<br/>
+ड !!!</p>
+
+    </article>
+</div>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+    &copy; 2025 bewakes.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+
+    // Function to load Prism theme
+    function loadPrismTheme(isDark) {
+      // Remove existing theme
+      const existingTheme = document.querySelector('link[data-prism-theme]');
+      if (existingTheme) {
+        existingTheme.remove();
+      }
+
+      // Add new theme
+      const themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.setAttribute('data-prism-theme', 'true');
+      
+      if (isDark) {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
+      } else {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+      }
+      
+      document.head.appendChild(themeLink);
+      
+      // Re-highlight after theme loads and Prism is ready
+      themeLink.onload = function() {
+        setTimeout(() => {
+          if (typeof Prism !== 'undefined') {
+            Prism.highlightAll();
+          }
+        }, 50);
+      };
+    }
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Initialize theme
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      htmlEl.classList.add('dark');
+      toggle.checked = true;
+      loadPrismTheme(true);
+    } else {
+      htmlEl.classList.remove('dark');
+      toggle.checked = false;
+      loadPrismTheme(false);
+    }
+
+    // Toggle event listener
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        loadPrismTheme(true);
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        loadPrismTheme(false);
+      }
+    });
+  </script>
+
+  <!-- Prism.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // Configure autoloader path
+        Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
+
+    </script>
+  <!-- END Prism.js JavaScript -->
+    <script>
+        // Mobile menu toggle functionality
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobileMenu');
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const mobileMenu = document.getElementById('mobileMenu');
+          const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+          
+          if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+    </script>
+
+</body>
+</html>

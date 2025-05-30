@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind = {
+      config: {
+        darkMode: 'class'
+      }
+    };
+  </script>
+  <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+  <link rel="stylesheet" href="/style.css"/>
+
+
+    <style>
+        /* Code block font size override - needs high specificity */
+        pre[class*="language-"],
+        pre[class*="language-"] code,
+        code[class*="language-"] {
+            font-size: 1rem !important;
+            line-height: 1.4 !important;
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+        }
+
+        /* Additional code styling improvements */
+        pre[class*="language-"] {
+            margin: 0.5em 0 !important;
+            padding-left: 5px !important;
+            border-radius: 0.375rem !important; /* rounded-md */
+        }
+
+        /* Dark mode toggle styling improvements */
+        .dark-toggle {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          cursor: pointer;
+        }
+
+        .dark-toggle input {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .toggle-bg {
+          width: 44px;
+          height: 24px;
+          background-color: #d1d5db;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .dark .toggle-bg {
+          background-color: #374151;
+        }
+
+        .toggle-dot {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border-radius: 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .dark .toggle-dot {
+          background-color: #f3f4f6;
+          transform: translateX(20px);
+        }
+    </style>
+
+</head>
+
+<body class="font-serif bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <!-- Header -->
+  <!-- Header -->
+<header class="border-b border-gray-200 dark:border-gray-700">
+  <div class="max-w-3xl mx-auto px-4 py-6 flex justify-between items-center">
+    <h1 class="text-2xl font-semibold">
+        <a class="text-decoration-none" href="/" style="font-family: Open Sans">bewakes</a>
+    </h1>
+    
+    <!-- Navigation Menu -->
+    <nav class="hidden md:flex items-center space-x-6" style="font-family: Open Sans">
+      <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuToggle" class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <!-- Toggle Switch -->
+      <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <div class="toggle-bg">
+          <div class="toggle-dot"></div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-3xl mx-auto px-4 py-4 space-y-2">
+      <a href="/about.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </div>
+  </div>
+</header>
+
+
+  <main class="max-w-3xl mx-auto px-4 py-10 space-y-10">
+
+    <div class="markdown-content">
+    <header>
+      <h1 class="title text-4xl text-center">Disjoint Set Data Structure</h1>
+      <p class="post-date text-base text-gray-600 dark:text-gray-400">May 05 2017</p>
+    </header>
+    <section class="pt-0 mt-2 mb-8">
+      <div class="flex flex-wrap gap-3">
+            <a href="/tags/computer-science.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                computer-science
+            </a>
+      </div>
+    </section>
+
+
+    <article class="prose text-xl/8 dark:prose-invert lg:prose-lg max-w-none">
+        <p>As the name suggests, it is a data structure to keep track of the disjoint partitions formed in a set. In case the data structure sounds like 'WAT??' or 'I have not heard about it. Is it useful?', rest assured, we'll be seeing the practical application of disjoint set in the next post: <a href="/posts/minimum-spanning-tree-kruskal.html">finding a Minimal Spanning Tree for an undirected graph</a>.</p>
+<p>Here, we will be seeing its implementation in Python which is my favourite language(I kind of had love at first sight with python :D ). It is assumed that the reader knows basics of python, and what set, partition, tree, array and list mean.</p>
+<p>Okay, now into the technicality of the data structure. It basically provides the following three functions:</p>
+<ul>
+<li><code>make_set(e)</code>: It adds a partition to the set. The partition consists of a single element e. For example, consider a set A={a,b,c,d}
+with partitions {a,b} and {c,d}. After the operation, A={a,b,c,d,e} and a new partition {e}.</li>
+<li><code>find(e)</code>: It finds/returns the identification of the partition that e lies in. For example, if the set is A={a,b,c}
+, and partitions are B={a} and C={b,c}
+, <code>find(b)</code> will return C [We will have some very easy ways to identify a set. Don't worry about it now.]</li>
+<li><code>union(a, b)</code>: And this wonderful operation will union the sets that contain elements a and b. For example, if the given set is A={a,b,c,d,e}
+and the partitions are {a,b}, {c} and {d,e}, union(c, e) will result in the partitions {a,b} and {c,d,e}.</li>
+</ul>
+<h2>Implementation</h2>
+<p>We will implement the data structure using tree(implemented as array, relax!! ). A tree represents a set. The root of the tree is the identification of the set. Now, two elements are in same set if they have same root element.</p>
+<p>Let's begin with the basic list to hold the sets. We call it <code>parents_array</code> which holds the parent of an element. Let n be the total number of elements in our set.</p>
+<p><code>parents_array = [x for x in range(n)]</code></p>
+<p>For example, if <code>parents_array = [2 0 2 2 4]</code>, this means that there are 5 elements and:</p>
+<pre><code class="language-python">2 is parent of 0,
+0 is parent of 1,
+2 is parent of 2 and is the root,
+2 is parent of 3,
+4 is parent of 4 and is the root and the only element.
+</code></pre>
+<p>Okay, now let's implement make_set() function. Since the function is supposed to make a single set of an element, it takes a number as parameter.</p>
+<pre><code class="language-python">def make_set(i):
+    parents_array[i] = i
+</code></pre>
+<p>That's it. What this does is, sets the parent of an element to itself, which means, that is the set consisting of only that element.</p>
+<p>Now, <code>find()</code> function, which finds the parent of an element.</p>
+<pre><code class="language-python">def find(e):
+    while parents_array[e] != e:
+        e = parents_array[e]
+    return e
+</code></pre>
+<p>Here, the tree is traversed until the root element is found (an element is root if its parent is itself).</p>
+<p>We're almost there, only <code>union()</code> remains which unions the sets containing the
+input elements. The idea is that, we find the root elements of both elements.
+Union means both elements having same root. So, we make one root the parent of
+other. Here's the basic implementation:</p>
+<pre><code class="language-python">def union(i, j):
+    ir = find(i) # root(set id) of element i
+    jr = find(j) # root(set id) of element j
+
+    if ir == jr:
+        return # same roots means they are in same set
+
+    # set one element as parent of other
+    parents_array[ir] = jr
+    # or parents_array[jr] = ir, we'll talk about efficincy later
+    # that's it
+</code></pre>
+<p>However, we would like to make our data structure and operations on it as optimal as possible, right? First thing we need to be clear is that, we want the find() operation to be as fast as possible. This is obtained when the height of tree is low i.e, reaching the root element from child requires as less steps as possible.</p>
+<h2>Optimization</h2>
+<p>Now, imagine a situation in which we are doing union. We append one set(tree)
+as the child of the other so that both have same root. Appending a shorter tree
+to the longer one will result in a tree with height same as the initial height
+of the longer tree. If we did otherwise, the height of the shorter tree would
+be increased by 1.</p>
+<p>So, to keep track of the heights(also called ranks) of the trees, we introduce
+another array ranks_array which is initialized as:</p>
+<p><code>ranks_array = [0 for x in range(n)] # initial height is zero</code></p>
+<p>Now, <code>make_set()</code> becomes,</p>
+<pre><code class="language-python">def make_set(i):
+   parents_array[i] = i
+   ranks_array[i] = 0 # height of single element tree is zero, of course
+</code></pre>
+<p>In <code>union()</code>, we append shorter tree to the longer one and if they have same
+<code>rank(height)</code> we can append in any way. But, we need to be careful to increase
+the height of the parent tree by 1(You guess why). Changed implementation of
+<code>union()</code> will be included in the full code below, which implements Disjoint Set
+as class.</p>
+<h2>Full code</h2>
+<pre><code class="language-python">class DisjointSet:
+&quot;&quot;&quot;
+Implementation of disjoint sets
+&quot;&quot;&quot;
+
+    def __init__(self, n):
+        &quot;&quot;&quot;
+        n is the number of elements
+        &quot;&quot;&quot;
+        # create different sets where each is a unique set
+        self.parents_array = [x for x in range(n)]
+        self.ranks_array = [0 for x in range(n)] # initial rank is zero for all
+
+    def find(self, p):
+        &quot;&quot;&quot;
+        find the parent of the element (0 indexed)
+        &quot;&quot;&quot;
+        while self.parents_array[p] != p:
+            p = self.parents_array[p]
+        return p
+
+    def make_set(self, i):
+        &quot;&quot;&quot;
+        assign element i to its own set
+        &quot;&quot;&quot;
+        self.parents_array[i] = i
+        self.ranks_array[i] = 0
+
+    def union(self, i, j):
+        &quot;&quot;&quot;
+        i and j are 0 indexed elements which are to be unioned
+        &quot;&quot;&quot;
+        i_root = self.find(i)
+        j_root = self.find(j)
+
+        if i_root == j_root:
+            # nothing to be done already in same set
+            return
+
+        if self.ranks_array[i_root] &lt; self.ranks_array[j_root]:
+            self.parents_array[i_root] = j_root
+        else:
+            self.parents_array[j_root] = i_root
+            if self.ranks_array[i_root] == self.ranks_array[j_root]:
+                self.ranks_array[i_root]+=1
+</code></pre>
+<p>I hope that was helpful. Feel free to contact me if there are any problems.</p>
+
+    </article>
+</div>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+    &copy; 2025 bewakes.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+
+    // Function to load Prism theme
+    function loadPrismTheme(isDark) {
+      // Remove existing theme
+      const existingTheme = document.querySelector('link[data-prism-theme]');
+      if (existingTheme) {
+        existingTheme.remove();
+      }
+
+      // Add new theme
+      const themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.setAttribute('data-prism-theme', 'true');
+      
+      if (isDark) {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
+      } else {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+      }
+      
+      document.head.appendChild(themeLink);
+      
+      // Re-highlight after theme loads and Prism is ready
+      themeLink.onload = function() {
+        setTimeout(() => {
+          if (typeof Prism !== 'undefined') {
+            Prism.highlightAll();
+          }
+        }, 50);
+      };
+    }
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Initialize theme
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      htmlEl.classList.add('dark');
+      toggle.checked = true;
+      loadPrismTheme(true);
+    } else {
+      htmlEl.classList.remove('dark');
+      toggle.checked = false;
+      loadPrismTheme(false);
+    }
+
+    // Toggle event listener
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        loadPrismTheme(true);
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        loadPrismTheme(false);
+      }
+    });
+  </script>
+
+  <!-- Prism.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // Configure autoloader path
+        Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
+
+    </script>
+  <!-- END Prism.js JavaScript -->
+    <script>
+        // Mobile menu toggle functionality
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobileMenu');
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const mobileMenu = document.getElementById('mobileMenu');
+          const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+          
+          if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind = {
+      config: {
+        darkMode: 'class'
+      }
+    };
+  </script>
+  <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+  <link rel="stylesheet" href="/style.css"/>
+
+
+    <style>
+        /* Code block font size override - needs high specificity */
+        pre[class*="language-"],
+        pre[class*="language-"] code,
+        code[class*="language-"] {
+            font-size: 1rem !important;
+            line-height: 1.4 !important;
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+        }
+
+        /* Additional code styling improvements */
+        pre[class*="language-"] {
+            margin: 0.5em 0 !important;
+            padding-left: 5px !important;
+            border-radius: 0.375rem !important; /* rounded-md */
+        }
+
+        /* Dark mode toggle styling improvements */
+        .dark-toggle {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          cursor: pointer;
+        }
+
+        .dark-toggle input {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .toggle-bg {
+          width: 44px;
+          height: 24px;
+          background-color: #d1d5db;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .dark .toggle-bg {
+          background-color: #374151;
+        }
+
+        .toggle-dot {
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          border-radius: 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .dark .toggle-dot {
+          background-color: #f3f4f6;
+          transform: translateX(20px);
+        }
+    </style>
+
+</head>
+
+<body class="font-serif bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <!-- Header -->
+  <!-- Header -->
+<header class="border-b border-gray-200 dark:border-gray-700">
+  <div class="max-w-3xl mx-auto px-4 py-6 flex justify-between items-center">
+    <h1 class="text-2xl font-semibold">
+        <a class="text-decoration-none" href="/" style="font-family: Open Sans">bewakes</a>
+    </h1>
+    
+    <!-- Navigation Menu -->
+    <nav class="hidden md:flex items-center space-x-6" style="font-family: Open Sans">
+      <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </nav>
+
+    <div class="flex items-center space-x-4">
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuToggle" class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <!-- Toggle Switch -->
+      <label class="dark-toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <div class="toggle-bg">
+          <div class="toggle-dot"></div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-3xl mx-auto px-4 py-4 space-y-2">
+      <a href="/about.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+      <a href="/now.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+    </div>
+  </div>
+</header>
+
+
+  <main class="max-w-3xl mx-auto px-4 py-10 space-y-10">
+
+    <div class="markdown-content">
+    <header>
+      <h1 class="title text-4xl text-center">A letter to my future wife/girlfriend</h1>
+      <p class="post-date text-base text-gray-600 dark:text-gray-400">Aug 19 2017</p>
+    </header>
+    <section class="pt-0 mt-2 mb-8">
+      <div class="flex flex-wrap gap-3">
+            <a href="/tags/humor.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                humor
+            </a>
+            <a href="/tags/love.html" class="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+                love
+            </a>
+      </div>
+    </section>
+
+
+    <article class="prose text-xl/8 dark:prose-invert lg:prose-lg max-w-none">
+        <p>Dear Lady,</p>
+<p>With the good graces of Lord Pashupatinath, I am safe, sound and healthy here. And I hope that you are also good, sound and happy wherever you are. However, there is still a very very little chance that you are not even born yet. As you know, love sees/says no age and it might take a very long time before a boy like me falls in love ;).</p>
+<h3>Intro</h3>
+<p>I don’t know you yet, but let me introduce myself in brief. Name is Bibek. I love my surname ‘Pandey’ which you’ll inherit when time comes. I am a Computer Engineer by profession, but I love to say I am just a ‘programmer’. I love mathematics, and I think I’ll go with it for my further studies. I am a simple ‘boy’ struggling through his way to becoming a ‘man’.</p>
+<p>Academic introductions are boring, no more deep talks. Let me describe how I look(now excited!! aren’t you?).</p>
+<p>There is no need to be excited though. I don’t have that much of dimensions, but trust me, your eyes won’t hurt. I have an almost fair complexion, if that’s going to console you a little. I have black hair, black mustache and beards which you will be able to see and play with if we meet not very late(or they’ll grow grey, which is not much fun I guess). My eyes are black too, which I can wink very well and my eybrows not very thick which I’ve mastered twitching.</p>
+<p>Okay, by this point, you’ve perhaps figured out that, summing up, I am quite a ‘hot’ guy. ;) Lucky girl!</p>
+<h3>My habits</h3>
+<p>I (try to) wake up early in the morning. I make my bed and take shower every morning. Yes, I brush my teeth twice, daily. And I love and do exercises, though nothing such is reflected in my dimensions. But I am way stronger than I look(good for you). I don't drink much; only with my friends very occassionally. I love beer. I don’t smoke. I can’t be lazy however hard I try.</p>
+<p>I love laughters and humors. I don’t listen to serious songs and too slow music. And I rarely dive into lyrics. I sing and dance, only when I’m full of beer. Other times, I am a very good listener and an observer. I am a kind person, but there are some rules and believes which I can’t compromise, so I might seem rude and stubborn(which I am). But you’ll be much more than okay, that I promise.</p>
+<p>Hope you are not dozing by now. I think I’ve said too much about me. I’ll keep some for the times after we meet.</p>
+<h3>My Expectations</h3>
+<p>My dear lady, now it’s time that I mention what I expect of you. Don’t worry, there are not much; you don’t require as much qualities as I have.
+I hope you are a funny girl with a smile on your face almost all the time. I want to LOL on your jokes and humors. I’ll make you LOL as well, we’ll LOL and LOL together, till we ROFL. Laughter is of very high priority to me.</p>
+<p>I have imagined you to be an independent hardworking girl who is sure about what she wants in life, no matter how simple the thing is. How much or what you’ve studied won’t matter. And I hope you are not too much into your looks. You’ll be mine and that’ll all matter.</p>
+<p>I expect you to be plain, simple and clear. Please don’t expect me to ‘automagically’ understand what you’ve been thinking or wanting. I know we need to understand each other but I really find such things magical and beyond my capacity. And please, don’t try to test me or my love. I have no words how bad that would make me feel.</p>
+<h3>Your Looks</h3>
+<p>Not very high expectations. Assuming above expectations are met(means we have dated for a while and I will be proposing you), I wish you will be not less than ‘okay’; ‘okayer’ and ‘okayest’ will work as well. Assuming above expectations are not met(means I could not find you and my parents will have to do it), I expect you to be at least ‘okayer’. In either of the cases, I really hope you will be slim; I need to be able to lift you and move you around, you know.</p>
+<p>These are my only expectations from you. Bonus features will be fine. And yes, you don’t need to be a better cook. That I am. It will be great if you have a habit of ‘early to bed and early to rise’(we could go jogging together).</p>
+<p>So, finally, if we ever get married, we will then create a history( along with one little ‘Pandey’ and one little ‘Pandeyi’).</p>
+<p>Okay, this much for now. I’ll keep writing to you. Miss me!!</p>
+<p>With some hopes,
+<br/>
+Your Sincerely,
+<br/>
+Bibek Pandey.</p>
+
+    </article>
+</div>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700 mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+    &copy; 2025 bewakes.
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const htmlEl = document.documentElement;
+
+    // Function to load Prism theme
+    function loadPrismTheme(isDark) {
+      // Remove existing theme
+      const existingTheme = document.querySelector('link[data-prism-theme]');
+      if (existingTheme) {
+        existingTheme.remove();
+      }
+
+      // Add new theme
+      const themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.setAttribute('data-prism-theme', 'true');
+      
+      if (isDark) {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
+      } else {
+        themeLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css';
+      }
+      
+      document.head.appendChild(themeLink);
+      
+      // Re-highlight after theme loads and Prism is ready
+      themeLink.onload = function() {
+        setTimeout(() => {
+          if (typeof Prism !== 'undefined') {
+            Prism.highlightAll();
+          }
+        }, 50);
+      };
+    }
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Initialize theme
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      htmlEl.classList.add('dark');
+      toggle.checked = true;
+      loadPrismTheme(true);
+    } else {
+      htmlEl.classList.remove('dark');
+      toggle.checked = false;
+      loadPrismTheme(false);
+    }
+
+    // Toggle event listener
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        loadPrismTheme(true);
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        loadPrismTheme(false);
+      }
+    });
+  </script>
+
+  <!-- Prism.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        // Configure autoloader path
+        Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/';
+
+    </script>
+  <!-- END Prism.js JavaScript -->
+    <script>
+        // Mobile menu toggle functionality
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobileMenu');
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const mobileMenu = document.getElementById('mobileMenu');
+          const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+          
+          if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+    </script>
+
+</body>
+</html>
