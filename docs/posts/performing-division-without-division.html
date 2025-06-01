@@ -105,8 +105,8 @@
     
     <!-- Navigation Menu -->
     <nav class="hidden md:flex items-center space-x-6" style="font-family: Open Sans">
-      <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
-      <a href="/now.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+      <a href="/about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">about</a>
+      <a href="/now.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">now</a>
     </nav>
 
     <div class="flex items-center space-x-4">
@@ -130,8 +130,8 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700">
     <div class="max-w-3xl mx-auto px-4 py-4 space-y-2">
-      <a href="/about.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
-      <a href="/now.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Now</a>
+      <a href="/about.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">about</a>
+      <a href="/now.html" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">now</a>
     </div>
   </div>
 </header>
@@ -158,7 +158,6 @@
 
     <article class="prose text-xl/8 dark:prose-invert lg:prose-lg max-w-none">
         <p>Suppose we live in a world where there was no division operator like we have for addition, subtraction, and multiplication. In fact, we don't need to suppose this scenario, because in highly efficient computers such as supercomputers, using a division operator takes significantly more time than multiplication, addition, and subtraction. Fortunately, division can be done just by using multiplication and subtraction, and with proper initial guess, within 6 steps in general. Interesting isn't it?</p>
-<hr />
 <h2>Enter Newton Raphson Method</h2>
 <p>It is an iterative method to find out roots of an equation. For example, we can find the roots of the equation:</p>
 <p>$$
@@ -191,7 +190,6 @@ where ( i ) is the iteration number, initially 0.</p>
 <p>Repeat the above process until the values obtained for ( x ) seem to converge.</p>
 </li>
 </ol>
-<hr />
 <h2>But how does this help our division?</h2>
 <p>We can think of division ( a / b ) as ( a \cdot (1 / b) ), that is, multiplication of ( a ) and the inverse of ( b ). Hence our task is just to find out the inverse of ( b ).</p>
 <p>If ( x ) is the inverse of ( b ), we have:</p>
@@ -225,7 +223,6 @@ $$</p>
 = 2x_i - b x_i^2
 $$</p>
 <p>That's it. <strong>No division!</strong></p>
-<hr />
 <h2>Seeing it in action</h2>
 <p>Let's find out the inverse of:</p>
 <p>$$
@@ -246,19 +243,61 @@ $$</p>
 x_3 = 2x_2 - 5x_2^2 = 2 \cdot 0.1995 - 5 \cdot 0.1995^2 = 0.2000
 $$</p>
 <p>In just <strong>3 steps</strong>! Without division.</p>
-<hr />
 <p>I hope this was interesting.</p>
 
     </article>
 </div>
 
 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cusdis Comment Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <!-- Demo content to show context -->
+    <div class="max-w-4xl mx-auto">
+        <!-- Cusdis Comment Component -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+            <!-- Comment Section Header -->
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-900 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    Comments
+                </h2>
+                <p class="text-sm text-gray-500 mt-1">Join the conversation below</p>
+            </div>
+
+            <!-- Cusdis Container -->
+            <div class="p-6">
+                <div id="cusdis_thread"
+                     class="transition-all duration-300 ease-in-out"
+                     data-host="https://cusdis.com"
+                     data-app-id="306917f0-653d-4447-9cca-458086bdeb86"
+                     data-page-id="performing-division-without-division"
+                     data-page-url="https://bewakes.com/posts/performing-division-without-division.html"
+                     data-page-title="Performing division without division"
+                     data-theme="light">
+                    <!-- Loading state -->
+                    <div id="cusdis-loading" class="flex items-center justify-center py-12">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                        <span class="ml-3 text-gray-600">Loading comments...</span>
+                    </div>
+                </div>
   </main>
+
 
   <!-- Footer -->
   <footer class="border-t border-gray-200 dark:border-gray-700 mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-    &copy; 2025 bewakes.
+    &copy; 2017 - 2025 bewakes.
   </footer>
+
+  <script async src="https://cusdis.com/js/cusdis.es.js"></script>
 
   <script>
     const toggle = document.getElementById('darkModeToggle');

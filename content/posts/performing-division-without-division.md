@@ -9,7 +9,6 @@ location: Bharatpur
 
 Suppose we live in a world where there was no division operator like we have for addition, subtraction, and multiplication. In fact, we don't need to suppose this scenario, because in highly efficient computers such as supercomputers, using a division operator takes significantly more time than multiplication, addition, and subtraction. Fortunately, division can be done just by using multiplication and subtraction, and with proper initial guess, within 6 steps in general. Interesting isn't it?
 
----
 
 ## Enter Newton Raphson Method
 
@@ -42,7 +41,6 @@ without performing analytical operations like factoring.
   where \( i \) is the iteration number, initially 0.
 4. Repeat the above process until the values obtained for \( x \) seem to converge.
 
----
 
 ## But how does this help our division?
 
@@ -94,7 +92,6 @@ $$
 
 That's it. **No division!**
 
----
 
 ## Seeing it in action
 
@@ -124,7 +121,6 @@ $$
 
 In just **3 steps**! Without division.
 
----
 
 I hope this was interesting.
 
