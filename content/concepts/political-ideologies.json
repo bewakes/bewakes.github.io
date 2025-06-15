@@ -1,0 +1,205 @@
+{
+  "header": {
+    "icon": "🌍",
+    "title": "Intro to International Relations Theories",
+    "description": "A collection of foundational concepts in IR explaining different theoretical perspectives."
+  },
+  "title": "IR Theories Overview",
+  "description": "Key schools of thought in international relations, comparing their views on power, institutions, economics, and norms.",
+  "concepts": [
+    {
+      "id": "realism",
+      "emoji": "⚔️",
+      "name": "Realism",
+      "subtitle": "Power politics and state interest",
+      "core_idea": "States act primarily to ensure their own survival and power in an anarchic international system.",
+      "short_description": "Examines how states pursue power to secure themselves.",
+      "summary_description": "Realism posits that the international system is anarchic and states aim to maximize power and security. Conflict is common, and moral considerations are secondary to national interest.",
+      "key_assumptions": [
+        {
+          "title": "Anarchy",
+          "description": "No central authority exists above states in the international system."
+        },
+        {
+          "title": "Rational actors",
+          "description": "States make strategic calculations to protect their survival."
+        }
+      ],
+      "example": {
+        "title": "Cold War Arms Race",
+        "description": "The U.S. and USSR built nuclear arsenals to deter each other and maintain security."
+      },
+      "scenario": {
+        "situation": "Two neighboring countries fear each other's military growth.",
+        "what_happens": "Each increases defense spending, leading to an arms buildup."
+      },
+      "quiz": {
+        "question": "Which action best illustrates Realist thinking?",
+        "options": [
+          {"text": "Joining a military alliance for security", "is_correct": true},
+          {"text": "Focusing mostly on moral leadership", "is_correct": false},
+          {"text": "Prioritizing trade norms over defense", "is_correct": false}
+        ]
+      },
+      "additional_sections": [
+        {
+          "title": "Critiques",
+          "content": "Realism underplays the role of non-state actors and international norms.",
+          "points": [
+            {"title": "Static view", "description": "Doesn't easily explain cooperation over time."},
+            {"title": "Ethics ignored", "description": "Downplays moral and humanitarian concerns."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liberalism",
+      "emoji": "🤝",
+      "name": "Liberalism",
+      "subtitle": "Cooperation through institutions and trade",
+      "core_idea": "Democratic governance and economic interdependence promote peace and cooperation.",
+      "short_description": "Focuses on how institutions and trade reduce conflict.",
+      "summary_description": "Liberalism believes that international institutions, democratic governments, and trade ties encourage cooperation and reduce war. Organizations like the UN help mediate disputes.",
+      "key_assumptions": [
+        {
+          "title": "Mutual benefits",
+          "description": "Economic interdependence incentivizes peaceful interactions."
+        },
+        {
+          "title": "Institutional power",
+          "description": "International organizations help coordinate and enforce agreements."
+        }
+      ],
+      "example": {
+        "title": "European Union",
+        "description": "EU members use shared institutions to resolve conflicts and deepen economic ties."
+      },
+      "quiz": {
+        "question": "Which scenario aligns with Liberal theory?",
+        "options": [
+          {"text": "States forming a trade bloc to boost stability", "is_correct": true},
+          {"text": "Ignoring international law when inconvenient", "is_correct": false},
+          {"text": "Building arms without allies", "is_correct": false}
+        ]
+      }
+    },
+    {
+      "id": "institutionalism",
+      "emoji": "🏛️",
+      "name": "Institutionalism",
+      "subtitle": "Rules shape state behavior",
+      "core_idea": "International institutions constrain state behavior and foster cooperation.",
+      "short_description": "Highlights the role of formal rules and agreements.",
+      "summary_description": "Institutionalism emphasizes how organizations and treaties structure state expectations, reduce uncertainty, and lower costs of cooperation.",
+      "key_assumptions": [
+        {
+          "title": "Rules matter",
+          "description": "Clear frameworks reduce mistrust and cheating."
+        },
+        {
+          "title": "Repetition builds trust",
+          "description": "Ongoing interactions reinforce commitment to cooperation."
+        }
+      ],
+      "example": {
+        "title": "World Trade Organization",
+        "description": "Provides rules and dispute resolution for trade, encouraging compliance."
+      },
+      "quiz": {
+        "question": "What role do institutions play according to Institutionalism?",
+        "options": [
+          {"text": "Shape acceptable state actions", "is_correct": true},
+          {"text": "Promote chaos through deregulation", "is_correct": false},
+          {"text": "Encourage unilateral action", "is_correct": false}
+        ]
+      },
+      "additional_sections": [
+        {
+          "title": "Institution vs Theory",
+          "content": "Institutionalism focuses on actual organizations operating within broader Liberal ideas.",
+          "points": [
+            {"title": "Treaties", "description": "Binding agreements affect strategies."},
+            {"title": "Enforcement", "description": "Compliance depends on monitoring and sanctions."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marxist-theory",
+      "emoji": "🛠️",
+      "name": "Marxist Theory",
+      "subtitle": "Economic class and imperialism",
+      "core_idea": "International relations are driven by capitalist exploitation and class struggle.",
+      "short_description": "Views global politics through economic inequality and class interests.",
+      "summary_description": "Marxist theory sees states as instruments of capitalist elites and emphasizes imperialism and exploitation in IR. Economic classes, not states alone, shape world politics.",
+      "key_assumptions": [
+        {
+          "title": "Capitalism dominates",
+          "description": "Economic class relations drive politics more than ideology."
+        },
+        {
+          "title": "Imperialism persists",
+          "description": "Wealthy states exploit poor ones to maximize profits."
+        }
+      ],
+      "example": {
+        "title": "Colonial Extraction",
+        "description": "Colonial powers extracted resources from colonies for profit."
+      },
+      "quiz": {
+        "question": "Which is a Marxist critique of IR?",
+        "options": [
+          {"text": "Focus on power balancing only", "is_correct": false},
+          {"text": "Emphasis on capitalist exploitation", "is_correct": true},
+          {"text": "Belief in natural harmony", "is_correct": false}
+        ]
+      }
+    },
+    {
+      "id": "constructivism",
+      "emoji": "🧠",
+      "name": "Constructivism",
+      "subtitle": "Ideas and identities form reality",
+      "core_idea": "State identities and norms shape international relations more than material forces.",
+      "short_description": "Explores how ideas influence state interests and actions.",
+      "summary_description": "Constructivism argues that international politics are socially constructed—norms, identities, and discourse shape state interests. Power is not just material, but rooted in ideas.",
+      "key_assumptions": [
+        {
+          "title": "Shared norms",
+          "description": "Common understandings guide state behavior."
+        },
+        {
+          "title": "Identity matters",
+          "description": "How states define themselves affects interactions."
+        }
+      ],
+      "example": {
+        "title": "Nuclear Taboo",
+        "description": "A near-universal norm against using nuclear weapons shapes state restraint."
+      },
+      "scenario": {
+        "situation": "A rising power refuses to adopt aggressive rhetoric.",
+        "what_happens": "Other states treat it as less threatening based on shared norms."
+      },
+      "quiz": {
+        "question": "Which action shows Constructivist influence?",
+        "options": [
+          {"text": "States follow treaties because everyone expects them to", "is_correct": true},
+          {"text": "States build navies to achieve dominance", "is_correct": false},
+          {"text": "States ignore norms when inconvenient", "is_correct": false}
+        ]
+      },
+      "additional_sections": [
+        {
+          "title": "Norm Dynamics",
+          "content": "How norms emerge, spread, and influence behavior over time.",
+          "points": [
+            {"title": "Norm Entrepreneurship", "description": "Actors promote new ideas internationally."},
+            {"title": "Socialization", "description": "States internalize norms through interaction."}
+          ]
+        }
+      ]
+    }
+  ]
+}
+

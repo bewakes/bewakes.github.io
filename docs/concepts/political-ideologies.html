@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IR Theories Overview - Interactive Learning Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00f260, #0575e6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .concept-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .concept-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .concept-card.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .concept-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .concept-card .emoji {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 500px;
+        }
+
+        .concept-content {
+            display: none;
+        }
+
+        .concept-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #f1f2f6;
+            border-color: #667eea;
+        }
+
+        .quiz-option.correct {
+            background: #00b894;
+            color: white;
+            border-color: #00b894;
+        }
+
+        .quiz-option.incorrect {
+            background: #e17055;
+            color: white;
+            border-color: #e17055;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .key-point {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #667eea;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            color: #555;
+        }
+
+        .welcome-screen h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .scenario-box {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .concept-selector { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 Intro to International Relations Theories</h1>
+            <p>Key schools of thought in international relations, comparing their views on power, institutions, economics, and norms.</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">Select a concept to begin learning</p>
+        </div>
+
+        <div class="concept-selector">
+            <div class="concept-card" onclick="showConcept('realism')">
+                <span class="emoji">⚔️</span>
+                <h3>Realism</h3>
+                <p>Examines how states pursue power to secure themselves.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('liberalism')">
+                <span class="emoji">🤝</span>
+                <h3>Liberalism</h3>
+                <p>Focuses on how institutions and trade reduce conflict.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('institutionalism')">
+                <span class="emoji">🏛️</span>
+                <h3>Institutionalism</h3>
+                <p>Highlights the role of formal rules and agreements.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('marxist-theory')">
+                <span class="emoji">🛠️</span>
+                <h3>Marxist Theory</h3>
+                <p>Views global politics through economic inequality and class interests.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('constructivism')">
+                <span class="emoji">🧠</span>
+                <h3>Constructivism</h3>
+                <p>Explores how ideas influence state interests and actions.</p>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="realism" class="concept-content">
+                <h2>⚔️ Realism: Power politics and state interest</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>States act primarily to ensure their own survival and power in an anarchic international system.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Anarchy:</strong> No central authority exists above states in the international system.
+                    </div>
+                    <div class="key-point">
+                        <strong>Rational actors:</strong> States make strategic calculations to protect their survival.
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Real-World Example: Cold War Arms Race</h4>
+                    <p>The U.S. and USSR built nuclear arsenals to deter each other and maintain security.</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Realism Scenario</h4>
+                    <p><strong>Scenario:</strong> Two neighboring countries fear each other&#x27;s military growth.</p>
+                    <p><strong>What happens:</strong> Each increases defense spending, leading to an arms buildup.</p>
+                </div>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">Quiz: Which action best illustrates Realist thinking?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">(0) Joining a military alliance for security</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) Focusing mostly on moral leadership</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Prioritizing trade norms over defense</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h4>Critiques</h4>
+                    <p>Realism underplays the role of non-state actors and international norms.</p>
+                    <div class="key-point">
+                        <strong>Static view:</strong> Doesn&#x27;t easily explain cooperation over time.
+                    </div>
+                    <div class="key-point">
+                        <strong>Ethics ignored:</strong> Downplays moral and humanitarian concerns.
+                    </div>
+                </div>
+            </div>
+            <div id="liberalism" class="concept-content">
+                <h2>🤝 Liberalism: Cooperation through institutions and trade</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>Democratic governance and economic interdependence promote peace and cooperation.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Mutual benefits:</strong> Economic interdependence incentivizes peaceful interactions.
+                    </div>
+                    <div class="key-point">
+                        <strong>Institutional power:</strong> International organizations help coordinate and enforce agreements.
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Real-World Example: European Union</h4>
+                    <p>EU members use shared institutions to resolve conflicts and deepen economic ties.</p>
+                </div>
+
+
+                <div class="quiz-section">
+                    <div class="quiz-question">Quiz: Which scenario aligns with Liberal theory?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">(0) States forming a trade bloc to boost stability</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) Ignoring international law when inconvenient</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Building arms without allies</div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="institutionalism" class="concept-content">
+                <h2>🏛️ Institutionalism: Rules shape state behavior</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>International institutions constrain state behavior and foster cooperation.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Rules matter:</strong> Clear frameworks reduce mistrust and cheating.
+                    </div>
+                    <div class="key-point">
+                        <strong>Repetition builds trust:</strong> Ongoing interactions reinforce commitment to cooperation.
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Real-World Example: World Trade Organization</h4>
+                    <p>Provides rules and dispute resolution for trade, encouraging compliance.</p>
+                </div>
+
+
+                <div class="quiz-section">
+                    <div class="quiz-question">Quiz: What role do institutions play according to Institutionalism?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">(0) Shape acceptable state actions</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) Promote chaos through deregulation</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Encourage unilateral action</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h4>Institution vs Theory</h4>
+                    <p>Institutionalism focuses on actual organizations operating within broader Liberal ideas.</p>
+                    <div class="key-point">
+                        <strong>Treaties:</strong> Binding agreements affect strategies.
+                    </div>
+                    <div class="key-point">
+                        <strong>Enforcement:</strong> Compliance depends on monitoring and sanctions.
+                    </div>
+                </div>
+            </div>
+            <div id="marxist-theory" class="concept-content">
+                <h2>🛠️ Marxist Theory: Economic class and imperialism</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>International relations are driven by capitalist exploitation and class struggle.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Capitalism dominates:</strong> Economic class relations drive politics more than ideology.
+                    </div>
+                    <div class="key-point">
+                        <strong>Imperialism persists:</strong> Wealthy states exploit poor ones to maximize profits.
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Real-World Example: Colonial Extraction</h4>
+                    <p>Colonial powers extracted resources from colonies for profit.</p>
+                </div>
+
+
+                <div class="quiz-section">
+                    <div class="quiz-question">Quiz: Which is a Marxist critique of IR?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Focus on power balancing only</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Emphasis on capitalist exploitation</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Belief in natural harmony</div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="constructivism" class="concept-content">
+                <h2>🧠 Constructivism: Ideas and identities form reality</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>State identities and norms shape international relations more than material forces.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Shared norms:</strong> Common understandings guide state behavior.
+                    </div>
+                    <div class="key-point">
+                        <strong>Identity matters:</strong> How states define themselves affects interactions.
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Real-World Example: Nuclear Taboo</h4>
+                    <p>A near-universal norm against using nuclear weapons shapes state restraint.</p>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Constructivism Scenario</h4>
+                    <p><strong>Scenario:</strong> A rising power refuses to adopt aggressive rhetoric.</p>
+                    <p><strong>What happens:</strong> Other states treat it as less threatening based on shared norms.</p>
+                </div>
+
+                <div class="quiz-section">
+                    <div class="quiz-question">Quiz: Which action shows Constructivist influence?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">(0) States follow treaties because everyone expects them to</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) States build navies to achieve dominance</div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) States ignore norms when inconvenient</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h4>Norm Dynamics</h4>
+                    <p>How norms emerge, spread, and influence behavior over time.</p>
+                    <div class="key-point">
+                        <strong>Norm Entrepreneurship:</strong> Actors promote new ideas internationally.
+                    </div>
+                    <div class="key-point">
+                        <strong>Socialization:</strong> States internalize norms through interaction.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+        </div>
+    </div>
+
+    <script>
+        let visitedConcepts = new Set();
+        let currentConcept = 'welcome';
+        const totalConcepts = 5;
+
+        function showConcept(conceptId) {
+            // Hide all content
+            document.querySelectorAll('.concept-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all cards
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Show selected concept
+            document.getElementById(conceptId).classList.add('active');
+            
+            // Add active class to selected card
+            event.target.closest('.concept-card').classList.add('active');
+            
+            // Track visited concepts
+            visitedConcepts.add(conceptId);
+            currentConcept = conceptId;
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progressPercent = (visitedConcepts.size / totalConcepts) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            
+            let progressText = '';
+            if (visitedConcepts.size === 0) {
+                progressText = 'Select a concept to begin learning';
+            } else if (visitedConcepts.size === totalConcepts) {
+                progressText = '';
+            } else {
+                progressText = ` ${visitedConcepts.size}/${totalConcepts} `;
+            }
+            document.getElementById('progressText').textContent = progressText;
+        }
+
+        function selectQuizOption(option, isCorrect) {
+            // Remove previous selections
+            option.parentNode.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+            
+            // Mark the selected option
+            if (isCorrect) {
+                option.classList.add('correct');
+            } else {
+                option.classList.add('incorrect');
+                // Also show the correct answer
+                option.parentNode.querySelectorAll('.quiz-option').forEach((opt, index) => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
