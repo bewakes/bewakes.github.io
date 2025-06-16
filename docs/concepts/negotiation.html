@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}} - Interactive Learning Guide</title>
+    <title>Negotiation for Diplomatic Success - Interactive Learning Guide</title>
     <style>
         * {
             margin: 0;
@@ -286,7 +286,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>{{header.icon}} {{header.title}}</h1>
+            <h1>🤝 Diplomatic Negotiation</h1>
             <p>
                 <small>
                     <a href="/">Home</a>
@@ -296,7 +296,7 @@
                     <a href="/concepts/">Concepts Index</a>
                 </small>
             </p>
-            <p>{{description}}</p>
+            <p>Core negotiation principles and strategies essential for effective diplomatic practice and international relations.</p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -304,101 +304,144 @@
         </div>
 
         <div class="concept-selector">
-            {{#each concepts}}
-            <div class="concept-card" onclick="showConcept('{{id}}')">
-                <span class="emoji">{{emoji}}</span>
-                <h3>{{name}}</h3>
-                <p>{{short_description}}</p>
+            <div class="concept-card" onclick="showConcept('negotiation-fundamentals')">
+                <span class="emoji">⚖️</span>
+                <h3>Negotiation Fundamentals</h3>
+                <p>Master the foundational principles of negotiation to build diplomatic success.</p>
             </div>
-            {{/each}}
         </div>
 
         <div class="content-area">
-            {{#each concepts}}
-            <div id="{{id}}" class="concept-content">
-                <h2>{{emoji}} {{name}}: {{subtitle}}</h2>
+            <div id="negotiation-fundamentals" class="concept-content">
+                <h2>⚖️ Negotiation Fundamentals: The art and science of reaching mutually beneficial agreements</h2>
                 
                 <div class="section">
                     <h4>Core Idea</h4>
-                    <p>{{core_idea}}</p>
+                    <p>Negotiation is a strategic communication process where parties with different interests work together to reach agreements that satisfy their respective needs.</p>
                 </div>
 
-                {{#if key_assumptions}}
                 <div class="section">
                     <h4>Key Assumptions</h4>
-                    {{#each key_assumptions}}
                     <div class="key-point">
-                        <strong>{{title}}:</strong> {{description}}
+                        <strong>Interests vs. Positions:</strong> Parties have underlying interests that may be satisfied through various positions or solutions.
                     </div>
-                    {{/each}}
+                    <div class="key-point">
+                        <strong>Value Creation Potential:</strong> Most negotiations offer opportunities to expand the pie rather than just divide existing resources.
+                    </div>
+                    <div class="key-point">
+                        <strong>Relationship Importance:</strong> Long-term diplomatic relationships often matter more than individual negotiation outcomes.
+                    </div>
+                    <div class="key-point">
+                        <strong>Cultural Context Matters:</strong> Communication styles, decision-making processes, and values vary significantly across cultures.
+                    </div>
                 </div>
-                {{/if}}
 
-                {{#if examples}}
-                    {{#each examples}}
                         <div class="example-box">
-                            <h4>Real-World Example: {{title}}</h4>
-                            <p>{{description}}</p>
+                            <h4>Real-World Example: Camp David Accords (1978)</h4>
+                            <p>President Carter facilitated negotiations between Israel&#x27;s Begin and Egypt&#x27;s Sadat by focusing on underlying interests rather than rigid positions, leading to a historic peace agreement.</p>
                         </div>
-                    {{/each}}
-                {{/if}}
+                        <div class="example-box">
+                            <h4>Real-World Example: Good Friday Agreement (1998)</h4>
+                            <p>Multi-party negotiations in Northern Ireland succeeded through creative solutions that addressed each party&#x27;s core concerns while maintaining ambiguity on contentious symbolic issues.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Paris Climate Accord Framework</h4>
+                            <p>Negotiations succeeded by allowing countries to set their own targets while creating transparency mechanisms, respecting sovereignty while addressing global concerns.</p>
+                        </div>
 
-                {{#if scenario}}
                 <div class="scenario-box">
-                    <h4>{{name}} Scenario</h4>
-                    <p><strong>Scenario:</strong> {{scenario.situation}}</p>
-                    <p><strong>What happens:</strong> {{scenario.what_happens}}</p>
+                    <h4>Negotiation Fundamentals Scenario</h4>
+                    <p><strong>Scenario:</strong> Two neighboring countries are negotiating a water rights agreement for a shared river system. Country A needs water for agricultural irrigation during dry seasons, while Country B requires consistent water flow for hydroelectric power generation year-round.</p>
+                    <p><strong>What happens:</strong> Instead of fighting over fixed water allocations, negotiators explore creative solutions: seasonal water sharing agreements, joint infrastructure projects for water storage, technology sharing for more efficient irrigation, and compensation mechanisms. This transforms a zero-sum dispute into a collaborative partnership that benefits both nations.</p>
                 </div>
-                {{/if}}
 
-                {{#if quizzes}}
-                    {{#each quizzes }}
                     <div class="quiz-section">
-                        <div class="quiz-question">Quiz: {{question}}</div>
+                        <div class="quiz-question">Quiz: What is the primary difference between positions and interests in negotiation?</div>
                         <div class="quiz-options">
-                            {{#each options}}
-                            <div class="quiz-option" onclick="selectQuizOption(this, {{is_correct}})">({{@index}}) {{text}}</div>
-                            {{/each}}
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(0) Positions are what parties want; interests are why they want it</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) Positions are flexible; interests are fixed</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Positions are private; interests are publicly stated</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) There is no meaningful difference between them</div>
                         </div>
                     </div>
-                    {{/each}}
-                {{/if}}
-
-                {{#if additional_sections}}
-                {{#each additional_sections}}
-                <div class="section">
-                    <h4>{{title}}</h4>
-                    {{#if content}}
-                    <p>{{content}}</p>
-                    {{/if}}
-                    {{#if points}}
-                    {{#each points}}
-                    <div class="key-point">
-                        {{#if title}}<strong>{{title}}:</strong> {{/if}}{{description}}
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: In diplomatic negotiations, what is typically the most important factor for long-term success?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Winning every negotiation decisively</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Maintaining and building relationships</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Setting the toughest initial positions</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Keeping all information confidential</div>
+                        </div>
                     </div>
-                    {{/each}}
-                    {{/if}}
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Which approach best describes &#x27;expanding the pie&#x27; in negotiations?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Taking a larger share of existing resources</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Finding ways to create additional value for all parties</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Extending negotiation timelines indefinitely</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Including more parties in the negotiation</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Preparation Strategies</h4>
+                    <p>Thorough preparation is the foundation of diplomatic negotiation success.</p>
+                    <div class="key-point">
+                        <strong>Stakeholder Analysis:</strong> Map all parties affected by the negotiation, their interests, and their influence levels.
+                    </div>
+                    <div class="key-point">
+                        <strong>BATNA Development:</strong> Identify your Best Alternative to a Negotiated Agreement to understand your negotiating power.
+                    </div>
+                    <div class="key-point">
+                        <strong>Cultural Intelligence:</strong> Research negotiation styles, decision-making processes, and communication preferences of other parties.
+                    </div>
+                    <div class="key-point">
+                        <strong>Option Generation:</strong> Brainstorm multiple potential solutions before entering negotiations.
+                    </div>
                 </div>
-                {{/each}}
-                {{/if}}
+                <div class="section">
+                    <h4>Communication Techniques</h4>
+                    <p>Effective diplomatic communication can make or break negotiations.</p>
+                    <div class="key-point">
+                        <strong>Active Listening:</strong> Demonstrate understanding of other parties&#x27; perspectives and concerns.
+                    </div>
+                    <div class="key-point">
+                        <strong>Reframing:</strong> Present issues in ways that highlight mutual interests and collaboration opportunities.
+                    </div>
+                    <div class="key-point">
+                        <strong>Strategic Ambiguity:</strong> Sometimes deliberate vagueness allows parties to save face while moving forward.
+                    </div>
+                    <div class="key-point">
+                        <strong>Non-Verbal Awareness:</strong> Pay attention to body language, tone, and cultural communication patterns.
+                    </div>
+                </div>
+                <div class="section">
+                    <h4>Common Diplomatic Challenges</h4>
+                    <p>Understanding typical obstacles helps diplomats prepare for complex negotiations.</p>
+                    <div class="key-point">
+                        <strong>Domestic Pressure:</strong> Negotiators often face political pressure from their own constituencies.
+                    </div>
+                    <div class="key-point">
+                        <strong>Media Scrutiny:</strong> Public negotiations require careful management of information and expectations.
+                    </div>
+                    <div class="key-point">
+                        <strong>Multiple Stakeholders:</strong> Complex international issues often involve many parties with different interests.
+                    </div>
+                    <div class="key-point">
+                        <strong>Time Pressure:</strong> Urgent crises may limit thorough preparation and relationship building.
+                    </div>
+                </div>
             </div>
-            {{/each}}
         </div>
 
         <div class="nav-buttons">
-            {{#if showComparison}}
-            <button class="btn" onclick="showComparison()">{{comparisonButton.icon}} {{comparisonButton.text}}</button>
-            {{/if}}
-            {{#if showFinalQuiz}}
-            <button class="btn" onclick="showFinalQuiz()">{{finalQuizButton.icon}} {{finalQuizButton.text}}</button>
-            {{/if}}
         </div>
     </div>
 
     <script>
         let visitedConcepts = new Set();
         let currentConcept = 'welcome';
-        const totalConcepts = {{concepts_length}};
+        const totalConcepts = 1;
 
         function showConcept(conceptId) {
             // Hide all content
@@ -433,9 +476,9 @@
             if (visitedConcepts.size === 0) {
                 progressText = 'Select a concept to begin learning';
             } else if (visitedConcepts.size === totalConcepts) {
-                progressText = '{{progressMessages.complete}}';
+                progressText = '';
             } else {
-                progressText = `{{progressMessages.partial}} ${visitedConcepts.size}/${totalConcepts} {{progressMessages.unit}}`;
+                progressText = ` ${visitedConcepts.size}/${totalConcepts} `;
             }
             document.getElementById('progressText').textContent = progressText;
         }
@@ -460,54 +503,8 @@
             }
         }
 
-        {{#if showComparison}}
-        function showComparison() {
-            document.querySelectorAll('.concept-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.concept-card').forEach(card => {
-                card.classList.remove('active');
-            });
 
-            const comparisonHTML = `
-                <h2>{{comparisonTable.title}}</h2>
-                <p>{{comparisonTable.description}}</p>
-                
-                <table class="comparison-table">
-                    <tr>
-                        {{#each comparisonTable.headers}}
-                        <th>{{this}}</th>
-                        {{/each}}
-                    </tr>
-                    {{#each comparisonTable.rows}}
-                    <tr>
-                        {{#each this}}
-                        <td>{{{this}}}</td>
-                        {{/each}}
-                    </tr>
-                    {{/each}}
-                </table>
-                
-                {{#if comparisonTable.additionalContent}}
-                {{{comparisonTable.additionalContent}}}
-                {{/if}}
-            `;
-            
-            document.querySelector('.content-area').innerHTML = comparisonHTML;
-        }
-        {{/if}}
 
-        {{#if showFinalQuiz}}
-        function showFinalQuiz() {
-            // Implementation for final quiz would go here
-            alert('Final quiz functionality would be implemented here');
-        }
-        {{/if}}
-
-        {{#if customScripts}}
-        {{{customScripts}}}
-        {{/if}}
     </script>
 </body>
 </html>

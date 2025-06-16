@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal&#x27;s Relations with France, Germany, and Japan - Interactive Learning Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00f260, #0575e6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .concept-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .concept-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .concept-card.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .concept-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .concept-card .emoji {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 500px;
+        }
+
+        .concept-content {
+            display: none;
+        }
+
+        .concept-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #f1f2f6;
+            border-color: #667eea;
+        }
+
+        .quiz-option.correct {
+            background: #00b894;
+            color: white;
+            border-color: #00b894;
+        }
+
+        .quiz-option.incorrect {
+            background: #e17055;
+            color: white;
+            border-color: #e17055;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .key-point {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #667eea;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            color: #555;
+        }
+
+        .welcome-screen h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .scenario-box {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .concept-selector { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇳🇵 Nepal&#x27;s Diplomatic Relations</h1>
+            <p>
+                <small>
+                    <a href="/">Home</a>
+                </small>
+                &nbsp;
+                <small>
+                    <a href="/concepts/">Concepts Index</a>
+                </small>
+            </p>
+            <p>Comprehensive analysis of Nepal&#x27;s diplomatic, economic, and cultural ties with three key European and Asian partners for aspiring diplomats.</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">Select a concept to begin learning</p>
+        </div>
+
+        <div class="concept-selector">
+            <div class="concept-card" onclick="showConcept('nepal-france-relations')">
+                <span class="emoji">🇫🇷</span>
+                <h3>Nepal-France Relations</h3>
+                <p>Explore the diplomatic, cultural, and economic dimensions of Nepal-France partnership.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('nepal-germany-relations')">
+                <span class="emoji">🇩🇪</span>
+                <h3>Nepal-Germany Relations</h3>
+                <p>Understand how Nepal-Germany relations evolved into a strong development partnership despite historical tensions.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('nepal-japan-relations')">
+                <span class="emoji">🇯🇵</span>
+                <h3>Nepal-Japan Relations</h3>
+                <p>Examine Nepal&#x27;s strategic partnership with Japan encompassing development aid, investment, and people-to-people connections.</p>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="nepal-france-relations" class="concept-content">
+                <h2>🇫🇷 Nepal-France Relations: A foundation of mutual respect and development cooperation</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>Nepal and France maintain excellent bilateral relations built on mutual respect, cultural exchange, and development cooperation since 1949.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Historical Continuity:</strong> Diplomatic relations established on April 20, 1949, have remained consistently positive across different political regimes in both countries.
+                    </div>
+                    <div class="key-point">
+                        <strong>Development Partnership:</strong> France serves as a significant provider of development assistance and technical cooperation to Nepal.
+                    </div>
+                    <div class="key-point">
+                        <strong>Cultural Bridge:</strong> Educational and cultural exchanges strengthen people-to-people connections between the two nations.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: Early Diplomatic Recognition</h4>
+                            <p>France was among the first Western nations to recognize Nepal, with diplomatic relations established by 1950, demonstrating early international legitimacy.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Development Cooperation</h4>
+                            <p>France provides technical assistance and development aid through various bilateral programs and multilateral institutions.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Nepal-France Relations Scenario</h4>
+                    <p><strong>Scenario:</strong> A Nepali diplomat is preparing for a bilateral meeting with French officials to discuss expanding cooperation in renewable energy and climate change adaptation.</p>
+                    <p><strong>What happens:</strong> The diplomat leverages the strong foundation of Nepal-France relations to propose joint initiatives in hydropower development, drawing on France&#x27;s expertise in clean energy technology and Nepal&#x27;s potential for renewable energy exports to the region.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: When did Nepal and France establish diplomatic relations?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(0) April 20, 1949</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) April 25, 1947</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) April 4, 1958</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) September 4, 1939</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Areas of Cooperation</h4>
+                    <p>Key sectors where Nepal and France collaborate actively.</p>
+                    <div class="key-point">
+                        <strong>Education:</strong> French language programs and student exchange initiatives.
+                    </div>
+                    <div class="key-point">
+                        <strong>Development Aid:</strong> French assistance through bilateral and multilateral channels.
+                    </div>
+                    <div class="key-point">
+                        <strong>Cultural Exchange:</strong> Promotion of arts, literature, and cultural understanding.
+                    </div>
+                    <div class="key-point">
+                        <strong>Technical Cooperation:</strong> Sharing expertise in various development sectors.
+                    </div>
+                </div>
+            </div>
+            <div id="nepal-germany-relations" class="concept-content">
+                <h2>🇩🇪 Nepal-Germany Relations: From wartime adversaries to development partners</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>Nepal-Germany relations transformed from Nepal&#x27;s early declaration of war against Germany in WWII to a robust partnership focused on development cooperation and trade.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Historical Reconciliation:</strong> Past conflicts have been overcome through diplomatic engagement and mutual benefits.
+                    </div>
+                    <div class="key-point">
+                        <strong>Development Focus:</strong> Germany is a major source of development assistance and technical cooperation for Nepal.
+                    </div>
+                    <div class="key-point">
+                        <strong>Economic Partnership:</strong> Bilateral trade relationships continue to grow with complementary export-import patterns.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: World War II Declaration</h4>
+                            <p>Nepal declared war on Germany on September 4, 1939, just four days after the German invasion of Poland, demonstrating early international solidarity.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Trade Relations</h4>
+                            <p>In 2022, Nepal exported $43 million to Germany (mainly carpets) while importing $47.3 million (including razor blades), showing balanced trade relations.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Development Cooperation</h4>
+                            <p>Germany provides significant development assistance through bilateral programs and multilateral institutions like GIZ.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Nepal-Germany Relations Scenario</h4>
+                    <p><strong>Scenario:</strong> Nepal is negotiating with Germany for increased development assistance in sustainable agriculture and climate adaptation, while also seeking to expand carpet exports to the German market.</p>
+                    <p><strong>What happens:</strong> Nepali diplomats leverage Germany&#x27;s commitment to sustainable development and climate action to secure technical assistance and funding, while highlighting Nepal&#x27;s high-quality carpet industry and traditional craftsmanship to expand market access.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: When did Nepal declare war on Germany during World War II?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) September 1, 1939</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) September 4, 1939</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) December 7, 1941</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) April 4, 1958</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What is Nepal&#x27;s largest export to Germany?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Tea</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Carpets</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Textiles</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Spices</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Development Cooperation</h4>
+                    <p>Key areas where Germany supports Nepal&#x27;s development.</p>
+                    <div class="key-point">
+                        <strong>Sustainable Development:</strong> German assistance in renewable energy and environmental conservation.
+                    </div>
+                    <div class="key-point">
+                        <strong>Technical Cooperation:</strong> GIZ and other German agencies provide technical expertise.
+                    </div>
+                    <div class="key-point">
+                        <strong>Education Sector:</strong> Support for vocational training and higher education development.
+                    </div>
+                    <div class="key-point">
+                        <strong>Private Sector Development:</strong> Assistance in improving business environment and entrepreneurship.
+                    </div>
+                </div>
+            </div>
+            <div id="nepal-japan-relations" class="concept-content">
+                <h2>🇯🇵 Nepal-Japan Relations: Strategic partnership in development and human resources</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>Nepal-Japan relations represent one of Nepal&#x27;s most significant partnerships, characterized by substantial development assistance, investment, and the largest South Asian diaspora community in Japan.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Development Partnership:</strong> Japan is one of Nepal&#x27;s largest sources of development assistance and foreign direct investment.
+                    </div>
+                    <div class="key-point">
+                        <strong>People-to-People Connections:</strong> Large Nepali diaspora in Japan creates strong bilateral human connections and remittance flows.
+                    </div>
+                    <div class="key-point">
+                        <strong>Multilateral Cooperation:</strong> Both countries cooperate through UN peacekeeping and other international frameworks.
+                    </div>
+                    <div class="key-point">
+                        <strong>Economic Integration:</strong> Growing trade, investment, and participation in global value chains.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: UN Peacekeeping Mission</h4>
+                            <p>In 2007, Japan sent Self-Defense Forces to Nepal as part of a UN mission to help implement the peace agreement, demonstrating multilateral diplomatic cooperation.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Diaspora Community</h4>
+                            <p>As of June 2024, approximately 206,898 Nepalis live in Japan, making them the largest South Asian community in the country.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Investment and Trade</h4>
+                            <p>Japan is one of the major sources of foreign direct investment in Nepal, contributing to infrastructure and industrial development.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: World Expo Participation</h4>
+                            <p>Nepal is preparing for active participation in the 2025 World Expo in Osaka, showcasing competitive Nepali products and strengthening economic ties.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Nepal-Japan Relations Scenario</h4>
+                    <p><strong>Scenario:</strong> Nepal is seeking Japanese investment for a major hydroelectric project while also addressing concerns about the welfare of Nepali workers in Japan and exploring opportunities for technical skill development.</p>
+                    <p><strong>What happens:</strong> Nepali diplomats coordinate with Japanese officials to structure a comprehensive agreement that includes infrastructure investment, worker protection mechanisms, and technical training programs that benefit both countries&#x27; development objectives.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Approximately how many Nepalis live in Japan as of 2024?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) 150,000</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) 206,898</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) 300,000</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) 100,000</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What major international event is Nepal preparing to participate in Japan?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Tokyo Olympics</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) 2025 World Expo in Osaka</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) G7 Summit</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) ASEAN Summit</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: When did Japan participate in UN peacekeeping in Nepal?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) 2005</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) 2007</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) 2010</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) 2015</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Strategic Cooperation Areas</h4>
+                    <p>Key sectors defining Nepal-Japan partnership.</p>
+                    <div class="key-point">
+                        <strong>Infrastructure Development:</strong> Japanese assistance in building roads, bridges, and energy infrastructure.
+                    </div>
+                    <div class="key-point">
+                        <strong>Human Resource Development:</strong> Technical training and educational exchange programs.
+                    </div>
+                    <div class="key-point">
+                        <strong>Private Sector Investment:</strong> Japanese companies investing in Nepal&#x27;s industrial and service sectors.
+                    </div>
+                    <div class="key-point">
+                        <strong>Disaster Management:</strong> Cooperation in earthquake preparedness and disaster risk reduction.
+                    </div>
+                </div>
+                <div class="section">
+                    <h4>Diplomatic Significance</h4>
+                    <p>Why Nepal-Japan relations matter for aspiring diplomats.</p>
+                    <div class="key-point">
+                        <strong>Model Partnership:</strong> Demonstrates how small and large countries can build mutually beneficial relationships.
+                    </div>
+                    <div class="key-point">
+                        <strong>Economic Diplomacy:</strong> Shows integration of development assistance, trade, and investment in diplomatic strategy.
+                    </div>
+                    <div class="key-point">
+                        <strong>People-Centered Diplomacy:</strong> Highlights the role of diaspora communities in strengthening bilateral relations.
+                    </div>
+                    <div class="key-point">
+                        <strong>Multilateral Coordination:</strong> Examples of working together in international organizations and peacekeeping.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+        </div>
+    </div>
+
+    <script>
+        let visitedConcepts = new Set();
+        let currentConcept = 'welcome';
+        const totalConcepts = 3;
+
+        function showConcept(conceptId) {
+            // Hide all content
+            document.querySelectorAll('.concept-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all cards
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Show selected concept
+            document.getElementById(conceptId).classList.add('active');
+            
+            // Add active class to selected card
+            event.target.closest('.concept-card').classList.add('active');
+            
+            // Track visited concepts
+            visitedConcepts.add(conceptId);
+            currentConcept = conceptId;
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progressPercent = (visitedConcepts.size / totalConcepts) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            
+            let progressText = '';
+            if (visitedConcepts.size === 0) {
+                progressText = 'Select a concept to begin learning';
+            } else if (visitedConcepts.size === totalConcepts) {
+                progressText = '';
+            } else {
+                progressText = ` ${visitedConcepts.size}/${totalConcepts} `;
+            }
+            document.getElementById('progressText').textContent = progressText;
+        }
+
+        function selectQuizOption(option, isCorrect) {
+            // Remove previous selections
+            option.parentNode.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+            
+            // Mark the selected option
+            if (isCorrect) {
+                option.classList.add('correct');
+            } else {
+                option.classList.add('incorrect');
+                // Also show the correct answer
+                option.parentNode.querySelectorAll('.quiz-option').forEach((opt, index) => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

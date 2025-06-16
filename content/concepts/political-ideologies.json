@@ -25,22 +25,22 @@
           "description": "States make strategic calculations to protect their survival."
         }
       ],
-      "example": {
+      "examples": [{
         "title": "Cold War Arms Race",
         "description": "The U.S. and USSR built nuclear arsenals to deter each other and maintain security."
-      },
+      }],
       "scenario": {
         "situation": "Two neighboring countries fear each other's military growth.",
         "what_happens": "Each increases defense spending, leading to an arms buildup."
       },
-      "quiz": {
+      "quizzes": [{
         "question": "Which action best illustrates Realist thinking?",
         "options": [
           {"text": "Joining a military alliance for security", "is_correct": true},
           {"text": "Focusing mostly on moral leadership", "is_correct": false},
           {"text": "Prioritizing trade norms over defense", "is_correct": false}
         ]
-      },
+      }],
       "additional_sections": [
         {
           "title": "Critiques",

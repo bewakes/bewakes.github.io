@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Crisis and Conservation - Interactive Learning Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00f260, #0575e6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .concept-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .concept-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .concept-card.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .concept-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .concept-card .emoji {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 500px;
+        }
+
+        .concept-content {
+            display: none;
+        }
+
+        .concept-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #f1f2f6;
+            border-color: #667eea;
+        }
+
+        .quiz-option.correct {
+            background: #00b894;
+            color: white;
+            border-color: #00b894;
+        }
+
+        .quiz-option.incorrect {
+            background: #e17055;
+            color: white;
+            border-color: #e17055;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .key-point {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #667eea;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            color: #555;
+        }
+
+        .welcome-screen h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .scenario-box {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .concept-selector { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Energy Crisis and Conservation</h1>
+            <p>
+                <small>
+                    <a href="/">Home</a>
+                </small>
+                &nbsp;
+                <small>
+                    <a href="/concepts/">Concepts Index</a>
+                </small>
+            </p>
+            <p>Essential concepts for understanding energy security, international cooperation, and sustainable policy frameworks in diplomatic contexts.</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">Select a concept to begin learning</p>
+        </div>
+
+        <div class="concept-selector">
+            <div class="concept-card" onclick="showConcept('energy-crisis-fundamentals')">
+                <span class="emoji">🔥</span>
+                <h3>Energy Crisis Fundamentals</h3>
+                <p>Learn how energy shortages develop and their cascading effects on societies and international relations.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('energy-conservation-strategies')">
+                <span class="emoji">💡</span>
+                <h3>Energy Conservation Strategies</h3>
+                <p>Explore how nations and individuals can reduce energy consumption while maintaining economic productivity and quality of life.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('renewable-energy-transition')">
+                <span class="emoji">🌱</span>
+                <h3>Renewable Energy Transition</h3>
+                <p>Understand how countries are moving toward renewable energy and the diplomatic challenges and opportunities this creates.</p>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="energy-crisis-fundamentals" class="concept-content">
+                <h2>🔥 Energy Crisis Fundamentals: Understanding the nature and causes of energy shortages</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>An energy crisis occurs when energy supply cannot meet demand, leading to economic disruption, social instability, and geopolitical tensions.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Energy is fundamental to modern society:</strong> All economic activities and social functions depend on reliable energy access.
+                    </div>
+                    <div class="key-point">
+                        <strong>Energy markets are interconnected globally:</strong> Disruptions in one region can affect energy prices and availability worldwide.
+                    </div>
+                    <div class="key-point">
+                        <strong>Energy security affects national security:</strong> Countries view reliable energy access as essential to their sovereignty and economic stability.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: 1973 Oil Crisis</h4>
+                            <p>OPEC&#x27;s oil embargo led to quadrupled oil prices, recession in industrialized nations, and reshaped global energy policies.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: 2021-2022 European Energy Crisis</h4>
+                            <p>Reduced Russian gas supplies amid Ukraine conflict caused energy shortages, inflation, and diplomatic tensions across Europe.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Texas Winter Storm 2021</h4>
+                            <p>Infrastructure failures during extreme weather caused widespread blackouts, demonstrating energy system vulnerabilities.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Energy Crisis Fundamentals Scenario</h4>
+                    <p><strong>Scenario:</strong> A major oil-producing nation suddenly cuts exports due to internal conflict, causing global oil prices to spike by 40% within weeks.</p>
+                    <p><strong>What happens:</strong> Importing nations face fuel shortages, inflation rises, transportation costs soar, and governments scramble to secure alternative suppliers. Diplomatic negotiations intensify as countries compete for limited supplies, potentially straining international relationships.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What is the primary characteristic that defines an energy crisis?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) High energy prices alone</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Energy supply unable to meet demand</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Environmental concerns about energy use</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Technological failures in energy systems</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Why do energy crises often become diplomatic issues?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Energy is primarily a technical problem</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Countries compete for limited energy resources and seek international cooperation</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Energy companies control foreign policy</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Environmental groups pressure governments</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Diplomatic Implications</h4>
+                    <p>Energy crises reshape international relations and create both conflicts and cooperation opportunities.</p>
+                    <div class="key-point">
+                        <strong>Energy Diplomacy:</strong> Countries use energy exports and imports as tools of foreign policy and leverage.
+                    </div>
+                    <div class="key-point">
+                        <strong>Regional Cooperation:</strong> Shared energy challenges often drive regional integration and multilateral agreements.
+                    </div>
+                    <div class="key-point">
+                        <strong>Crisis Management:</strong> International organizations coordinate emergency responses and strategic reserve releases.
+                    </div>
+                </div>
+            </div>
+            <div id="energy-conservation-strategies" class="concept-content">
+                <h2>💡 Energy Conservation Strategies: Reducing energy consumption through efficiency and behavioral change</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>Energy conservation involves using less energy to achieve the same outcomes through improved efficiency, technology, and behavioral modifications.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Conservation reduces energy dependence:</strong> Lower energy consumption decreases reliance on imports and volatile energy markets.
+                    </div>
+                    <div class="key-point">
+                        <strong>Efficiency improvements are cost-effective:</strong> Many conservation measures provide positive economic returns through reduced energy costs.
+                    </div>
+                    <div class="key-point">
+                        <strong>Behavioral change complements technology:</strong> Combining efficient technologies with conscious consumption patterns maximizes conservation benefits.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: Japan&#x27;s Top Runner Program</h4>
+                            <p>Japan&#x27;s mandatory efficiency standards for appliances and vehicles, driving continuous improvement and technology innovation.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: European Union Energy Efficiency Directive</h4>
+                            <p>EU-wide targets for energy savings, building renovations, and public sector efficiency improvements.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: California&#x27;s Title 24 Building Standards</h4>
+                            <p>Comprehensive building energy codes that have reduced per-capita electricity consumption despite economic growth.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Energy Conservation Strategies Scenario</h4>
+                    <p><strong>Scenario:</strong> A country facing energy shortages implements a national conservation program including efficiency rebates, public awareness campaigns, and mandatory energy audits for large buildings.</p>
+                    <p><strong>What happens:</strong> Energy demand decreases by 15% over two years, reducing import dependence and providing breathing room for long-term energy planning. The success becomes a model for international cooperation and technology sharing agreements.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What is the primary benefit of energy conservation for national energy security?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) It eliminates the need for energy imports</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) It reduces energy demand and import dependence</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) It increases domestic energy production</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) It makes renewable energy unnecessary</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Which approach combines multiple conservation strategies effectively?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Focusing only on individual behavior change</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) Relying exclusively on new technology</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(2) Integrating efficiency standards, incentives, and public awareness</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Mandating energy rationing during normal times</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>International Cooperation Mechanisms</h4>
+                    <p>How nations work together to promote energy conservation and share best practices.</p>
+                    <div class="key-point">
+                        <strong>Technology Transfer:</strong> Sharing efficient technologies and expertise between developed and developing nations.
+                    </div>
+                    <div class="key-point">
+                        <strong>Standards Harmonization:</strong> Coordinating efficiency standards to create larger markets for efficient products.
+                    </div>
+                    <div class="key-point">
+                        <strong>Capacity Building:</strong> Training programs and technical assistance to implement conservation programs globally.
+                    </div>
+                </div>
+            </div>
+            <div id="renewable-energy-transition" class="concept-content">
+                <h2>🌱 Renewable Energy Transition: Shifting from fossil fuels to sustainable energy sources</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>The renewable energy transition involves replacing fossil fuel-based energy systems with sustainable alternatives like solar, wind, and hydroelectric power to ensure long-term energy security and environmental sustainability.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Renewables offer energy independence:</strong> Countries can reduce dependence on energy imports by developing domestic renewable resources.
+                    </div>
+                    <div class="key-point">
+                        <strong>Technology costs are declining rapidly:</strong> Solar and wind power costs have dropped dramatically, making renewables economically competitive.
+                    </div>
+                    <div class="key-point">
+                        <strong>Transition requires international cooperation:</strong> Sharing technology, financing, and expertise accelerates global renewable energy adoption.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: Denmark&#x27;s Wind Energy Success</h4>
+                            <p>Denmark generates over 50% of electricity from wind power and exports wind technology globally, becoming a leader in green diplomacy.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: International Solar Alliance</h4>
+                            <p>Coalition of 124 countries promoting solar energy deployment and technology sharing, led by India and France.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Morocco&#x27;s Noor Solar Complex</h4>
+                            <p>Large-scale concentrated solar power project positioning Morocco as a renewable energy hub for Europe and Africa.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Renewable Energy Transition Scenario</h4>
+                    <p><strong>Scenario:</strong> A fossil fuel-dependent nation announces a plan to generate 80% of electricity from renewables by 2035, seeking international partnerships for technology and financing.</p>
+                    <p><strong>What happens:</strong> The country negotiates bilateral agreements with renewable technology leaders, secures climate financing from international institutions, and begins transforming its energy infrastructure. This shift affects regional energy trade patterns and creates new diplomatic relationships based on green energy cooperation.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: How does renewable energy transition affect international relations?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) It has no impact on diplomacy</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) It creates new partnerships and changes traditional energy power dynamics</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) It eliminates the need for energy cooperation</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) It only affects environmental negotiations</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What is a key diplomatic challenge in renewable energy transition?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Renewable energy is too expensive for all countries</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Managing economic impacts on fossil fuel-dependent economies</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Renewable energy cannot meet global demand</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Technology transfer is impossible</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Geopolitical Implications</h4>
+                    <p>How renewable energy transition reshapes global power structures and international relations.</p>
+                    <div class="key-point">
+                        <strong>New Energy Superpowers:</strong> Countries with abundant renewable resources and advanced technologies gain influence.
+                    </div>
+                    <div class="key-point">
+                        <strong>Stranded Assets:</strong> Fossil fuel infrastructure and reserves may lose value, affecting resource-rich nations.
+                    </div>
+                    <div class="key-point">
+                        <strong>Critical Minerals:</strong> Renewable technologies create new dependencies on lithium, rare earths, and other materials.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+        </div>
+    </div>
+
+    <script>
+        let visitedConcepts = new Set();
+        let currentConcept = 'welcome';
+        const totalConcepts = 3;
+
+        function showConcept(conceptId) {
+            // Hide all content
+            document.querySelectorAll('.concept-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all cards
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Show selected concept
+            document.getElementById(conceptId).classList.add('active');
+            
+            // Add active class to selected card
+            event.target.closest('.concept-card').classList.add('active');
+            
+            // Track visited concepts
+            visitedConcepts.add(conceptId);
+            currentConcept = conceptId;
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progressPercent = (visitedConcepts.size / totalConcepts) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            
+            let progressText = '';
+            if (visitedConcepts.size === 0) {
+                progressText = 'Select a concept to begin learning';
+            } else if (visitedConcepts.size === totalConcepts) {
+                progressText = '';
+            } else {
+                progressText = ` ${visitedConcepts.size}/${totalConcepts} `;
+            }
+            document.getElementById('progressText').textContent = progressText;
+        }
+
+        function selectQuizOption(option, isCorrect) {
+            // Remove previous selections
+            option.parentNode.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+            
+            // Mark the selected option
+            if (isCorrect) {
+                option.classList.add('correct');
+            } else {
+                option.classList.add('incorrect');
+                // Also show the correct answer
+                option.parentNode.querySelectorAll('.quiz-option').forEach((opt, index) => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

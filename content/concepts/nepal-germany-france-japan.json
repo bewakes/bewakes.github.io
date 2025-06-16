@@ -1,0 +1,244 @@
+{
+  "header": {
+    "icon": "🇳🇵",
+    "title": "Nepal's Diplomatic Relations",
+    "description": "Understanding Nepal's bilateral relationships with France, Germany, and Japan"
+  },
+  "title": "Nepal's Relations with France, Germany, and Japan",
+  "description": "Comprehensive analysis of Nepal's diplomatic, economic, and cultural ties with three key European and Asian partners for aspiring diplomats.",
+  "concepts": [
+    {
+      "id": "nepal-france-relations",
+      "emoji": "🇫🇷",
+      "name": "Nepal-France Relations",
+      "subtitle": "A foundation of mutual respect and development cooperation",
+      "core_idea": "Nepal and France maintain excellent bilateral relations built on mutual respect, cultural exchange, and development cooperation since 1949.",
+      "short_description": "Explore the diplomatic, cultural, and economic dimensions of Nepal-France partnership.",
+      "summary_description": "Nepal-France relations exemplify successful small-state diplomacy with a major power. Established in 1949, these relations have been characterized by consistent goodwill, cultural cooperation, and French support for Nepal's development. France represents an important Western partner for Nepal beyond traditional regional powers, offering diplomatic diversification and development assistance.",
+      "key_assumptions": [
+        {
+          "title": "Historical Continuity",
+          "description": "Diplomatic relations established on April 20, 1949, have remained consistently positive across different political regimes in both countries."
+        },
+        {
+          "title": "Development Partnership",
+          "description": "France serves as a significant provider of development assistance and technical cooperation to Nepal."
+        },
+        {
+          "title": "Cultural Bridge",
+          "description": "Educational and cultural exchanges strengthen people-to-people connections between the two nations."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Early Diplomatic Recognition",
+          "description": "France was among the first Western nations to recognize Nepal, with diplomatic relations established by 1950, demonstrating early international legitimacy."
+        },
+        {
+          "title": "Development Cooperation",
+          "description": "France provides technical assistance and development aid through various bilateral programs and multilateral institutions."
+        }
+      ],
+      "scenario": {
+        "situation": "A Nepali diplomat is preparing for a bilateral meeting with French officials to discuss expanding cooperation in renewable energy and climate change adaptation.",
+        "what_happens": "The diplomat leverages the strong foundation of Nepal-France relations to propose joint initiatives in hydropower development, drawing on France's expertise in clean energy technology and Nepal's potential for renewable energy exports to the region."
+      },
+      "quizzes": [
+        {
+          "question": "When did Nepal and France establish diplomatic relations?",
+          "options": [
+            {"text": "April 20, 1949", "is_correct": true},
+            {"text": "April 25, 1947", "is_correct": false},
+            {"text": "April 4, 1958", "is_correct": false},
+            {"text": "September 4, 1939", "is_correct": false}
+          ]
+        }
+      ],
+      "additional_sections": [
+        {
+          "title": "Areas of Cooperation",
+          "content": "Key sectors where Nepal and France collaborate actively.",
+          "points": [
+            {"title": "Education", "description": "French language programs and student exchange initiatives."},
+            {"title": "Development Aid", "description": "French assistance through bilateral and multilateral channels."},
+            {"title": "Cultural Exchange", "description": "Promotion of arts, literature, and cultural understanding."},
+            {"title": "Technical Cooperation", "description": "Sharing expertise in various development sectors."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nepal-germany-relations",
+      "emoji": "🇩🇪",
+      "name": "Nepal-Germany Relations",
+      "subtitle": "From wartime adversaries to development partners",
+      "core_idea": "Nepal-Germany relations transformed from Nepal's early declaration of war against Germany in WWII to a robust partnership focused on development cooperation and trade.",
+      "short_description": "Understand how Nepal-Germany relations evolved into a strong development partnership despite historical tensions.",
+      "summary_description": "Nepal-Germany relations showcase diplomatic transformation and pragmatic cooperation. Despite Nepal being one of the first countries to declare war on Germany in 1939, formal diplomatic relations established in 1958 have flourished into significant development cooperation. Germany represents a key European partner providing substantial development assistance and serving as an important trade partner.",
+      "key_assumptions": [
+        {
+          "title": "Historical Reconciliation",
+          "description": "Past conflicts have been overcome through diplomatic engagement and mutual benefits."
+        },
+        {
+          "title": "Development Focus",
+          "description": "Germany is a major source of development assistance and technical cooperation for Nepal."
+        },
+        {
+          "title": "Economic Partnership",
+          "description": "Bilateral trade relationships continue to grow with complementary export-import patterns."
+        }
+      ],
+      "examples": [
+        {
+          "title": "World War II Declaration",
+          "description": "Nepal declared war on Germany on September 4, 1939, just four days after the German invasion of Poland, demonstrating early international solidarity."
+        },
+        {
+          "title": "Trade Relations",
+          "description": "In 2022, Nepal exported $43 million to Germany (mainly carpets) while importing $47.3 million (including razor blades), showing balanced trade relations."
+        },
+        {
+          "title": "Development Cooperation",
+          "description": "Germany provides significant development assistance through bilateral programs and multilateral institutions like GIZ."
+        }
+      ],
+      "scenario": {
+        "situation": "Nepal is negotiating with Germany for increased development assistance in sustainable agriculture and climate adaptation, while also seeking to expand carpet exports to the German market.",
+        "what_happens": "Nepali diplomats leverage Germany's commitment to sustainable development and climate action to secure technical assistance and funding, while highlighting Nepal's high-quality carpet industry and traditional craftsmanship to expand market access."
+      },
+      "quizzes": [
+        {
+          "question": "When did Nepal declare war on Germany during World War II?",
+          "options": [
+            {"text": "September 1, 1939", "is_correct": false},
+            {"text": "September 4, 1939", "is_correct": true},
+            {"text": "December 7, 1941", "is_correct": false},
+            {"text": "April 4, 1958", "is_correct": false}
+          ]
+        },
+        {
+          "question": "What is Nepal's largest export to Germany?",
+          "options": [
+            {"text": "Tea", "is_correct": false},
+            {"text": "Carpets", "is_correct": true},
+            {"text": "Textiles", "is_correct": false},
+            {"text": "Spices", "is_correct": false}
+          ]
+        }
+      ],
+      "additional_sections": [
+        {
+          "title": "Development Cooperation",
+          "content": "Key areas where Germany supports Nepal's development.",
+          "points": [
+            {"title": "Sustainable Development", "description": "German assistance in renewable energy and environmental conservation."},
+            {"title": "Technical Cooperation", "description": "GIZ and other German agencies provide technical expertise."},
+            {"title": "Education Sector", "description": "Support for vocational training and higher education development."},
+            {"title": "Private Sector Development", "description": "Assistance in improving business environment and entrepreneurship."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nepal-japan-relations",
+      "emoji": "🇯🇵",
+      "name": "Nepal-Japan Relations",
+      "subtitle": "Strategic partnership in development and human resources",
+      "core_idea": "Nepal-Japan relations represent one of Nepal's most significant partnerships, characterized by substantial development assistance, investment, and the largest South Asian diaspora community in Japan.",
+      "short_description": "Examine Nepal's strategic partnership with Japan encompassing development aid, investment, and people-to-people connections.",
+      "summary_description": "Nepal-Japan relations exemplify successful development partnership and people-to-people diplomacy. Japan has been a major development partner providing significant ODA, infrastructure investment, and technical cooperation. The presence of over 206,000 Nepalis in Japan as of 2024 creates strong human connections, while Japan's participation in UN peacekeeping missions in Nepal demonstrates multilateral cooperation.",
+      "key_assumptions": [
+        {
+          "title": "Development Partnership",
+          "description": "Japan is one of Nepal's largest sources of development assistance and foreign direct investment."
+        },
+        {
+          "title": "People-to-People Connections",
+          "description": "Large Nepali diaspora in Japan creates strong bilateral human connections and remittance flows."
+        },
+        {
+          "title": "Multilateral Cooperation",
+          "description": "Both countries cooperate through UN peacekeeping and other international frameworks."
+        },
+        {
+          "title": "Economic Integration",
+          "description": "Growing trade, investment, and participation in global value chains."
+        }
+      ],
+      "examples": [
+        {
+          "title": "UN Peacekeeping Mission",
+          "description": "In 2007, Japan sent Self-Defense Forces to Nepal as part of a UN mission to help implement the peace agreement, demonstrating multilateral diplomatic cooperation."
+        },
+        {
+          "title": "Diaspora Community",
+          "description": "As of June 2024, approximately 206,898 Nepalis live in Japan, making them the largest South Asian community in the country."
+        },
+        {
+          "title": "Investment and Trade",
+          "description": "Japan is one of the major sources of foreign direct investment in Nepal, contributing to infrastructure and industrial development."
+        },
+        {
+          "title": "World Expo Participation",
+          "description": "Nepal is preparing for active participation in the 2025 World Expo in Osaka, showcasing competitive Nepali products and strengthening economic ties."
+        }
+      ],
+      "scenario": {
+        "situation": "Nepal is seeking Japanese investment for a major hydroelectric project while also addressing concerns about the welfare of Nepali workers in Japan and exploring opportunities for technical skill development.",
+        "what_happens": "Nepali diplomats coordinate with Japanese officials to structure a comprehensive agreement that includes infrastructure investment, worker protection mechanisms, and technical training programs that benefit both countries' development objectives."
+      },
+      "quizzes": [
+        {
+          "question": "Approximately how many Nepalis live in Japan as of 2024?",
+          "options": [
+            {"text": "150,000", "is_correct": false},
+            {"text": "206,898", "is_correct": true},
+            {"text": "300,000", "is_correct": false},
+            {"text": "100,000", "is_correct": false}
+          ]
+        },
+        {
+          "question": "What major international event is Nepal preparing to participate in Japan?",
+          "options": [
+            {"text": "Tokyo Olympics", "is_correct": false},
+            {"text": "2025 World Expo in Osaka", "is_correct": true},
+            {"text": "G7 Summit", "is_correct": false},
+            {"text": "ASEAN Summit", "is_correct": false}
+          ]
+        },
+        {
+          "question": "When did Japan participate in UN peacekeeping in Nepal?",
+          "options": [
+            {"text": "2005", "is_correct": false},
+            {"text": "2007", "is_correct": true},
+            {"text": "2010", "is_correct": false},
+            {"text": "2015", "is_correct": false}
+          ]
+        }
+      ],
+      "additional_sections": [
+        {
+          "title": "Strategic Cooperation Areas",
+          "content": "Key sectors defining Nepal-Japan partnership.",
+          "points": [
+            {"title": "Infrastructure Development", "description": "Japanese assistance in building roads, bridges, and energy infrastructure."},
+            {"title": "Human Resource Development", "description": "Technical training and educational exchange programs."},
+            {"title": "Private Sector Investment", "description": "Japanese companies investing in Nepal's industrial and service sectors."},
+            {"title": "Disaster Management", "description": "Cooperation in earthquake preparedness and disaster risk reduction."}
+          ]
+        },
+        {
+          "title": "Diplomatic Significance",
+          "content": "Why Nepal-Japan relations matter for aspiring diplomats.",
+          "points": [
+            {"title": "Model Partnership", "description": "Demonstrates how small and large countries can build mutually beneficial relationships."},
+            {"title": "Economic Diplomacy", "description": "Shows integration of development assistance, trade, and investment in diplomatic strategy."},
+            {"title": "People-Centered Diplomacy", "description": "Highlights the role of diaspora communities in strengthening bilateral relations."},
+            {"title": "Multilateral Coordination", "description": "Examples of working together in international organizations and peacekeeping."}
+          ]
+        }
+      ]
+    }
+  ]
+}

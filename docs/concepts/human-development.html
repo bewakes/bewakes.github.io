@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Development Fundamentals - Interactive Learning Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00f260, #0575e6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .concept-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .concept-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .concept-card.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .concept-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .concept-card .emoji {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 500px;
+        }
+
+        .concept-content {
+            display: none;
+        }
+
+        .concept-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: #f1f2f6;
+            border-color: #667eea;
+        }
+
+        .quiz-option.correct {
+            background: #00b894;
+            color: white;
+            border-color: #00b894;
+        }
+
+        .quiz-option.incorrect {
+            background: #e17055;
+            color: white;
+            border-color: #e17055;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9ff;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .key-point {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 3px solid #667eea;
+        }
+
+        .welcome-screen {
+            text-align: center;
+            color: #555;
+        }
+
+        .welcome-screen h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .scenario-box {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .concept-selector { grid-template-columns: 1fr; }
+            .nav-buttons { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Human Development for Diplomats</h1>
+            <p>
+                <small>
+                    <a href="/">Home</a>
+                </small>
+                &nbsp;
+                <small>
+                    <a href="/concepts/">Concepts Index</a>
+                </small>
+            </p>
+            <p>Core principles of human development theory and practice crucial for diplomatic work in international cooperation and development.</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">Select a concept to begin learning</p>
+        </div>
+
+        <div class="concept-selector">
+            <div class="concept-card" onclick="showConcept('human-development-approach')">
+                <span class="emoji">🎯</span>
+                <h3>Human Development Approach</h3>
+                <p>A framework that prioritizes human well-being, freedom, and capabilities over purely economic measures of progress.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('human-development-index')">
+                <span class="emoji">📊</span>
+                <h3>Human Development Index (HDI)</h3>
+                <p>A standardized metric used globally to rank and compare countries&#x27; development progress across health, education, and income dimensions.</p>
+            </div>
+            <div class="concept-card" onclick="showConcept('capability-approach')">
+                <span class="emoji">🔓</span>
+                <h3>Capability Approach</h3>
+                <p>A framework that focuses on expanding people&#x27;s substantive freedoms and opportunities to live the kinds of lives they have reason to value.</p>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="human-development-approach" class="concept-content">
+                <h2>🎯 Human Development Approach: Beyond GDP: Measuring progress through human capabilities</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>Human development focuses on expanding people&#x27;s choices and capabilities rather than just economic growth, emphasizing what people can do and be rather than what they have.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>People are the ultimate end of development:</strong> Economic growth is a means to human development, not an end in itself.
+                    </div>
+                    <div class="key-point">
+                        <strong>Capabilities matter more than income:</strong> What people can do and be is more important than what they own or earn.
+                    </div>
+                    <div class="key-point">
+                        <strong>Human development is multidimensional:</strong> Progress requires simultaneous improvements in health, education, income, and political freedoms.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: Costa Rica vs. UAE</h4>
+                            <p>Costa Rica achieves higher human development scores than the UAE despite lower GDP per capita, due to superior health and education outcomes.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Kerala State, India</h4>
+                            <p>Kerala demonstrates high human development with relatively low income through investments in education and healthcare.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Human Development Approach Scenario</h4>
+                    <p><strong>Scenario:</strong> A diplomat is negotiating development aid priorities with a partner country that wants to focus solely on infrastructure projects to boost GDP.</p>
+                    <p><strong>What happens:</strong> Using human development principles, the diplomat advocates for complementary investments in education and healthcare, arguing that infrastructure alone won&#x27;t improve people&#x27;s capabilities or long-term well-being without accompanying human capital development.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: According to the human development approach, what is the primary purpose of economic growth?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) To increase national wealth and international standing</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) To expand people&#x27;s choices and capabilities</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) To create employment opportunities</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) To attract foreign investment</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Which of the following best exemplifies the human development approach?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) A country with high GDP but low life expectancy</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) A country prioritizing industrial growth over education</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(2) A country with moderate income but high literacy and health outcomes</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) A country focusing solely on urban development</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Diplomatic Applications</h4>
+                    <p>How human development principles guide international cooperation and policy dialogue.</p>
+                    <div class="key-point">
+                        <strong>Aid Effectiveness:</strong> Focusing development assistance on building human capabilities rather than just economic infrastructure.
+                    </div>
+                    <div class="key-point">
+                        <strong>Policy Dialogue:</strong> Using human development indicators to assess and compare national progress beyond economic metrics.
+                    </div>
+                    <div class="key-point">
+                        <strong>Multilateral Engagement:</strong> Supporting UN Sustainable Development Goals that reflect human development priorities.
+                    </div>
+                </div>
+            </div>
+            <div id="human-development-index" class="concept-content">
+                <h2>📊 Human Development Index (HDI): Measuring development through health, education, and income</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>The HDI is a composite index that measures average achievement in three basic dimensions of human development: health (life expectancy), education (mean and expected years of schooling), and standard of living (GNI per capita).</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Three dimensions capture core human development:</strong> Health, education, and income together represent the essential foundations for human development.
+                    </div>
+                    <div class="key-point">
+                        <strong>Equal weighting of dimensions:</strong> Each of the three dimensions contributes equally to the overall HDI score.
+                    </div>
+                    <div class="key-point">
+                        <strong>Diminishing returns principle:</strong> Each additional unit of income, education, or health contributes less to human development at higher levels.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: Norway vs. Qatar</h4>
+                            <p>Norway consistently ranks higher in HDI than Qatar despite Qatar&#x27;s higher GDP per capita, due to Norway&#x27;s superior education and health outcomes.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Rwanda&#x27;s Progress</h4>
+                            <p>Rwanda has achieved remarkable HDI improvements since 1990, particularly in health and education, despite starting from a low economic base.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Human Development Index (HDI) Scenario</h4>
+                    <p><strong>Scenario:</strong> A diplomat is preparing for negotiations on a bilateral development partnership and needs to assess the partner country&#x27;s development priorities and progress.</p>
+                    <p><strong>What happens:</strong> By analyzing the partner country&#x27;s HDI trends and component scores, the diplomat identifies that while the country has made economic progress, it lags in education. This insight helps shape the partnership to focus on educational capacity building and teacher training programs.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Which three dimensions does the Human Development Index measure?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Health, education, and governance</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(1) Income, employment, and social security</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(2) Health, education, and standard of living</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Education, environment, and equality</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What does it mean when a country has high GDP per capita but low HDI ranking?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) The country has excellent economic policies</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) The country likely has poor health and education outcomes</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) The HDI measurement is flawed for that country</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) The country has too much income inequality</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>HDI Limitations and Alternatives</h4>
+                    <p>Understanding what HDI doesn&#x27;t capture and complementary measures for comprehensive development assessment.</p>
+                    <div class="key-point">
+                        <strong>Inequality-Adjusted HDI:</strong> Accounts for how development achievements are distributed across the population.
+                    </div>
+                    <div class="key-point">
+                        <strong>Gender Development Index:</strong> Measures gender gaps in human development achievements.
+                    </div>
+                    <div class="key-point">
+                        <strong>Multidimensional Poverty Index:</strong> Captures overlapping deprivations in health, education, and living standards at the household level.
+                    </div>
+                </div>
+            </div>
+            <div id="capability-approach" class="concept-content">
+                <h2>🔓 Capability Approach: Freedom to achieve valuable functionings</h2>
+                
+                <div class="section">
+                    <h4>Core Idea</h4>
+                    <p>The capability approach evaluates human development based on what people are able to do and be (capabilities) and what they actually achieve (functionings), emphasizing freedom and choice in human development.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Key Assumptions</h4>
+                    <div class="key-point">
+                        <strong>Human diversity matters:</strong> People differ in their ability to convert resources into valuable outcomes due to personal, social, and environmental factors.
+                    </div>
+                    <div class="key-point">
+                        <strong>Freedom is intrinsically valuable:</strong> Having the ability to choose is valuable in itself, separate from what people actually choose.
+                    </div>
+                    <div class="key-point">
+                        <strong>Multiple valuable ways of living:</strong> There are many different ways to live a good life, and development should expand options rather than impose a single model.
+                    </div>
+                </div>
+
+                        <div class="example-box">
+                            <h4>Real-World Example: Education Capability</h4>
+                            <p>Having access to quality education represents a capability, while actually being literate and knowledgeable represents functionings.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Health Capability</h4>
+                            <p>Access to healthcare and nutrition represents capabilities, while being healthy and living long represents functionings.</p>
+                        </div>
+                        <div class="example-box">
+                            <h4>Real-World Example: Political Participation</h4>
+                            <p>Having the right to vote and free speech represents capabilities, while actually participating in democracy represents functionings.</p>
+                        </div>
+
+                <div class="scenario-box">
+                    <h4>Capability Approach Scenario</h4>
+                    <p><strong>Scenario:</strong> A diplomat is working on a women&#x27;s empowerment program in a country where women have legal rights but face cultural barriers to exercising them.</p>
+                    <p><strong>What happens:</strong> Using the capability approach, the diplomat recognizes that formal rights (capabilities) don&#x27;t automatically translate to actual empowerment (functionings). The program is designed to address both legal frameworks and social barriers, ensuring women can actually exercise their rights and choices.</p>
+                </div>
+
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: What is the difference between capabilities and functionings in Sen&#x27;s capability approach?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Capabilities are what people have, functionings are what they want</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Capabilities are what people can do, functionings are what they actually do</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Capabilities are individual, functionings are collective</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Capabilities are economic, functionings are social</div>
+                        </div>
+                    </div>
+                    <div class="quiz-section">
+                        <div class="quiz-question">Quiz: Why does the capability approach emphasize freedom of choice?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(0) Choice leads to better economic outcomes</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, true)">(1) Freedom is valuable in itself, regardless of what people choose</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(2) Choice prevents government interference</div>
+                            <div class="quiz-option" onclick="selectQuizOption(this, false)">(3) Freedom guarantees happiness</div>
+                        </div>
+                    </div>
+
+                <div class="section">
+                    <h4>Diplomatic Policy Applications</h4>
+                    <p>How the capability approach influences international development policy and diplomatic engagement.</p>
+                    <div class="key-point">
+                        <strong>Rights-Based Development:</strong> Focusing on enabling people to claim and exercise their rights, not just providing services.
+                    </div>
+                    <div class="key-point">
+                        <strong>Participatory Approaches:</strong> Ensuring development programs are designed with input from intended beneficiaries about their priorities.
+                    </div>
+                    <div class="key-point">
+                        <strong>Context-Sensitive Programming:</strong> Recognizing that the same resources may lead to different outcomes in different contexts.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+        </div>
+    </div>
+
+    <script>
+        let visitedConcepts = new Set();
+        let currentConcept = 'welcome';
+        const totalConcepts = 3;
+
+        function showConcept(conceptId) {
+            // Hide all content
+            document.querySelectorAll('.concept-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all cards
+            document.querySelectorAll('.concept-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Show selected concept
+            document.getElementById(conceptId).classList.add('active');
+            
+            // Add active class to selected card
+            event.target.closest('.concept-card').classList.add('active');
+            
+            // Track visited concepts
+            visitedConcepts.add(conceptId);
+            currentConcept = conceptId;
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progressPercent = (visitedConcepts.size / totalConcepts) * 100;
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            
+            let progressText = '';
+            if (visitedConcepts.size === 0) {
+                progressText = 'Select a concept to begin learning';
+            } else if (visitedConcepts.size === totalConcepts) {
+                progressText = '';
+            } else {
+                progressText = ` ${visitedConcepts.size}/${totalConcepts} `;
+            }
+            document.getElementById('progressText').textContent = progressText;
+        }
+
+        function selectQuizOption(option, isCorrect) {
+            // Remove previous selections
+            option.parentNode.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+            
+            // Mark the selected option
+            if (isCorrect) {
+                option.classList.add('correct');
+            } else {
+                option.classList.add('incorrect');
+                // Also show the correct answer
+                option.parentNode.querySelectorAll('.quiz-option').forEach((opt, index) => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
