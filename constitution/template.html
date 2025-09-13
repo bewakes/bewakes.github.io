@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitution of Nepal - Interactive Viewer</title>
+    <style>
+        :root {
+            --primary-color: #dc2626;
+            --primary-dark: #b91c1c;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: white;
+            --border-color: #e5e7eb;
+            --text-light: #6b7280;
+            --hover-bg: #f1f5f9;
+        }
+
+        [data-theme="dark"] {
+            --text-color: #f9fafb;
+            --bg-color: #111827;
+            --card-bg: #1f2937;
+            --border-color: #374151;
+            --text-light: #9ca3af;
+            --hover-bg: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+            transition: all 0.3s ease;
+            font-size: var(--font-size, 16px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .floating-controls {
+            position: fixed;
+            bottom: 0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            z-index: 1000;
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .controls-row {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+        }
+
+        .footer-credit-inline {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            opacity: 0.6;
+        }
+
+        .footer-credit-inline a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-credit-inline a:hover {
+            text-decoration: underline;
+            opacity: 1;
+        }
+
+        .control-menu {
+            position: relative;
+        }
+
+        .menu-content {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+            padding: 0.4rem;
+            margin-bottom: 0.4rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.2rem;
+            min-width: 110px;
+        }
+
+        .menu-content.show {
+            display: flex;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .menu-item:hover {
+            background: var(--hover-bg);
+        }
+
+        .control-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .control-btn:hover {
+            background: var(--hover-bg);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .font-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav {
+            background: var(--card-bg);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1004;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--hover-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .nav-btn:hover {
+            background: var(--border-color);
+        }
+
+        .nav-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .breadcrumb {
+            background: var(--card-bg);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: none;
+        }
+
+        .breadcrumb.show {
+            display: block;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .main-layout {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            padding: 2rem 1rem;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: calc(100vh - 140px);
+            overflow-y: auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .toc-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .toc-link:hover, .toc-link.active {
+            background: var(--hover-bg);
+            color: var(--primary-color);
+            padding-left: 1.5rem;
+        }
+
+        .toc-link.active {
+            border-left: 3px solid var(--primary-color);
+            font-weight: 600;
+        }
+
+        .content-area {
+            min-height: calc(100vh - 200px);
+        }
+
+        .search-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: var(--hover-bg);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-path {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .search-result-content {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .search-result-highlight {
+            background-color: #fef3c7;
+            padding: 0.1rem 0.2rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .constitution-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .part {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .part:last-child {
+            border-bottom: none;
+        }
+
+        .part-header {
+            background: var(--hover-bg);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .part-header:hover {
+            background: var(--border-color);
+        }
+
+        .part-header h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .part-title {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .part-content {
+            display: none;
+            padding: 0;
+        }
+
+        .part-content.expanded {
+            display: block;
+        }
+
+        .article {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 120px;
+            position: relative;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-header {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .article-number {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .article-title {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-left: 0.5rem;
+        }
+
+        .permalink {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .article:hover .permalink {
+            opacity: 1;
+        }
+
+        .permalink:hover {
+            color: var(--primary-color);
+        }
+
+        .article-content {
+            margin-left: 1rem;
+        }
+
+        .subsection {
+            margin: 1rem 0;
+            scroll-margin-top: 120px;
+        }
+
+        .subsection-id {
+            color: #059669;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .subsection-text {
+            color: var(--text-color);
+            display: inline;
+        }
+
+        .sub-subsection {
+            margin: 0.5rem 0 0.5rem 2rem;
+            scroll-margin-top: 120px;
+        }
+
+        .sub-subsection-id {
+            color: #0891b2;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .qna-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .qna-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s;
+            scroll-margin-top: 120px;
+        }
+
+        .qna-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            background: var(--hover-bg);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .question h3 {
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .answer {
+            padding: 1.5rem;
+            display: none;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .answer.show {
+            display: block;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .single-column {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .single-column .sidebar {
+            display: none;
+        }
+
+
+
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10vh;
+        }
+
+        .search-overlay.show {
+            display: flex;
+        }
+
+        .search-overlay-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 600px;
+            max-height: 70vh;
+            overflow: hidden;
+        }
+
+        .search-overlay-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-close-btn:hover {
+            background: var(--hover-bg);
+        }
+
+        .search-overlay .search-input {
+            flex: 1;
+            border: none;
+            font-size: 1.1rem;
+            padding: 0.5rem;
+        }
+
+        .search-overlay .search-input:focus {
+            outline: none;
+        }
+
+        .search-overlay .search-results {
+            position: static;
+            max-height: 50vh;
+            overflow-y: auto;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            left: auto;
+            right: auto;
+            display: block;
+        }
+
+
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding-top: 0;
+        }
+
+        .mobile-drawer .toc-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .mobile-drawer.open {
+            left: 0;
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .drawer-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-search-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 998;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-search-container.show {
+            transform: translateY(0);
+        }
+
+        .mobile-search-container .search-input {
+            margin-bottom: 0;
+        }
+
+        .mobile-search-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+
+
+            .floating-controls {
+                bottom: 0.5rem;
+                left: 0.5rem;
+                right: 0.5rem;
+                transform: none;
+                width: calc(100% - 1rem);
+                justify-content: center;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .footer-credit-inline {
+                font-size: 0.6rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+                margin-top: 0;
+            }
+
+            .main-layout.with-search {
+                margin-top: 60px;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .search-container {
+                display: none;
+            }
+
+            .content-area {
+                margin-top: 0;
+            }
+
+            .article-content {
+                margin-left: 0.5rem;
+            }
+
+            .search-results {
+                left: 1rem;
+                right: 1rem;
+            }
+
+            }
+        }
+
+        @media print {
+            .header, .nav, .sidebar, .search-container, .floating-controls, .controls, .breadcrumb {
+                display: none !important;
+            }
+
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            .part-content {
+                display: block !important;
+            }
+
+            .part-header {
+                background: none !important;
+                border: none !important;
+                page-break-after: avoid;
+            }
+
+            .article {
+                page-break-inside: avoid;
+                padding: 1rem 0;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+
+            .constitution-content {
+                background: none !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>संविधान नेपाल</h1>
+        <h1>Constitution of Nepal</h1>
+        <p>Interactive Constitution Viewer & Q&A</p>
+    </div>
+
+    <!-- Floating Controls -->
+    <div class="floating-controls">
+        <div class="controls-row">
+            <button class="control-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle dark/light mode">🌙</button>
+            <button class="control-btn" onclick="toggleSearch()" title="Search">🔍</button>
+            <div class="control-menu">
+                <button class="control-btn" onclick="toggleMenu()" title="More options">⚙️</button>
+                <div class="menu-content" id="menuContent">
+                    <div class="menu-item" onclick="changeFontSize(1); toggleMenu()">
+                        <span>A+</span>
+                        <span>Larger Text</span>
+                    </div>
+                    <div class="menu-item" onclick="changeFontSize(-1); toggleMenu()">
+                        <span>A-</span>
+                        <span>Smaller Text</span>
+                    </div>
+                    <div class="menu-item" onclick="window.print(); toggleMenu()">
+                        <span>🖨️</span>
+                        <span>Print</span>
+                    </div>
+                </div>
+            </div>
+            <button class="control-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScOFtQusDxZs8UOROF3pLQaAqWnMt-lYZmH99l7g05bcx3RLw/viewform', '_blank')" title="Send Feedback">💬</button>
+        </div>
+        <div class="footer-credit-inline">
+            made with ❤️ by <a href="https://bewakes.com/about.html" target="_blank">bewakes</a>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showSection('constitution')">Constitution</button>
+            <button class="nav-btn" onclick="showSection('qna')">Questions & Answers</button>
+        </div>
+    </nav>
+
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <div class="main-layout" id="mainLayout">
+        <aside class="sidebar" id="sidebar">
+            <div class="toc-header">Table of Contents</div>
+            <ul class="toc-list" id="tocList"></ul>
+        </aside>
+
+        <main class="content-area">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput"
+                       placeholder="Search constitution articles, parts, and subsections..."
+                       autocomplete="off">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <div id="constitution" class="section active">
+                <div class="constitution-content" id="constitutionContent">
+                    <!-- Constitution content will be loaded here -->
+                </div>
+            </div>
+
+            <div id="qna" class="section">
+                <div class="qna-container" id="qnaContent">
+                    <!-- Q&A content will be loaded here -->
+                </div>
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <h3>No results found</h3>
+                <p>Try adjusting your search terms</p>
+            </div>
+        </main>
+    </div>
+
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-content">
+            <div class="search-overlay-header">
+                <input type="text" class="search-input" id="overlaySearchInput"
+                       placeholder="Search constitution..."
+                       autocomplete="off">
+                <button class="search-close-btn" onclick="hideSearch()" title="Close search">✕</button>
+            </div>
+            <div class="search-results" id="overlaySearchResults"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay" onclick="closeMobileDrawer()"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="toc-header">Table of Contents</div>
+        <ul class="toc-list" id="mobileTocList"></ul>
+    </div>
+
+    <script>
+        const constitutionData = INSERT_CONSTITUTION_JSON_HERE;
+        const qnaData = INSERT_QNA_JSON_HERE;
+
+        let currentSection = 'constitution';
+        let currentFontSize = 16;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderConstitution();
+            renderQNA();
+            buildSearchIndex();
+            setupSearch();
+            buildTableOfContents();
+            setupPermalinks();
+            loadUserPreferences();
+            setupSearchOverlay();
+        });
+
+        function showSection(section) {
+            // Update navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Show/hide sections
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(section).classList.add('active');
+
+            currentSection = section;
+            hideSearchResults();
+            hideBreadcrumb();
+
+            // Update search placeholder and layout
+            const searchInput = document.getElementById('searchInput');
+            const mobileSearchInput = document.getElementById('mobileSearchInput');
+            const mainLayout = document.getElementById('mainLayout');
+            const sidebar = document.getElementById('sidebar');
+
+            if (section === 'constitution') {
+                searchInput.placeholder = 'Search constitution articles, parts, and subsections...';
+                if (mobileSearchInput) mobileSearchInput.placeholder = 'Search constitution...';
+                mainLayout.classList.remove('single-column');
+                sidebar.style.display = 'block';
+            } else {
+                searchInput.placeholder = 'Search questions and answers...';
+                if (mobileSearchInput) mobileSearchInput.placeholder = 'Search Q&A...';
+                mainLayout.classList.add('single-column');
+                sidebar.style.display = 'none';
+            }
+        }
+
+        function buildSearchIndex() {
+            buildConstitutionIndex();
+            buildQNAIndex();
+        }
+
+        function buildConstitutionIndex() {
+            window.constitutionIndex = [];
+
+            if (!constitutionData || !constitutionData.constitution) return;
+
+            const { constitution } = constitutionData;
+
+            if (constitution.preamble && constitution.preamble.text) {
+                window.constitutionIndex.push({
+                    type: 'preamble',
+                    id: 'preamble',
+                    path: 'Preamble',
+                    title: 'Preamble',
+                    content: constitution.preamble.text,
+                    priority: 1
+                });
+            }
+
+            constitution.parts.forEach(part => {
+                part.articles.forEach(article => {
+                    const articleContent = article.content.map(item => {
+                        if (item.type === 'subsection') {
+                            let text = item.text;
+                            if (item.items) {
+                                text += ' ' + item.items.map(subItem => subItem.text).join(' ');
+                            }
+                            return text;
+                        }
+                        return item.text || '';
+                    }).join(' ');
+
+                    window.constitutionIndex.push({
+                        type: 'article',
+                        id: `part-${part.number}-article-${article.number}`,
+                        path: `Part ${part.number} - ${part.title}`,
+                        title: `Article ${article.number}: ${article.title}`,
+                        content: articleContent,
+                        priority: 2,
+                        partNumber: part.number,
+                        articleNumber: article.number
+                    });
+
+                    article.content.forEach((item, itemIndex) => {
+                        if (item.type === 'subsection') {
+                            window.constitutionIndex.push({
+                                type: 'subsection',
+                                id: `part-${part.number}-article-${article.number}-subsection-${itemIndex}`,
+                                path: `Part ${part.number} - Article ${article.number}`,
+                                title: `${item.identifier} ${article.title}`,
+                                content: item.text,
+                                priority: 3,
+                                partNumber: part.number,
+                                articleNumber: article.number,
+                                subsectionIndex: itemIndex
+                            });
+
+                            if (item.items) {
+                                item.items.forEach((subItem, subIndex) => {
+                                    window.constitutionIndex.push({
+                                        type: 'sub_subsection',
+                                        id: `part-${part.number}-article-${article.number}-subsection-${itemIndex}-sub-${subIndex}`,
+                                        path: `Part ${part.number} - Article ${article.number} - ${item.identifier}`,
+                                        title: `${subItem.identifier} ${article.title}`,
+                                        content: subItem.text,
+                                        priority: 4,
+                                        partNumber: part.number,
+                                        articleNumber: article.number,
+                                        subsectionIndex: itemIndex,
+                                        subIndex: subIndex
+                                    });
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+        }
+
+        function buildQNAIndex() {
+            window.qnaIndex = [];
+
+            if (qnaData && Array.isArray(qnaData)) {
+                qnaData.forEach((item, index) => {
+                    window.qnaIndex.push({
+                        type: 'qna',
+                        id: `qna-${index}`,
+                        path: 'Questions & Answers',
+                        title: item.question,
+                        content: item.answer,
+                        priority: 1,
+                        qnaIndex: index
+                    });
+                });
+            }
+        }
+
+        function buildTableOfContents() {
+            const tocList = document.getElementById('tocList');
+            const mobileTocList = document.getElementById('mobileTocList');
+            if (!constitutionData || !constitutionData.constitution) return;
+
+            const { constitution } = constitutionData;
+            let tocHTML = '';
+
+            if (constitution.preamble) {
+                tocHTML += `<li class="toc-item"><a href="#preamble" class="toc-link" onclick="navigateToSection('preamble'); closeMobileDrawer();">Preamble</a></li>`;
+            }
+
+            constitution.parts.forEach(part => {
+                tocHTML += `<li class="toc-item"><a href="#part-${part.number}" class="toc-link" onclick="navigateToSection('part-${part.number}'); closeMobileDrawer();">Part ${part.number}: ${part.title}</a></li>`;
+            });
+
+            tocList.innerHTML = tocHTML;
+            if (mobileTocList) {
+                mobileTocList.innerHTML = tocHTML;
+            }
+        }
+
+        function navigateToSection(id) {
+            if (currentSection !== 'constitution') {
+                showSection('constitution');
+            }
+
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const part = element.closest('.part');
+                    if (part) {
+                        const partContent = part.querySelector('.part-content');
+                        if (partContent && !partContent.classList.contains('expanded')) {
+                            const partHeader = part.querySelector('.part-header');
+                            if (partHeader) partHeader.click();
+                        }
+                    }
+
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    updateActiveTOC(id);
+                    updateBreadcrumb(element);
+                }
+            }, 100);
+        }
+
+        function updateActiveTOC(id) {
+            document.querySelectorAll('.toc-link').forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`a[href="#${id}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        function updateBreadcrumb(element) {
+            const breadcrumb = document.getElementById('breadcrumb');
+            let breadcrumbText = '';
+
+            if (element.id === 'preamble') {
+                breadcrumbText = 'Preamble';
+            } else {
+                const part = element.closest('.part');
+                if (part) {
+                    const partNumber = part.id.replace('part-', '');
+                    const partTitle = part.querySelector('.part-title').textContent;
+                    breadcrumbText = `<a href="#part-${partNumber}" onclick="navigateToSection('part-${partNumber}')">Part ${partNumber}: ${partTitle}</a>`;
+
+                    const article = element.closest('.article');
+                    if (article) {
+                        const articleNumber = article.querySelector('.article-number').textContent;
+                        const articleTitle = article.querySelector('.article-title').textContent;
+                        breadcrumbText += ` > <a href="#${article.id}" onclick="navigateToSection('${article.id}')">${articleNumber} ${articleTitle}</a>`;
+                    }
+                }
+            }
+
+            if (breadcrumbText) {
+                breadcrumb.innerHTML = breadcrumbText;
+                breadcrumb.classList.add('show');
+            }
+        }
+
+        function hideBreadcrumb() {
+            document.getElementById('breadcrumb').classList.remove('show');
+        }
+
+        function setupPermalinks() {
+            // Handle URL hash on page load
+            if (window.location.hash) {
+                const id = window.location.hash.substring(1);
+                setTimeout(() => navigateToSection(id), 500);
+            }
+        }
+
+        function renderConstitution() {
+            const container = document.getElementById('constitutionContent');
+            container.innerHTML = '';
+
+            if (!constitutionData || !constitutionData.constitution) return;
+
+            const { constitution } = constitutionData;
+
+            if (constitution.preamble && constitution.preamble.text) {
+                const preambleDiv = document.createElement('div');
+                preambleDiv.className = 'part';
+                preambleDiv.id = 'preamble';
+                preambleDiv.innerHTML = `
+                    <div class="part-header" onclick="togglePart(this)">
+                        <h2>Preamble</h2>
+                    </div>
+                    <div class="part-content">
+                        <div class="article">
+                            <div class="article-content">
+                                <p style="font-style: italic; line-height: 1.8;">${constitution.preamble.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(preambleDiv);
+            }
+
+            constitution.parts.forEach(part => {
+                const partDiv = document.createElement('div');
+                partDiv.className = 'part';
+                partDiv.id = `part-${part.number}`;
+
+                let articlesHTML = '';
+                part.articles.forEach(article => {
+                    let contentHTML = '';
+
+                    article.content.forEach((item, itemIndex) => {
+                        if (item.type === 'subsection') {
+                            contentHTML += `
+                                <div class="subsection" id="part-${part.number}-article-${article.number}-subsection-${itemIndex}">
+                                    <span class="subsection-id">${item.identifier}</span>
+                                    <span class="subsection-text">${item.text}</span>
+                            `;
+
+                            if (item.items && item.items.length > 0) {
+                                item.items.forEach((subItem, subIndex) => {
+                                    contentHTML += `
+                                        <div class="sub-subsection" id="part-${part.number}-article-${article.number}-subsection-${itemIndex}-sub-${subIndex}">
+                                            <span class="sub-subsection-id">${subItem.identifier}</span>
+                                            <span>${subItem.text}</span>
+                                        </div>
+                                    `;
+                                });
+                            }
+
+                            contentHTML += '</div>';
+                        } else if (item.type === 'text') {
+                            contentHTML += `<p style="margin: 0.5rem 0; color: var(--text-color);">${item.text}</p>`;
+                        }
+                    });
+
+                    const articleId = `part-${part.number}-article-${article.number}`;
+                    articlesHTML += `
+                        <div class="article" id="${articleId}">
+                            <div class="article-header">
+                                <span class="article-number">${article.number}</span>
+                                <span class="article-title">${article.title}</span>
+                                <a href="#${articleId}" class="permalink" onclick="copyPermalink('${articleId}')">🔗</a>
+                            </div>
+                            <div class="article-content">
+                                ${contentHTML}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                partDiv.innerHTML = `
+                    <div class="part-header" onclick="togglePart(this)">
+                        <h2>Part ${part.number}</h2>
+                        <div class="part-title">${part.title}</div>
+                    </div>
+                    <div class="part-content">
+                        ${articlesHTML}
+                    </div>
+                `;
+
+                container.appendChild(partDiv);
+            });
+        }
+
+        function renderQNA() {
+            const container = document.getElementById('qnaContent');
+            container.innerHTML = '';
+
+            if (!qnaData || !Array.isArray(qnaData)) return;
+
+            qnaData.forEach((item, index) => {
+                const qnaDiv = document.createElement('div');
+                qnaDiv.className = 'qna-item';
+                qnaDiv.id = `qna-${index}`;
+                qnaDiv.innerHTML = `
+                    <div class="question" onclick="toggleAnswer(${index})">
+                        <h3>${item.question}</h3>
+                    </div>
+                    <div class="answer" id="answer-${index}">
+                        <p>${item.answer}</p>
+                    </div>
+                `;
+                container.appendChild(qnaDiv);
+            });
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            let debounceTimer;
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                const query = this.value.toLowerCase().trim();
+
+                if (query.length < 2) {
+                    hideSearchResults();
+                    return;
+                }
+
+                debounceTimer = setTimeout(() => {
+                    performSearch(query);
+                }, 200);
+            });
+
+            searchInput.addEventListener('focus', function() {
+                if (this.value.length >= 2) {
+                    performSearch(this.value.toLowerCase().trim());
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    hideSearchResults();
+                }
+            });
+        }
+
+        function performSearch(query) {
+            const searchData = currentSection === 'constitution' ? window.constitutionIndex : window.qnaIndex;
+
+            if (!searchData) return;
+
+            const results = searchData
+                .filter(item => {
+                    return item.title.toLowerCase().includes(query) ||
+                           item.content.toLowerCase().includes(query);
+                })
+                .sort((a, b) => {
+                    if (a.priority !== b.priority) {
+                        return a.priority - b.priority;
+                    }
+
+                    const aTitle = a.title.toLowerCase().includes(query);
+                    const bTitle = b.title.toLowerCase().includes(query);
+                    if (aTitle !== bTitle) {
+                        return bTitle - aTitle;
+                    }
+
+                    return 0;
+                })
+                .slice(0, 8);
+
+            displaySearchResults(results, query);
+        }
+
+        function displaySearchResults(results, query) {
+            const searchResults = document.getElementById('searchResults');
+
+            if (results.length === 0) {
+                hideSearchResults();
+                return;
+            }
+
+            searchResults.innerHTML = results.map(result => {
+                const highlightedTitle = highlightQuery(result.title, query);
+                const highlightedContent = highlightQuery(
+                    result.content.substring(0, 120) + (result.content.length > 120 ? '...' : ''),
+                    query
+                );
+
+                return `
+                    <div class="search-result-item" onclick="navigateToResult('${result.id}', '${result.type}')">
+                        <div class="search-result-path">${result.path}</div>
+                        <div class="search-result-title">${highlightedTitle}</div>
+                        <div class="search-result-content">${highlightedContent}</div>
+                    </div>
+                `;
+            }).join('');
+
+            searchResults.classList.add('show');
+        }
+
+        function navigateToResult(id, type) {
+            hideSearchResults();
+
+            if (type === 'qna') {
+                if (currentSection !== 'qna') {
+                    showSection('qna');
+                }
+                setTimeout(() => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const questionBtn = element.querySelector('.question');
+                        if (questionBtn) {
+                            questionBtn.click();
+                        }
+                    }
+                }, 100);
+            } else {
+                navigateToSection(id);
+            }
+        }
+
+        function highlightQuery(text, query) {
+            const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+            return text.replace(regex, '<span class="search-result-highlight">$1</span>');
+        }
+
+        function hideSearchResults() {
+            document.getElementById('searchResults').classList.remove('show');
+        }
+
+        function togglePart(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+
+        function toggleAnswer(index) {
+            const answer = document.getElementById(`answer-${index}`);
+            answer.classList.toggle('show');
+        }
+
+        function copyPermalink(id) {
+            const url = `${window.location.origin}${window.location.pathname}#${id}`;
+            navigator.clipboard.writeText(url).then(() => {
+                // Show a brief feedback
+                const permalink = event.target;
+                const originalText = permalink.textContent;
+                permalink.textContent = '✓';
+                setTimeout(() => {
+                    permalink.textContent = originalText;
+                }, 1000);
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById('themeBtn');
+
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function changeFontSize(delta) {
+            currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
+            document.body.style.setProperty('--font-size', currentFontSize + 'px');
+            localStorage.setItem('fontSize', currentFontSize);
+        }
+
+        function loadUserPreferences() {
+            // Load theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('themeBtn').textContent = '☀️';
+            }
+
+            // Load font size
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                currentFontSize = parseInt(savedFontSize);
+                document.body.style.setProperty('--font-size', currentFontSize + 'px');
+            }
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        // Search overlay functionality
+        function setupSearchOverlay() {
+            const searchInput = document.getElementById('overlaySearchInput');
+            const searchResults = document.getElementById('overlaySearchResults');
+            let debounceTimer;
+
+            searchInput.addEventListener('input', handleOverlaySearch);
+
+            function handleOverlaySearch() {
+                clearTimeout(debounceTimer);
+                const query = searchInput.value.toLowerCase().trim();
+
+                if (query.length < 2) {
+                    searchResults.innerHTML = '';
+                    return;
+                }
+
+                debounceTimer = setTimeout(() => {
+                    performOverlaySearch(query);
+                }, 150);
+            }
+        }
+
+        function performOverlaySearch(query) {
+            const currentSection = getCurrentSection();
+            const searchData = currentSection === 'constitution' ? window.constitutionIndex : window.qnaIndex;
+            const searchResults = document.getElementById('overlaySearchResults');
+
+            if (!searchData) return;
+
+            const results = searchData
+                .filter(item => {
+                    return item.title.toLowerCase().includes(query) ||
+                           item.content.toLowerCase().includes(query);
+                })
+                .sort((a, b) => {
+                    if (a.priority !== b.priority) {
+                        return a.priority - b.priority;
+                    }
+                    const aTitle = a.title.toLowerCase().includes(query);
+                    const bTitle = b.title.toLowerCase().includes(query);
+                    if (aTitle !== bTitle) {
+                        return bTitle - aTitle;
+                    }
+                    return 0;
+                })
+                .slice(0, 8);
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                return;
+            }
+
+            searchResults.innerHTML = results.map(result => {
+                const highlightedTitle = highlightQuery(result.title, query);
+                const highlightedContent = highlightQuery(
+                    result.content.substring(0, 100) + (result.content.length > 100 ? '...' : ''),
+                    query
+                );
+
+                return `
+                    <div class="search-result-item" onclick="navigateToOverlayResult('${result.id}', '${result.type}')">
+                        <div class="search-result-path">${result.path}</div>
+                        <div class="search-result-title">${highlightedTitle}</div>
+                        <div class="search-result-content">${highlightedContent}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function navigateToOverlayResult(id, type) {
+            hideSearch(); // Close the search overlay
+
+            if (type === 'qna') {
+                if (getCurrentSection() !== 'qna') {
+                    showSection('qna');
+                }
+                setTimeout(() => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const questionBtn = element.querySelector('.question');
+                        if (questionBtn) {
+                            questionBtn.click();
+                        }
+                    }
+                }, 100);
+            } else {
+                navigateToSection(id);
+            }
+        }
+
+        function toggleSearch() {
+            const overlay = document.getElementById('searchOverlay');
+            const input = document.getElementById('overlaySearchInput');
+
+            overlay.classList.toggle('show');
+            if (overlay.classList.contains('show')) {
+                setTimeout(() => input.focus(), 100);
+                // Update placeholder based on current section
+                const currentSection = getCurrentSection();
+                input.placeholder = currentSection === 'qna' ? 'Search Q&A...' : 'Search constitution...';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menuContent');
+            menu.classList.toggle('show');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('menuContent');
+            const menuButton = e.target.closest('.control-menu');
+
+            if (!menuButton && menu) {
+                menu.classList.remove('show');
+            }
+        });
+
+        function hideSearch() {
+            const overlay = document.getElementById('searchOverlay');
+            const input = document.getElementById('overlaySearchInput');
+            const results = document.getElementById('overlaySearchResults');
+
+            overlay.classList.remove('show');
+            input.value = '';
+            results.innerHTML = '';
+        }
+
+        function getCurrentSection() {
+            const activeBtn = document.querySelector('.nav-btn.active');
+            return activeBtn.textContent.includes('Questions') ? 'qna' : 'constitution';
+        }
+
+        function toggleMobileDrawer() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.querySelector('.drawer-overlay');
+
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('show');
+        }
+
+        function closeMobileDrawer() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.querySelector('.drawer-overlay');
+
+            drawer.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+    </script>
+</body>
+</html>
