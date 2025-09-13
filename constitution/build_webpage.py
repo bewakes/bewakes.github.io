@@ -9,17 +9,17 @@ from pathlib import Path
 
 def load_constitution_data():
     """Load the constitution JSON data"""
-    with open('/Users/bibek/projects/constitution/constitution.json', 'r', encoding='utf-8') as f:
+    with open('constitution.json', 'r', encoding='utf-8') as f:
         return json.load(f)
 
 def load_qna_data():
     """Load the merged Q&A JSON file"""
-    qa_file = Path('/Users/bibek/projects/constitution/qna.json')
+    qa_file = Path('qna.json')
 
     if not qa_file.exists():
         print("Warning: qna.json not found, attempting to create it by merging part files...")
         # Fallback to old method if merged file doesn't exist
-        qa_dir = Path('/Users/bibek/projects/constitution/qa')
+        qa_dir = Path('/qa')
         all_qna = []
 
         for i in range(1, 10):  # part1.json to part9.json
@@ -51,7 +51,7 @@ def build_webpage():
     qna_data = load_qna_data()
 
     # Read the HTML template
-    with open('/Users/bibek/projects/constitution/template.html', 'r', encoding='utf-8') as f:
+    with open('template.html', 'r', encoding='utf-8') as f:
         html_content = f.read()
 
     # Convert data to JSON strings
@@ -63,7 +63,7 @@ def build_webpage():
     html_content = html_content.replace('INSERT_QNA_JSON_HERE', qna_json)
 
     # Write the final webpage
-    output_path = 'constitution.html'
+    output_path = '../docs/constitution.html'
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
