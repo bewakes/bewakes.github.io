@@ -5,3 +5,4 @@ author: bewakes
 template_dir: templates
 content_dir: content
 other_pages: ["now", "about"]
+raw_pages: ["constitution/constitution.html"]
