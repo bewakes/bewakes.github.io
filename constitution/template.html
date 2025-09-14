@@ -132,7 +132,7 @@
             padding: 0.4rem;
             border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
             font-size: 0.8rem;
         }
 
@@ -831,8 +831,8 @@
 <body>
 
     <div class="header">
-        <h1>संविधान नेपाल</h1>
-        <h1>Constitution of Nepal</h1>
+        <h1>नेपालको संविधान २०७२</h1>
+        <h1>Constitution of Nepal 2015</h1>
         <p>Interactive Constitution Viewer & Q&A</p>
     </div>
 
@@ -844,11 +844,12 @@
             <div class="control-menu">
                 <button class="control-btn" onclick="toggleMenu()" title="More options">⚙️</button>
                 <div class="menu-content" id="menuContent">
-                    <div class="menu-item" onclick="changeFontSize(1); toggleMenu()">
+                    <div class="menu-item" onclick="changeFontSize(1)" id="fontSizeUp">
                         <span>A+</span>
                         <span>Larger Text</span>
+                        <span id="fontSizeDisplay" style="font-size: 0.7rem; color: var(--text-light); margin-left: auto;">16px</span>
                     </div>
-                    <div class="menu-item" onclick="changeFontSize(-1); toggleMenu()">
+                    <div class="menu-item" onclick="changeFontSize(-1)" id="fontSizeDown">
                         <span>A-</span>
                         <span>Smaller Text</span>
                     </div>
@@ -1778,6 +1779,39 @@
             currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
             document.body.style.setProperty('--font-size', currentFontSize + 'px');
             localStorage.setItem('fontSize', currentFontSize);
+
+            // Update the font size display
+            updateFontSizeDisplay();
+
+            // Add visual feedback - briefly highlight the button
+            const buttonId = delta > 0 ? 'fontSizeUp' : 'fontSizeDown';
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.style.backgroundColor = 'var(--primary-color)';
+                button.style.color = 'white';
+                setTimeout(() => {
+                    button.style.backgroundColor = '';
+                    button.style.color = '';
+                }, 150);
+            }
+        }
+
+        function updateFontSizeDisplay() {
+            const display = document.getElementById('fontSizeDisplay');
+            if (display) {
+                display.textContent = currentFontSize + 'px';
+
+                // Also show visual state for min/max limits
+                const upButton = document.getElementById('fontSizeUp');
+                const downButton = document.getElementById('fontSizeDown');
+
+                if (upButton) {
+                    upButton.style.opacity = currentFontSize >= 24 ? '0.5' : '1';
+                }
+                if (downButton) {
+                    downButton.style.opacity = currentFontSize <= 12 ? '0.5' : '1';
+                }
+            }
         }
 
         function loadUserPreferences() {
@@ -1794,6 +1828,11 @@
                 currentFontSize = parseInt(savedFontSize);
                 document.body.style.setProperty('--font-size', currentFontSize + 'px');
             }
+
+            // Initialize font size display
+            setTimeout(() => {
+                updateFontSizeDisplay();
+            }, 100);
         }
 
         function escapeRegExp(string) {
@@ -2235,6 +2274,77 @@
                     }
                 }
             });
+
+            // Add scroll listener for hash updates
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateHashOnScroll, 200);
+            });
+        }
+
+        function updateHashOnScroll() {
+            // Only update hash if we're in the constitution section
+            if (currentSection !== 'constitution') return;
+
+            const visibleSection = getCurrentVisibleSection();
+            if (visibleSection && visibleSection.id) {
+                const newHash = '#' + visibleSection.id;
+
+                // Only update if hash actually changed
+                if (window.location.hash !== newHash) {
+                    // Update URL without adding to history
+                    history.replaceState(null, null, newHash);
+
+                    // Update UI elements
+                    updateActiveTOC(visibleSection.id);
+                    updateBreadcrumb(visibleSection);
+                }
+            }
+        }
+
+        function getCurrentVisibleSection() {
+            // Get all sections with IDs in the constitution
+            const sections = document.querySelectorAll('#constitutionContent [id]');
+            let bestSection = null;
+            let bestScore = -1;
+
+            for (const section of sections) {
+                const rect = section.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+
+                // Calculate visibility score based on how much of the section is visible
+                let score = 0;
+
+                if (rect.top <= viewportHeight * 0.3 && rect.bottom >= 0) {
+                    // Section is at least partially visible in the top 30% of viewport
+                    const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+                    const totalHeight = rect.height;
+
+                    if (totalHeight > 0) {
+                        score = visibleHeight / totalHeight;
+
+                        // Bonus for sections that are near the top of viewport
+                        if (rect.top <= 120 && rect.top >= -100) { // Account for header height
+                            score += 0.5;
+                        }
+
+                        // Prefer articles over parts, schedules over sections
+                        if (section.classList.contains('article') || section.id.startsWith('schedule-')) {
+                            score += 0.3;
+                        } else if (section.classList.contains('part') || section.id === 'schedules') {
+                            score += 0.1;
+                        }
+                    }
+                }
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestSection = section;
+                }
+            }
+
+            return bestSection;
         }
 
         function linkifyAllContent() {
