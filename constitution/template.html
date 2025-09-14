@@ -326,7 +326,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
             z-index: 1000;
             display: none;
@@ -638,7 +638,7 @@
 
         .search-overlay .search-results {
             position: static;
-            max-height: 50vh;
+            max-height: 60vh;
             overflow-y: auto;
             border: none;
             border-radius: 0;
@@ -1002,6 +1002,52 @@
                 });
             }
 
+            // Index schedules
+            if (constitution.schedules && constitution.schedules.length > 0) {
+                constitution.schedules.forEach(schedule => {
+                    window.constitutionIndex.push({
+                        type: 'schedule',
+                        id: `schedule-${schedule.number}`,
+                        path: 'Schedules',
+                        title: `Schedule ${schedule.number}: ${schedule.title}`,
+                        content: getScheduleContent(schedule),
+                        priority: 2,
+                        scheduleNumber: schedule.number
+                    });
+
+                    // Index individual items within schedules
+                    if (schedule.type === 'power_list' && schedule.powers) {
+                        schedule.powers.forEach(power => {
+                            window.constitutionIndex.push({
+                                type: 'power',
+                                id: `schedule-${schedule.number}-power-${power.number}`,
+                                path: `Schedule ${schedule.number}: ${schedule.title}`,
+                                title: `Power ${power.number}`,
+                                content: power.description,
+                                priority: 3,
+                                scheduleNumber: schedule.number,
+                                powerNumber: power.number
+                            });
+                        });
+                    }
+
+                    if (schedule.type === 'administrative_division' && schedule.states) {
+                        schedule.states.forEach(state => {
+                            window.constitutionIndex.push({
+                                type: 'state',
+                                id: `schedule-${schedule.number}-state-${state.number}`,
+                                path: `Schedule ${schedule.number}: ${schedule.title}`,
+                                title: `${state.name} (${state.district_count} districts)`,
+                                content: state.districts.join(', '),
+                                priority: 3,
+                                scheduleNumber: schedule.number,
+                                stateNumber: state.number
+                            });
+                        });
+                    }
+                });
+            }
+
             constitution.parts.forEach(part => {
                 part.articles.forEach(article => {
                     const articleContent = article.content.map(item => {
@@ -1095,6 +1141,13 @@
             constitution.parts.forEach(part => {
                 tocHTML += `<li class="toc-item"><a href="#part-${part.number}" class="toc-link" onclick="navigateToSection('part-${part.number}'); closeMobileDrawer();">Part ${part.number}: ${part.title}</a></li>`;
             });
+
+            if (constitution.schedules && constitution.schedules.length > 0) {
+                tocHTML += `<li class="toc-item"><a href="#schedules" class="toc-link" onclick="navigateToSection('schedules'); closeMobileDrawer();">Schedules</a></li>`;
+                constitution.schedules.forEach(schedule => {
+                    tocHTML += `<li class="toc-item"><a href="#schedule-${schedule.number}" class="toc-link" onclick="navigateToSection('schedule-${schedule.number}'); closeMobileDrawer();" style="padding-left: 2rem; font-size: 0.85rem;">Schedule ${schedule.number}: ${schedule.title}</a></li>`;
+                });
+            }
 
             tocList.innerHTML = tocHTML;
             if (mobileTocList) {
@@ -1262,6 +1315,30 @@
 
                 container.appendChild(partDiv);
             });
+
+            // Render schedules
+            if (constitution.schedules && constitution.schedules.length > 0) {
+                const schedulesDiv = document.createElement('div');
+                schedulesDiv.className = 'part';
+                schedulesDiv.id = 'schedules';
+
+                let schedulesHTML = '';
+                constitution.schedules.forEach(schedule => {
+                    schedulesHTML += renderSchedule(schedule);
+                });
+
+                schedulesDiv.innerHTML = `
+                    <div class="part-header" onclick="togglePart(this)">
+                        <h2>Schedules</h2>
+                        <div class="part-title">Constitutional Schedules</div>
+                    </div>
+                    <div class="part-content">
+                        ${schedulesHTML}
+                    </div>
+                `;
+
+                container.appendChild(schedulesDiv);
+            }
         }
 
         function renderQNA() {
@@ -1323,27 +1400,133 @@
 
             if (!searchData) return;
 
+            // Check for direct article/schedule navigation
+            const directMatch = checkDirectNavigation(query);
+            if (directMatch) {
+                hideSearchResults();
+                navigateToSection(directMatch);
+                return;
+            }
+
+            // Enhanced search with scoring
             const results = searchData
-                .filter(item => {
-                    return item.title.toLowerCase().includes(query) ||
-                           item.content.toLowerCase().includes(query);
-                })
+                .map(item => ({
+                    ...item,
+                    score: calculateSearchScore(item, query)
+                }))
+                .filter(item => item.score > 0)
                 .sort((a, b) => {
-                    if (a.priority !== b.priority) {
-                        return a.priority - b.priority;
+                    // Sort by score first, then by priority
+                    if (a.score !== b.score) {
+                        return b.score - a.score;
                     }
-
-                    const aTitle = a.title.toLowerCase().includes(query);
-                    const bTitle = b.title.toLowerCase().includes(query);
-                    if (aTitle !== bTitle) {
-                        return bTitle - aTitle;
-                    }
-
-                    return 0;
+                    return a.priority - b.priority;
                 })
-                .slice(0, 8);
+                .slice(0, 10); // Show more results
 
             displaySearchResults(results, query);
+        }
+
+        function checkDirectNavigation(query) {
+            const cleanQuery = query.trim().toLowerCase();
+
+            // Article navigation: "article 15", "art 15", "15"
+            const articleMatch = cleanQuery.match(/^(?:article?\s*)?(\d+)\.?$/);
+            if (articleMatch) {
+                const articleNum = articleMatch[1] + '.';
+                return `part-${getPart(articleNum)}-article-${articleNum}`;
+            }
+
+            // Schedule navigation: "schedule 5", "sch 5", "s5"
+            const scheduleMatch = cleanQuery.match(/^(?:schedule?\s*|sch?\s*|s)(\d+)$/);
+            if (scheduleMatch) {
+                return `schedule-${scheduleMatch[1]}`;
+            }
+
+            return null;
+        }
+
+        function getPart(articleNumber) {
+            // Create a lookup from the constitution data if available
+            if (window.constitutionIndex) {
+                const article = window.constitutionIndex.find(item =>
+                    item.type === 'article' && item.articleNumber === articleNumber
+                );
+                if (article) return article.partNumber;
+            }
+
+            // Fallback mapping based on typical constitution structure
+            const num = parseInt(articleNumber);
+            if (num >= 1 && num <= 6) return 1;   // Preliminary
+            if (num >= 7 && num <= 18) return 2;  // Citizenship
+            if (num >= 19 && num <= 46) return 3; // Fundamental Rights
+            if (num >= 47 && num <= 57) return 4; // Directive Principles
+            // Add more as needed - this should be updated based on actual structure
+            return 1; // fallback
+        }
+
+        function calculateSearchScore(item, query) {
+            const queryLower = query.toLowerCase();
+            const titleLower = item.title.toLowerCase();
+            const contentLower = item.content.toLowerCase();
+
+            let score = 0;
+
+            // Exact phrase matches (highest score)
+            if (titleLower.includes(queryLower)) score += 100;
+            if (contentLower.includes(queryLower)) score += 50;
+
+            // Multi-word query handling
+            const queryWords = queryLower.split(/\s+/).filter(word => word.length > 2);
+            if (queryWords.length > 1) {
+                let wordMatches = 0;
+                let titleWordMatches = 0;
+
+                for (const word of queryWords) {
+                    // Exact word matches
+                    if (titleLower.includes(word)) {
+                        titleWordMatches++;
+                        score += 20;
+                    }
+                    if (contentLower.includes(word)) {
+                        wordMatches++;
+                        score += 10;
+                    }
+
+                    // Fuzzy word boundary matches
+                    const wordBoundaryRegex = new RegExp(`\\b\\w*${escapeRegExp(word)}\\w*\\b`, 'i');
+                    if (wordBoundaryRegex.test(item.title)) score += 15;
+                    if (wordBoundaryRegex.test(item.content)) score += 8;
+
+                    // Substring matches within words
+                    const substringMatches = (item.title + ' ' + item.content).toLowerCase().match(new RegExp(escapeRegExp(word), 'g'));
+                    if (substringMatches) score += substringMatches.length * 2;
+                }
+
+                // Bonus for matching all words (AND logic)
+                if (titleWordMatches === queryWords.length) score += 50;
+                if (wordMatches === queryWords.length) score += 25;
+            } else {
+                // Single word queries
+                const word = queryWords[0] || queryLower;
+
+                // Word boundary matches for partial words
+                const wordBoundaryRegex = new RegExp(`\\b\\w*${escapeRegExp(word)}\\w*\\b`, 'i');
+                if (wordBoundaryRegex.test(item.title)) score += 30;
+                if (wordBoundaryRegex.test(item.content)) score += 15;
+
+                // Substring matches
+                const titleSubstring = titleLower.indexOf(word);
+                const contentSubstring = contentLower.indexOf(word);
+                if (titleSubstring >= 0) score += 25 - (titleSubstring * 0.1); // Earlier matches score higher
+                if (contentSubstring >= 0) score += 10 - (contentSubstring * 0.01);
+            }
+
+            // Priority boost
+            if (item.priority === 1) score *= 1.5; // Preamble, QNA
+            if (item.priority === 2) score *= 1.2; // Articles, Schedules
+
+            return score;
         }
 
         function displaySearchResults(results, query) {
@@ -1354,16 +1537,26 @@
                 return;
             }
 
-            searchResults.innerHTML = results.map(result => {
-                const highlightedTitle = highlightQuery(result.title, query);
-                const highlightedContent = highlightQuery(
-                    result.content.substring(0, 120) + (result.content.length > 120 ? '...' : ''),
-                    query
-                );
+            const resultCount = results.length;
+            const hasMore = resultCount >= 10;
+
+            searchResults.innerHTML = `
+                <div style="padding: 0.75rem 1rem; background: var(--hover-bg); border-bottom: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-light);">
+                    Found ${resultCount}${hasMore ? '+' : ''} results
+                </div>
+            ` + results.map(result => {
+                const highlightedTitle = highlightMultipleTerms(result.title, query);
+                const snippetLength = 200; // Increased from 120
+                const bestSnippet = findBestSnippet(result.content, query, snippetLength);
+                const highlightedContent = highlightMultipleTerms(bestSnippet, query);
+
+                // Show score in development (remove in production)
+                const scoreDisplay = window.location.hostname === 'localhost' ?
+                    `<span style="font-size: 0.7rem; color: var(--text-light); float: right;">${Math.round(result.score || 0)}</span>` : '';
 
                 return `
                     <div class="search-result-item" onclick="navigateToResult('${result.id}', '${result.type}')">
-                        <div class="search-result-path">${result.path}</div>
+                        <div class="search-result-path">${result.path}${scoreDisplay}</div>
                         <div class="search-result-title">${highlightedTitle}</div>
                         <div class="search-result-content">${highlightedContent}</div>
                     </div>
@@ -1371,6 +1564,79 @@
             }).join('');
 
             searchResults.classList.add('show');
+        }
+
+        function findBestSnippet(content, query, maxLength) {
+            const queryWords = query.toLowerCase().split(/\s+/).filter(word => word.length > 2);
+            const contentLower = content.toLowerCase();
+
+            // Try to find the best position that contains the most query words
+            let bestStart = 0;
+            let bestScore = 0;
+
+            for (let i = 0; i < content.length - maxLength; i += 20) {
+                const snippet = contentLower.substring(i, i + maxLength);
+                let score = 0;
+
+                // Score based on query word matches in this snippet
+                for (const word of queryWords) {
+                    const matches = (snippet.match(new RegExp(escapeRegExp(word), 'g')) || []).length;
+                    score += matches * 10;
+
+                    // Bonus for word boundary matches
+                    if (new RegExp(`\\b\\w*${escapeRegExp(word)}\\w*\\b`).test(snippet)) {
+                        score += 5;
+                    }
+                }
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestStart = i;
+                }
+            }
+
+            let snippet = content.substring(bestStart, bestStart + maxLength);
+
+            // Clean up snippet boundaries (don't cut words)
+            if (bestStart > 0) {
+                const firstSpace = snippet.indexOf(' ');
+                if (firstSpace > 0 && firstSpace < 20) {
+                    snippet = snippet.substring(firstSpace + 1);
+                }
+                snippet = '...' + snippet;
+            }
+
+            if (bestStart + maxLength < content.length) {
+                const lastSpace = snippet.lastIndexOf(' ');
+                if (lastSpace > snippet.length - 20) {
+                    snippet = snippet.substring(0, lastSpace);
+                }
+                snippet = snippet + '...';
+            }
+
+            return snippet;
+        }
+
+        function highlightMultipleTerms(text, query) {
+            const queryWords = query.toLowerCase().split(/\s+/).filter(word => word.length > 2);
+            let highlightedText = text;
+
+            // First, highlight exact phrase
+            const exactPhaseRegex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+            highlightedText = highlightedText.replace(exactPhaseRegex, '<span class="search-result-highlight" style="background-color: #fef3c7;">$1</span>');
+
+            // Then highlight individual words with different colors
+            const colors = ['#dbeafe', '#dcfce7', '#fae8ff', '#fef3c7']; // Blue, green, purple, yellow
+            queryWords.forEach((word, index) => {
+                const color = colors[index % colors.length];
+
+                // Word boundary matches (fuzzy)
+                const wordBoundaryRegex = new RegExp(`\\b(\\w*${escapeRegExp(word)}\\w*)\\b`, 'gi');
+                highlightedText = highlightedText.replace(wordBoundaryRegex,
+                    `<span class="search-result-highlight" style="background-color: ${color};">$1</span>`);
+            });
+
+            return highlightedText;
         }
 
         function navigateToResult(id, type) {
@@ -1468,6 +1734,148 @@
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
 
+        function getScheduleContent(schedule) {
+            let content = schedule.title || '';
+
+            if (schedule.type === 'power_list' && schedule.powers) {
+                content += ' ' + schedule.powers.map(p => p.description).join(' ');
+            } else if (schedule.type === 'administrative_division' && schedule.states) {
+                content += ' ' + schedule.states.map(s => s.districts.join(' ')).join(' ');
+            } else if (schedule.type === 'anthem' && schedule.full_text) {
+                content += ' ' + schedule.full_text;
+            } else if (schedule.type === 'instructions' && schedule.sections) {
+                content += ' ' + schedule.sections.map(s => {
+                    if (s.steps) {
+                        return s.steps.map(step => step.instruction).join(' ');
+                    }
+                    return s.text || '';
+                }).join(' ');
+            } else if (schedule.description) {
+                content += ' ' + schedule.description;
+            }
+
+            return content;
+        }
+
+        function renderSchedule(schedule) {
+            const scheduleId = `schedule-${schedule.number}`;
+            let contentHTML = '';
+
+            if (schedule.type === 'instructions' && schedule.sections) {
+                contentHTML = renderInstructionsSchedule(schedule);
+            } else if (schedule.type === 'anthem') {
+                contentHTML = renderAnthemSchedule(schedule);
+            } else if (schedule.type === 'emblem') {
+                contentHTML = renderEmblemSchedule(schedule);
+            } else if (schedule.type === 'administrative_division') {
+                contentHTML = renderAdminDivisionSchedule(schedule);
+            } else if (schedule.type === 'power_list') {
+                contentHTML = renderPowerListSchedule(schedule);
+            } else {
+                contentHTML = `<div class="article"><div class="article-content"><p>${schedule.title}</p></div></div>`;
+            }
+
+            return `
+                <div class="article" id="${scheduleId}">
+                    <div class="article-header">
+                        <span class="article-number">Schedule ${schedule.number}</span>
+                        <span class="article-title">${schedule.title}</span>
+                        <a href="#${scheduleId}" class="permalink" onclick="copyPermalink('${scheduleId}')">🔗</a>
+                    </div>
+                    <div class="article-content">
+                        ${schedule.article_reference ? `<p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem;"><em>Relating to ${schedule.article_reference}</em></p>` : ''}
+                        ${contentHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderInstructionsSchedule(schedule) {
+            if (!schedule.sections) return '';
+
+            return schedule.sections.map(section => {
+                if (section.type === 'instructions' && section.steps) {
+                    return `
+                        <div style="margin: 1.5rem 0;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">${section.title}</h4>
+                            <ul style="margin-left: 1rem;">
+                                ${section.steps.map(step =>
+                                    `<li style="margin: 0.5rem 0;"><strong>${step.number}.</strong> ${step.instruction}</li>`
+                                ).join('')}
+                            </ul>
+                        </div>
+                    `;
+                } else if (section.type === 'explanation' || section.type === 'note') {
+                    return `
+                        <div style="margin: 1.5rem 0; padding: 1rem; background: var(--hover-bg); border-radius: 8px;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">${section.title}</h4>
+                            <p style="font-style: italic;">${section.text}</p>
+                        </div>
+                    `;
+                }
+                return '';
+            }).join('');
+        }
+
+        function renderAnthemSchedule(schedule) {
+            if (!schedule.lines) return '';
+
+            return `
+                <div style="text-align: center; font-family: serif; line-height: 2; margin: 2rem 0;">
+                    ${schedule.lines.map(line =>
+                        `<div style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--text-color);">${line}</div>`
+                    ).join('')}
+                </div>
+            `;
+        }
+
+        function renderEmblemSchedule(schedule) {
+            return `
+                <div style="text-align: center; margin: 2rem 0;">
+                    <p style="font-size: 1rem; color: var(--text-color); line-height: 1.6;">${schedule.description}</p>
+                </div>
+            `;
+        }
+
+        function renderAdminDivisionSchedule(schedule) {
+            if (!schedule.states) return '';
+
+            return `
+                <div style="margin: 1rem 0;">
+                    <p style="margin-bottom: 1rem; color: var(--text-color);"><strong>Total: ${schedule.total_states} states, ${schedule.total_districts} districts</strong></p>
+                    <div style="display: grid; gap: 1.5rem;">
+                        ${schedule.states.map(state => `
+                            <div id="schedule-${schedule.number}-state-${state.number}" style="border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">${state.name} (${state.district_count} districts)</h4>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                                    ${state.districts.map(district =>
+                                        `<span style="padding: 0.25rem 0.5rem; background: var(--hover-bg); border-radius: 4px; font-size: 0.9rem;">${district}</span>`
+                                    ).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPowerListSchedule(schedule) {
+            if (!schedule.powers) return '';
+
+            return `
+                <div style="margin: 1rem 0;">
+                    <p style="margin-bottom: 1rem; color: var(--text-color);"><strong>Total powers: ${schedule.total_powers}</strong></p>
+                    <ul style="margin-left: 1rem;">
+                        ${schedule.powers.map(power => `
+                            <li id="schedule-${schedule.number}-power-${power.number}" style="margin: 0.75rem 0; line-height: 1.5;">
+                                <strong>${power.number}.</strong> ${power.description}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
         // Search overlay functionality
         function setupSearchOverlay() {
             const searchInput = document.getElementById('overlaySearchInput');
@@ -1498,35 +1906,45 @@
 
             if (!searchData) return;
 
+            // Check for direct navigation (same as main search)
+            const directMatch = checkDirectNavigation(query);
+            if (directMatch) {
+                hideSearch();
+                navigateToSection(directMatch);
+                return;
+            }
+
+            // Use the same enhanced search logic
             const results = searchData
-                .filter(item => {
-                    return item.title.toLowerCase().includes(query) ||
-                           item.content.toLowerCase().includes(query);
-                })
+                .map(item => ({
+                    ...item,
+                    score: calculateSearchScore(item, query)
+                }))
+                .filter(item => item.score > 0)
                 .sort((a, b) => {
-                    if (a.priority !== b.priority) {
-                        return a.priority - b.priority;
+                    if (a.score !== b.score) {
+                        return b.score - a.score;
                     }
-                    const aTitle = a.title.toLowerCase().includes(query);
-                    const bTitle = b.title.toLowerCase().includes(query);
-                    if (aTitle !== bTitle) {
-                        return bTitle - aTitle;
-                    }
-                    return 0;
+                    return a.priority - b.priority;
                 })
-                .slice(0, 8);
+                .slice(0, 12); // Show more in overlay
 
             if (results.length === 0) {
                 searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
                 return;
             }
 
-            searchResults.innerHTML = results.map(result => {
-                const highlightedTitle = highlightQuery(result.title, query);
-                const highlightedContent = highlightQuery(
-                    result.content.substring(0, 100) + (result.content.length > 100 ? '...' : ''),
-                    query
-                );
+            const resultCount = results.length;
+            const hasMore = resultCount >= 12;
+
+            searchResults.innerHTML = `
+                <div style="padding: 0.75rem 1rem; background: var(--hover-bg); border-bottom: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-light);">
+                    Found ${resultCount}${hasMore ? '+' : ''} results
+                </div>
+            ` + results.map(result => {
+                const highlightedTitle = highlightMultipleTerms(result.title, query);
+                const bestSnippet = findBestSnippet(result.content, query, 180);
+                const highlightedContent = highlightMultipleTerms(bestSnippet, query);
 
                 return `
                     <div class="search-result-item" onclick="navigateToOverlayResult('${result.id}', '${result.type}')">
