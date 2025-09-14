@@ -12637,6 +12637,822 @@
                 ]
             }
         ],
-        "schedules": []
+        "schedules": [
+            {
+                "number": 1,
+                "title": "National Flag of Nepal",
+                "article_reference": "Article 8(2)",
+                "type": "instructions",
+                "sections": [
+                    {
+                        "title": "Method of making the shape inside the border",
+                        "type": "instructions",
+                        "steps": [
+                            {
+                                "number": 1,
+                                "instruction": "On the lower portion of a crimson cloth draw a line AB of the required  length from left to right."
+                            },
+                            {
+                                "number": 2,
+                                "instruction": "From A draw a line AC perpendicular to AB making AC equal to AB  plus one third AB. From AC mark off D making line AD equal to line  AB. Join B and D."
+                            },
+                            {
+                                "number": 3,
+                                "instruction": "From BD mark off E making BE equal to AB."
+                            },
+                            {
+                                "number": 4,
+                                "instruction": "Touching E draw a line FG, starting from the point F on line AC, parallel  to AB to the right hand -side. Mark off FG equal to A B."
+                            },
+                            {
+                                "number": 5,
+                                "instruction": "Join C and G."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Method of making the moon",
+                        "type": "instructions",
+                        "steps": [
+                            {
+                                "number": 6,
+                                "instruction": "From AB mark off AH making AH equal to one -fourth of line AB and  starting from H draw a line HI parallel to line AC touching line CG at  point I."
+                            },
+                            {
+                                "number": 7,
+                                "instruction": "Bisect CF at J and draw a line JK parallel to AB touching CG at point K."
+                            },
+                            {
+                                "number": 8,
+                                "instruction": "Let L be the point where lines JK and HI cut one another."
+                            },
+                            {
+                                "number": 9,
+                                "instruction": "Join J and G."
+                            },
+                            {
+                                "number": 10,
+                                "instruction": "Let M be the point where line JG and HI cut one another."
+                            },
+                            {
+                                "number": 11,
+                                "instruction": "With centre M and with a distance shortest from M to BD mark off N on  the lower porti on of line HI."
+                            },
+                            {
+                                "number": 12,
+                                "instruction": "Touching M and starting from O, a point on AC, draw a line from left to  right parallel to AB."
+                            },
+                            {
+                                "number": 13,
+                                "instruction": "With centre L and radius LN draw a semi -circle on the lower portion and  let P and Q be the points where it touches the line OM respective ly."
+                            },
+                            {
+                                "number": 14,
+                                "instruction": "With centre M and radius MQ draw a semi -circle on the lower portion  touching P and Q."
+                            },
+                            {
+                                "number": 15,
+                                "instruction": "With centre N and radius NM draw an arc touching PNQ at R and S. Join  RS. Let T be the point where RS and HI cut one another."
+                            },
+                            {
+                                "number": 16,
+                                "instruction": "With centre T and radius TS draw a semi -circle on the upper portion of  PNQ  touching it at two points."
+                            },
+                            {
+                                "number": 17,
+                                "instruction": "With centre T and radius TM draw an arc on the upper portion of PNQ  touching at two points."
+                            },
+                            {
+                                "number": 18,
+                                "instruction": "Eight equal and similar triangles of the moon are to be made in the space  lying inside the semi-circle of No.(16) and outside the arc of No.(17) of this schedule."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Method of making the sun",
+                        "type": "instructions",
+                        "steps": [
+                            {
+                                "number": 19,
+                                "instruction": "Bisect line AF at U, and draw a line UV parallel to AB line touching line  BE at V."
+                            },
+                            {
+                                "number": 20,
+                                "instruction": "With centre W, the point where HI and UV cut one another and radius  MN draw a circle."
+                            },
+                            {
+                                "number": 21,
+                                "instruction": "With centre W and radius LN draw a circle."
+                            },
+                            {
+                                "number": 22,
+                                "instruction": "Twelve equal and similar triangles of the sun are to be made in the space enclosed by the circles of No. (20) and of No. (21) with the two apexes of two triangles touching line HI."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Method of making the border",
+                        "type": "instructions",
+                        "steps": [
+                            {
+                                "number": 23,
+                                "instruction": "The width of the border will be equal to the width TN. This will be of deep blue colour and will be provided on all the side of the flag. However, on the five angles of the flag the external angles will be equal to the internal angles."
+                            },
+                            {
+                                "number": 24,
+                                "instruction": "The above mentioned border will be provided if the flag is to be used with a rope. On the other hand, if it is to be hoisted on a pole, the hole on the border on the side AC can be extended according to requirements."
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Explanation",
+                        "type": "explanation",
+                        "text": "Explanation: The lines HI, RS, FE, ED, JG, OQ, JK and UV are imaginary. Similarly, the external and internal circles of the sun and the other arcs except the crescent moon are also imaginary. These are not shown on the flag."
+                    },
+                    {
+                        "title": "Note",
+                        "type": "note",
+                        "text": "Note bene: The size of the National Flag of Nepal shall be as determined by the Government of Nepal."
+                    }
+                ]
+            },
+            {
+                "number": 2,
+                "title": "National Anthem of Nepal",
+                "article_reference": "Article 9(1)",
+                "type": "anthem",
+                "lines": [
+                    "Sayaun Thunga Phool Ka Hami Eutai Mala Nepali",
+                    "Sarvavhaum Vai Failiyeka Mechi Mahakali",
+                    "Prakitika Koti Koti Sampada Ko Aanchala",
+                    "Bir Haruka Ragata Le Swatantra Ra Atala",
+                    "Gyana Bhumi Shanti Bhumi Terai Pahad Himala",
+                    "Akhanda Yo Pyaro Hamro Matri Bhumi Nepal",
+                    "Bahul Jati Bhasa Dharma Sanskriti Chan Bishala",
+                    "Agragami Rastra Hamro Jaya Jaya Nepal."
+                ],
+                "full_text": "Sayaun Thunga Phool Ka Hami Eutai Mala Nepali\nSarvavhaum Vai Failiyeka Mechi Mahakali\nPrakitika Koti Koti Sampada Ko Aanchala\nBir Haruka Ragata Le Swatantra Ra Atala\nGyana Bhumi Shanti Bhumi Terai Pahad Himala\nAkhanda Yo Pyaro Hamro Matri Bhumi Nepal\nBahul Jati Bhasa Dharma Sanskriti Chan Bishala\nAgragami Rastra Hamro Jaya Jaya Nepal."
+            },
+            {
+                "number": 3,
+                "title": "Coat of Arms of Nepal",
+                "article_reference": "Article 9(2)",
+                "type": "emblem",
+                "description": "This Coat of Arms may be made in larger or smaller size as per necessity. The colour determined by the Government of Nepal shall be used on it."
+            },
+            {
+                "number": 4,
+                "title": "States, and Districts to be included in the concerned States",
+                "article_reference": "Article 56(3)",
+                "type": "administrative_division",
+                "total_states": 7,
+                "total_districts": 77,
+                "states": [
+                    {
+                        "number": 1,
+                        "name": "State No. 1",
+                        "districts": [
+                            "Taplejung",
+                            "Panchthar",
+                            "Ilam",
+                            "Sankhuwasabha",
+                            "Tehrathum",
+                            "Dhankuta",
+                            "Bhojpur",
+                            "Khotang",
+                            "Solukhumbu",
+                            "Okhaldhunga",
+                            "Udayapur",
+                            "Jhapa",
+                            "Morang",
+                            "Sunsari"
+                        ],
+                        "district_count": 14
+                    },
+                    {
+                        "number": 2,
+                        "name": "State No. 2",
+                        "districts": [
+                            "Saptari",
+                            "Siraha",
+                            "Dhanusa",
+                            "Mahottari",
+                            "Sarlahi",
+                            "Rautahat",
+                            "Bara",
+                            "Parsa"
+                        ],
+                        "district_count": 8
+                    },
+                    {
+                        "number": 3,
+                        "name": "State No. 3",
+                        "districts": [
+                            "Dolakha",
+                            "Ramechhap",
+                            "Sindhuli",
+                            "Kavrepalanchok",
+                            "Sindhupalchok",
+                            "Rasuwa",
+                            "Nuwakot",
+                            "Dhading",
+                            "Chitwan",
+                            "Makawanpur",
+                            "Bhaktapur",
+                            "Lalitpur",
+                            "Kathmandu"
+                        ],
+                        "district_count": 13
+                    },
+                    {
+                        "number": 4,
+                        "name": "State No. 4",
+                        "districts": [
+                            "Gorkha",
+                            "Lamjung",
+                            "Tanahun",
+                            "Kaski",
+                            "Manang",
+                            "Mustang",
+                            "Parbat",
+                            "Syangja",
+                            "Myagdi",
+                            "Baglung",
+                            "Nawalparasi (East of Bardaghat Susta)"
+                        ],
+                        "district_count": 11
+                    },
+                    {
+                        "number": 5,
+                        "name": "State No. 5",
+                        "districts": [
+                            "Nawalparasi (West of Bardaghat Susta)",
+                            "Rupandehi",
+                            "Kapilbastu",
+                            "Palpa",
+                            "Arghakhanchi",
+                            "Gulmi",
+                            "Rukun (Eastern Part)",
+                            "Rolpa",
+                            "Pyuthan",
+                            "Daang",
+                            "Banke",
+                            "Bardiya"
+                        ],
+                        "district_count": 12
+                    },
+                    {
+                        "number": 6,
+                        "name": "State No. 6",
+                        "districts": [
+                            "Rukum (Western Part)",
+                            "Salyan",
+                            "Dolpa",
+                            "Jumla",
+                            "Mugu",
+                            "Humla",
+                            "Kalikot",
+                            "Jajarkot",
+                            "Dailekh",
+                            "Surkhet"
+                        ],
+                        "district_count": 10
+                    },
+                    {
+                        "number": 7,
+                        "name": "State No. 7",
+                        "districts": [
+                            "Bajura",
+                            "Bajhang",
+                            "Doti",
+                            "Achham",
+                            "Darchula",
+                            "Baitadi",
+                            "Dadeldhura",
+                            "Kanchanpur",
+                            "Kailali"
+                        ],
+                        "district_count": 9
+                    }
+                ]
+            },
+            {
+                "number": 5,
+                "article_reference": "Article 57(1), Article 109",
+                "title": "List of Federal Power",
+                "type": "power_list",
+                "powers": [
+                    {
+                        "number": 1,
+                        "description": "Relating to defence and military  (a) Protection of national unity and territorial integrity  (b) Relating to national security"
+                    },
+                    {
+                        "number": 2,
+                        "description": "War and defence"
+                    },
+                    {
+                        "number": 3,
+                        "description": "Arms and ammunitions factories and production thereof"
+                    },
+                    {
+                        "number": 4,
+                        "description": "Central Police, Armed Police Force, national intelligence and investigation, peace , security"
+                    },
+                    {
+                        "number": 5,
+                        "description": "Central planning, central bank, fina nce policies, monetary and banking, monetary policies, foreign grants, aid and loans"
+                    },
+                    {
+                        "number": 6,
+                        "description": "Foreign and diplomatic affairs, international relations and United Nations related matters"
+                    },
+                    {
+                        "number": 7,
+                        "description": "International tr eaties or agreements, extradition, mutual legal assistance and international borders , international boundary rivers"
+                    },
+                    {
+                        "number": 8,
+                        "description": "Telecommunications , allocation of radio frequency, radio, television and postal matters"
+                    },
+                    {
+                        "number": 9,
+                        "description": "Customs, excise -duty, value -added tax, corporate income tax, individual income tax, remuneration tax, passport fee, visa fee, tourism fee, service charge and fee, penalty  230"
+                    },
+                    {
+                        "number": 10,
+                        "description": "Federal civil service, judicial service and other government services"
+                    },
+                    {
+                        "number": 11,
+                        "description": "Polic ies relating to conservation and multiple uses of water resources"
+                    },
+                    {
+                        "number": 12,
+                        "description": "Inland and inter -State electricity transmission lines"
+                    },
+                    {
+                        "number": 13,
+                        "description": "Central statistics (national and international standards and quality)"
+                    },
+                    {
+                        "number": 14,
+                        "description": "Central level large electricity, irrigation and other projects"
+                    },
+                    {
+                        "number": 15,
+                        "description": "Central universities, central level academies, universities standards and regulation, central libraries"
+                    },
+                    {
+                        "number": 16,
+                        "description": "Health policies, health services, health standards, quality and monitoring, national or specialised service providing hospital s, traditional treatment services and communicable disease control"
+                    },
+                    {
+                        "number": 17,
+                        "description": "Federal Parliament, Federal Executive, Local Level related affairs, special structure"
+                    },
+                    {
+                        "number": 18,
+                        "description": "International trade, exchange, port, quarantine"
+                    },
+                    {
+                        "number": 19,
+                        "description": "Civil aviation, international airports"
+                    },
+                    {
+                        "number": 20,
+                        "description": "National transportation policies, management of railways and national highways"
+                    },
+                    {
+                        "number": 21,
+                        "description": "Laws relating to the Supreme Court, High Courts, District Courts and administration of justice"
+                    },
+                    {
+                        "number": 22,
+                        "description": "Citizenship, passport, visa, immigration"
+                    },
+                    {
+                        "number": 23,
+                        "description": "Atomic energy, air sp ace and astronomy"
+                    },
+                    {
+                        "number": 24,
+                        "description": "Intellectual property (including patents, designs, trademarks and  231  copyrights)"
+                    },
+                    {
+                        "number": 25,
+                        "description": "Measurement"
+                    },
+                    {
+                        "number": 26,
+                        "description": "Mines excavation"
+                    },
+                    {
+                        "number": 27,
+                        "description": "National and international environment management, national parks, wildlife reserves and wetlands, national forest policies, carbon services"
+                    },
+                    {
+                        "number": 28,
+                        "description": "Insurance policies, securities, cooperatives regulation"
+                    },
+                    {
+                        "number": 29,
+                        "description": "Land use policies, human settlement development policies, tourism policies, environment adaptation"
+                    },
+                    {
+                        "number": 30,
+                        "description": "Criminal and civil laws making"
+                    },
+                    {
+                        "number": 31,
+                        "description": "Security printing"
+                    },
+                    {
+                        "number": 32,
+                        "description": "Social security and poverty alleviation"
+                    },
+                    {
+                        "number": 33,
+                        "description": "Constitutional Bodies, commission s of national importance"
+                    },
+                    {
+                        "number": 34,
+                        "description": "Sites of archaeological importance and ancient monuments"
+                    },
+                    {
+                        "number": 35,
+                        "description": "Any matter not enumerated in the Lists of Federal Powers, State Powers and Local Level Powers or in the Concurrent List and any matter not specified in this Constitution and in the Federal laws"
+                    }
+                ],
+                "total_powers": 35
+            },
+            {
+                "number": 6,
+                "article_reference": "Article 57(2), Article 162(4), Article 197, Article 231(3), Article 232(7), Article 274(4), Article 296(4)",
+                "title": "List of State Power",
+                "type": "power_list",
+                "powers": [
+                    {
+                        "number": 1,
+                        "description": "State police administration and peace and order"
+                    },
+                    {
+                        "number": 2,
+                        "description": "Operation of banks and financial institutions in accordance with the policies of Nepal Rastra Bank , cooperative institutions, foreign grants and assistance with the consent of the Centre"
+                    },
+                    {
+                        "number": 3,
+                        "description": "Operation of Radio, F.M., television"
+                    },
+                    {
+                        "number": 4,
+                        "description": "House and land registration fee , motor vehicle tax , entertainment tax, advertisement tax , tourism , agro-income tax, service charge, fee, penalty"
+                    },
+                    {
+                        "number": 5,
+                        "description": "State civi l service and other government services"
+                    },
+                    {
+                        "number": 6,
+                        "description": "State statistics"
+                    },
+                    {
+                        "number": 7,
+                        "description": "State level electricity, irrigation and water supply services, navigation"
+                    },
+                    {
+                        "number": 8,
+                        "description": "State universities, higher education, libraries , museums"
+                    },
+                    {
+                        "number": 9,
+                        "description": "Health services"
+                    },
+                    {
+                        "number": 10,
+                        "description": "Matters relating to the State Assembly, State Council of Ministers"
+                    },
+                    {
+                        "number": 11,
+                        "description": "Intra-State trade"
+                    },
+                    {
+                        "number": 12,
+                        "description": "State highways  233"
+                    },
+                    {
+                        "number": 13,
+                        "description": "State bureau of in vestigation"
+                    },
+                    {
+                        "number": 14,
+                        "description": "Physical management and other necessary matters of State governmental offices"
+                    },
+                    {
+                        "number": 15,
+                        "description": "State Public Service Commission"
+                    },
+                    {
+                        "number": 16,
+                        "description": "Management of lands, land records"
+                    },
+                    {
+                        "number": 17,
+                        "description": "Exploration and management of mines"
+                    },
+                    {
+                        "number": 18,
+                        "description": "Protection and use of languages, scripts , cultures, fine arts and religions"
+                    },
+                    {
+                        "number": 19,
+                        "description": "Use of forests and waters and management of environment within the State"
+                    },
+                    {
+                        "number": 20,
+                        "description": "Agriculture and livestock development, factories, industrialization, trade, business, transportation"
+                    },
+                    {
+                        "number": 21,
+                        "description": "Management of trusts ( Guthi )"
+                    }
+                ],
+                "total_powers": 21
+            },
+            {
+                "number": 7,
+                "article_reference": "Article 57(3), Article 109, Article 162(4), Article 197",
+                "title": "List of Concurrent Powers of Federation and State",
+                "type": "power_list",
+                "powers": [
+                    {
+                        "number": 1,
+                        "description": "Civil and criminal procedure, evidence and oaths ( legal recognition,  public acts and records, and judicial proceedings)"
+                    },
+                    {
+                        "number": 2,
+                        "description": "Supply, distribution, price control, quality and monitoring of essential goods and services"
+                    },
+                    {
+                        "number": 3,
+                        "description": "Preventive detention for reasons connected with the security of the country , prison and detention manage ment , and maintenance of peace and order"
+                    },
+                    {
+                        "number": 4,
+                        "description": "Transfer of accused persons, detainees and prisoners from one State to another State"
+                    },
+                    {
+                        "number": 5,
+                        "description": "Laws relating to family affairs (marriage, transfer of property, divorce, persons on the verge of extinction, orphan, adoption, succession and joint family)"
+                    },
+                    {
+                        "number": 6,
+                        "description": "Acquisition, requisitioning of property and creation of right in property"
+                    },
+                    {
+                        "number": 7,
+                        "description": "Contracts, cooperatives, partnership and agency related matters"
+                    },
+                    {
+                        "number": 8,
+                        "description": "Matters relating to bankruptcy and insolvency"
+                    },
+                    {
+                        "number": 9,
+                        "description": "Drugs and p esticides"
+                    },
+                    {
+                        "number": 10,
+                        "description": "Planning, family planning and population management  235"
+                    },
+                    {
+                        "number": 11,
+                        "description": "Social security and employment, trade unions, settlement of industrial  disputes, and labour rights and disputes related matters"
+                    },
+                    {
+                        "number": 12,
+                        "description": "Legal profession, auditing, engineering, medicines, Ayurvedic  medicines, veterinary, Amchi and other professions"
+                    },
+                    {
+                        "number": 13,
+                        "description": "State boundary river, waterways, environment protection, biological diversity"
+                    },
+                    {
+                        "number": 14,
+                        "description": "Matters related to means of communication"
+                    },
+                    {
+                        "number": 15,
+                        "description": "Industries and mines and physical infrastructures"
+                    },
+                    {
+                        "number": 16,
+                        "description": "Casino, lottery"
+                    },
+                    {
+                        "number": 17,
+                        "description": "Early preparedness for, rescue, relief and rehabilitation from, natural and man made calamit ies"
+                    },
+                    {
+                        "number": 18,
+                        "description": "Tourism, water supply and sanitation"
+                    },
+                    {
+                        "number": 19,
+                        "description": "Motion pictures, cinema halls and sports"
+                    },
+                    {
+                        "number": 20,
+                        "description": "Insurance business operation and management"
+                    },
+                    {
+                        "number": 21,
+                        "description": "Poverty alleviation and industrialization"
+                    },
+                    {
+                        "number": 22,
+                        "description": "Scientific research, science and technology and human resources development"
+                    },
+                    {
+                        "number": 23,
+                        "description": "Utilization of forests, mountains, forest conservation areas and waters stretching in inter -State form"
+                    },
+                    {
+                        "number": 24,
+                        "description": "Land policies and laws relating thereto"
+                    },
+                    {
+                        "number": 25,
+                        "description": "Employment and unemployment aid"
+                    }
+                ],
+                "total_powers": 25
+            },
+            {
+                "number": 8,
+                "article_reference": "Article 57(4), Article 214(2), Article 221(2), Article 226(1)",
+                "title": "List of Local Level Power",
+                "type": "power_list",
+                "powers": [
+                    {
+                        "number": 1,
+                        "description": "Town police"
+                    },
+                    {
+                        "number": 2,
+                        "description": "Cooperative institutions"
+                    },
+                    {
+                        "number": 3,
+                        "description": "Operation of F.M."
+                    },
+                    {
+                        "number": 4,
+                        "description": "Local taxes ( wealth tax, house rent tax, land and building registration fee, motor vehicle tax ), service charge, fee, tourism fee, advertisement tax , business tax, land tax (land revenue), penalty, entertainment tax, land revenue collection"
+                    },
+                    {
+                        "number": 5,
+                        "description": "Management of the Local services"
+                    },
+                    {
+                        "number": 6,
+                        "description": "Collection of local statistics and records"
+                    },
+                    {
+                        "number": 7,
+                        "description": "Local level development plans and projects"
+                    },
+                    {
+                        "number": 8,
+                        "description": "Basic and secondary education"
+                    },
+                    {
+                        "number": 9,
+                        "description": "Basic health and sanitation"
+                    },
+                    {
+                        "number": 10,
+                        "description": "Local market m anagement , environment protection and bio - diversity"
+                    },
+                    {
+                        "number": 11,
+                        "description": "Local roads, rural roads, agro -roads , irrigation  238"
+                    },
+                    {
+                        "number": 12,
+                        "description": "Management of Village Assembly, Municipal Assembly, District Assembly, local courts, mediation and arbitration"
+                    },
+                    {
+                        "number": 13,
+                        "description": "Local records managem ent"
+                    },
+                    {
+                        "number": 14,
+                        "description": "Distribution of house and land ownership certificates"
+                    },
+                    {
+                        "number": 15,
+                        "description": "Agriculture and animal husbandry , agro -products management, animal health, cooperatives"
+                    },
+                    {
+                        "number": 16,
+                        "description": "Management of senior citizens, persons with disabilities and the incapacitated"
+                    },
+                    {
+                        "number": 17,
+                        "description": "Collection of statistics of the unemployed"
+                    },
+                    {
+                        "number": 18,
+                        "description": "Management, operation and control of agricultural extension"
+                    },
+                    {
+                        "number": 19,
+                        "description": "Water supply, small hydropower projects, alternative energy"
+                    },
+                    {
+                        "number": 20,
+                        "description": "Disaster management"
+                    },
+                    {
+                        "number": 21,
+                        "description": "Protection of watersheds, wildlife, mines and minerals"
+                    },
+                    {
+                        "number": 22,
+                        "description": "Protection and development of languages, cultures and fine arts"
+                    }
+                ],
+                "total_powers": 22
+            },
+            {
+                "number": 9,
+                "article_reference": "Article 57(5), Article 109, Article 162(4), Article 197, Article 214(2), Article 221(2), Article 226(1)",
+                "title": "List of Concurrent Powers of Federation, State and Local Level",
+                "type": "power_list",
+                "powers": [
+                    {
+                        "number": 1,
+                        "description": "Cooperatives"
+                    },
+                    {
+                        "number": 2,
+                        "description": "Education, health and newspapers"
+                    },
+                    {
+                        "number": 3,
+                        "description": "Health"
+                    },
+                    {
+                        "number": 4,
+                        "description": "Agriculture"
+                    },
+                    {
+                        "number": 5,
+                        "description": "Services such as electricity, water supply, irrigation"
+                    },
+                    {
+                        "number": 6,
+                        "description": "Service fee, charge, penalty and royalty from natural resources, tourism fee"
+                    },
+                    {
+                        "number": 7,
+                        "description": "Forests, wildlife, birds, water uses, environment, ecology and bio-diversity"
+                    },
+                    {
+                        "number": 8,
+                        "description": "Mines and minerals"
+                    },
+                    {
+                        "number": 9,
+                        "description": "Disaster management"
+                    },
+                    {
+                        "number": 10,
+                        "description": "Social security and poverty alleviation"
+                    },
+                    {
+                        "number": 11,
+                        "description": "Personal events, births, deaths, marriages and statistics"
+                    },
+                    {
+                        "number": 12,
+                        "description": "Archaeology, ancient monuments and museums  240"
+                    },
+                    {
+                        "number": 13,
+                        "description": "Landless squatters management"
+                    },
+                    {
+                        "number": 14,
+                        "description": "Royalty from natural resources"
+                    },
+                    {
+                        "number": 15,
+                        "description": "Motor vehicle permits"
+                    }
+                ],
+                "total_powers": 15
+            }
+        ]
     }
 }
