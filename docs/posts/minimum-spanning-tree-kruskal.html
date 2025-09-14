@@ -90,6 +90,21 @@
           background-color: #f3f4f6;
           transform: translateX(20px);
         }
+
+        /* Cusdis custom styles */
+        #cusdis_thread iframe {
+          min-height: 600px !important;
+          height: auto !important;
+        }
+
+        #cusdis_thread {
+          overflow: visible !important;
+        }
+
+        /* Override any Cusdis container height restrictions */
+        [data-cusdis] {
+          min-height: 600px !important;
+        }
     </style>
 
 </head>
@@ -230,46 +245,38 @@ That's all about the Kruskal's Algorithm. Easy, ain't it??</p>
 </div>
 
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cusdis Comment Component</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 p-8">
-    <!-- Demo content to show context -->
-    <div class="max-w-4xl mx-auto">
-        <!-- Cusdis Comment Component -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <!-- Comments Section -->
+    <div class="mt-16 border-t border-gray-200 dark:border-gray-700 pt-8">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
             <!-- Comment Section Header -->
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h2 class="text-xl font-semibold text-gray-900 flex items-center">
-                    <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                     </svg>
                     Comments
                 </h2>
-                <p class="text-sm text-gray-500 mt-1">Join the conversation below</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Join the conversation below</p>
             </div>
 
             <!-- Cusdis Container -->
             <div class="p-6">
                 <div id="cusdis_thread"
-                     class="transition-all duration-300 ease-in-out"
                      data-host="https://cusdis.com"
                      data-app-id="306917f0-653d-4447-9cca-458086bdeb86"
                      data-page-id="minimum-spanning-tree-kruskal"
                      data-page-url="https://bewakes.com/posts/minimum-spanning-tree-kruskal.html"
                      data-page-title="Minimum Spanning Tree using Kruskal&#x27;s Algorithm"
-                     data-theme="light">
+                     data-theme="auto">
                     <!-- Loading state -->
                     <div id="cusdis-loading" class="flex items-center justify-center py-12">
-                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-                        <span class="ml-3 text-gray-600">Loading comments...</span>
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 dark:border-blue-400"></div>
+                        <span class="ml-3 text-gray-600 dark:text-gray-300">Loading comments...</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
   </main>
 
 
@@ -315,19 +322,33 @@ That's all about the Kruskal's Algorithm. Easy, ain't it??</p>
       };
     }
 
+    // Function to update Cusdis theme
+    function updateCusdisTheme(isDark) {
+      const cusdisThread = document.getElementById('cusdis_thread');
+      if (cusdisThread) {
+        cusdisThread.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        // Reload Cusdis if it's already loaded
+        if (window.CUSDIS && typeof window.CUSDIS.reload === 'function') {
+          window.CUSDIS.reload();
+        }
+      }
+    }
+
     // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Initialize theme
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       htmlEl.classList.add('dark');
       toggle.checked = true;
       loadPrismTheme(true);
+      updateCusdisTheme(true);
     } else {
       htmlEl.classList.remove('dark');
       toggle.checked = false;
       loadPrismTheme(false);
+      updateCusdisTheme(false);
     }
 
     // Toggle event listener
@@ -336,10 +357,12 @@ That's all about the Kruskal's Algorithm. Easy, ain't it??</p>
         htmlEl.classList.add('dark');
         localStorage.setItem('theme', 'dark');
         loadPrismTheme(true);
+        updateCusdisTheme(true);
       } else {
         htmlEl.classList.remove('dark');
         localStorage.setItem('theme', 'light');
         loadPrismTheme(false);
+        updateCusdisTheme(false);
       }
     });
   </script>

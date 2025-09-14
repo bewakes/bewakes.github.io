@@ -63,7 +63,7 @@ def build_webpage():
     html_content = html_content.replace('INSERT_QNA_JSON_HERE', qna_json)
 
     # Write the final webpage
-    output_path = '../docs/constitution.html'
+    output_path = 'constitution.html'
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
 

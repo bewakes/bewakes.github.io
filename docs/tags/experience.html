@@ -90,6 +90,21 @@
           background-color: #f3f4f6;
           transform: translateX(20px);
         }
+
+        /* Cusdis custom styles */
+        #cusdis_thread iframe {
+          min-height: 600px !important;
+          height: auto !important;
+        }
+
+        #cusdis_thread {
+          overflow: visible !important;
+        }
+
+        /* Override any Cusdis container height restrictions */
+        [data-cusdis] {
+          min-height: 600px !important;
+        }
     </style>
 
 </head>
@@ -211,19 +226,33 @@
       };
     }
 
+    // Function to update Cusdis theme
+    function updateCusdisTheme(isDark) {
+      const cusdisThread = document.getElementById('cusdis_thread');
+      if (cusdisThread) {
+        cusdisThread.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        // Reload Cusdis if it's already loaded
+        if (window.CUSDIS && typeof window.CUSDIS.reload === 'function') {
+          window.CUSDIS.reload();
+        }
+      }
+    }
+
     // Check for saved theme preference or default to light mode
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Initialize theme
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       htmlEl.classList.add('dark');
       toggle.checked = true;
       loadPrismTheme(true);
+      updateCusdisTheme(true);
     } else {
       htmlEl.classList.remove('dark');
       toggle.checked = false;
       loadPrismTheme(false);
+      updateCusdisTheme(false);
     }
 
     // Toggle event listener
@@ -232,10 +261,12 @@
         htmlEl.classList.add('dark');
         localStorage.setItem('theme', 'dark');
         loadPrismTheme(true);
+        updateCusdisTheme(true);
       } else {
         htmlEl.classList.remove('dark');
         localStorage.setItem('theme', 'light');
         loadPrismTheme(false);
+        updateCusdisTheme(false);
       }
     });
   </script>
