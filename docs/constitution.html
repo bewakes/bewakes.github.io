@@ -945,6 +945,8 @@
             setupPermalinks();
             loadUserPreferences();
             setupSearchOverlay();
+            setupBackNavigation();
+            linkifyAllContent();
         });
 
         function showSection(section) {
@@ -1174,9 +1176,30 @@
 
                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     updateActiveTOC(id);
-                    updateBreadcrumb(element);
+                    updateBreadcrumb(element, history.state?.sourceId);
+
+                    // Update URL hash without adding to history
+                    if (window.location.hash !== '#' + id) {
+                        history.replaceState(null, null, '#' + id);
+                    }
                 }
             }, 100);
+        }
+
+        function navigateToReference(targetId, sourceId) {
+            // Save current position and source for back navigation
+            const currentScrollPos = window.scrollY;
+            const currentHash = window.location.hash.substring(1);
+
+            // Push to history for back button support
+            history.pushState({
+                scrollPos: currentScrollPos,
+                sourceId: currentHash || sourceId,
+                isReference: true
+            }, '', '#' + targetId);
+
+            // Navigate to target
+            navigateToSection(targetId);
         }
 
         function updateActiveTOC(id) {
@@ -1187,23 +1210,41 @@
             }
         }
 
-        function updateBreadcrumb(element) {
+        function updateBreadcrumb(element, sourceId = null) {
             const breadcrumb = document.getElementById('breadcrumb');
             let breadcrumbText = '';
 
+            // Show "Referenced from" if we came from a reference link
+            if (sourceId && history.state?.isReference) {
+                const sourceElement = document.getElementById(sourceId);
+                if (sourceElement) {
+                    const sourceText = getElementBreadcrumbText(sourceElement);
+                    if (sourceText) {
+                        breadcrumbText += `<span style="color: var(--text-light); font-size: 0.85rem;">Referenced from </span><a href="#${sourceId}" onclick="navigateToSection('${sourceId}')" style="color: var(--text-light);">${sourceText}</a> <span style="color: var(--text-light);">→</span> `;
+                    }
+                }
+            }
+
             if (element.id === 'preamble') {
-                breadcrumbText = 'Preamble';
+                breadcrumbText += 'Preamble';
+            } else if (element.id === 'schedules') {
+                breadcrumbText += 'Schedules';
+            } else if (element.id.startsWith('schedule-')) {
+                breadcrumbText += `<a href="#schedules" onclick="navigateToSection('schedules')">Schedules</a> > `;
+                const scheduleNumber = element.id.replace('schedule-', '');
+                const scheduleTitle = element.querySelector('.article-title')?.textContent || `Schedule ${scheduleNumber}`;
+                breadcrumbText += `Schedule ${scheduleNumber}: ${scheduleTitle}`;
             } else {
                 const part = element.closest('.part');
                 if (part) {
                     const partNumber = part.id.replace('part-', '');
-                    const partTitle = part.querySelector('.part-title').textContent;
-                    breadcrumbText = `<a href="#part-${partNumber}" onclick="navigateToSection('part-${partNumber}')">Part ${partNumber}: ${partTitle}</a>`;
+                    const partTitle = part.querySelector('.part-title')?.textContent || `Part ${partNumber}`;
+                    breadcrumbText += `<a href="#part-${partNumber}" onclick="navigateToSection('part-${partNumber}')">Part ${partNumber}: ${partTitle}</a>`;
 
                     const article = element.closest('.article');
-                    if (article) {
-                        const articleNumber = article.querySelector('.article-number').textContent;
-                        const articleTitle = article.querySelector('.article-title').textContent;
+                    if (article && article !== part) {
+                        const articleNumber = article.querySelector('.article-number')?.textContent || '';
+                        const articleTitle = article.querySelector('.article-title')?.textContent || '';
                         breadcrumbText += ` > <a href="#${article.id}" onclick="navigateToSection('${article.id}')">${articleNumber} ${articleTitle}</a>`;
                     }
                 }
@@ -1213,6 +1254,31 @@
                 breadcrumb.innerHTML = breadcrumbText;
                 breadcrumb.classList.add('show');
             }
+        }
+
+        function getElementBreadcrumbText(element) {
+            if (!element) return '';
+
+            if (element.id === 'preamble') return 'Preamble';
+            if (element.id === 'schedules') return 'Schedules';
+            if (element.id.startsWith('schedule-')) {
+                const scheduleNum = element.id.replace('schedule-', '');
+                return `Schedule ${scheduleNum}`;
+            }
+
+            const article = element.closest('.article');
+            if (article) {
+                const articleNumber = article.querySelector('.article-number')?.textContent || '';
+                return articleNumber.trim();
+            }
+
+            const part = element.closest('.part');
+            if (part) {
+                const partNumber = part.id.replace('part-', '');
+                return `Part ${partNumber}`;
+            }
+
+            return '';
         }
 
         function hideBreadcrumb() {
@@ -1734,6 +1800,113 @@
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
 
+        function linkifyReferences(content) {
+            // Don't process content that's already inside HTML tags or attributes
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+
+            // Find all text nodes and process them
+            function processTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    let text = node.textContent;
+                    let hasChanges = false;
+
+                    // Article references: Article 15, Article-15, Article (15), Art. 15, Art 15
+                    const articleRegex = /\b(Articles?[\s\-]*(?:\()?(\d+)(?:\))?\.?)/gi;
+                    text = text.replace(articleRegex, (match, fullMatch, articleNum) => {
+                        // Validate article number range (assuming 1-300)
+                        const num = parseInt(articleNum);
+                        if (num >= 1 && num <= 300) {
+                            const targetId = findArticleId(articleNum + '.');
+                            if (targetId) {
+                                hasChanges = true;
+                                return `<a href="#${targetId}" onclick="navigateToReference('${targetId}', getCurrentSectionId()); return false;" style="color: var(--primary-color); text-decoration: underline; cursor: pointer;">${fullMatch}</a>`;
+                            }
+                        }
+                        return match;
+                    });
+
+                    // Part references: Part 3, Part-3, Part (3) - only process if not already processed
+                    if (!text.includes('navigateToReference')) {
+                        const partRegex = /\b(Parts?[\s\-]*(?:\()?(\d+)(?:\))?)/gi;
+                        text = text.replace(partRegex, (match, fullMatch, partNum) => {
+                            const num = parseInt(partNum);
+                            if (num >= 1 && num <= 35) { // Reasonable range for constitution parts
+                                const targetId = `part-${partNum}`;
+                                hasChanges = true;
+                                return `<a href="#${targetId}" onclick="navigateToReference('${targetId}', getCurrentSectionId()); return false;" style="color: var(--primary-color); text-decoration: underline; cursor: pointer;">${fullMatch}</a>`;
+                            }
+                            return match;
+                        });
+                    }
+
+                    // Schedule references: Schedule 5, Schedule-5, Schedule (5), Sch. 5, Sch 5
+                    if (!text.includes('navigateToReference')) {
+                        const scheduleRegex = /\b(Schedules?[\s\-]*(?:\()?(\d+)(?:\))?|Sch\.?\s*(\d+))/gi;
+                        text = text.replace(scheduleRegex, (match, fullMatch, scheduleNum1, scheduleNum2) => {
+                            const scheduleNum = scheduleNum1 || scheduleNum2;
+                            const num = parseInt(scheduleNum);
+                            if (num >= 1 && num <= 10) { // Valid schedule range
+                                const targetId = `schedule-${scheduleNum}`;
+                                hasChanges = true;
+                                return `<a href="#${targetId}" onclick="navigateToReference('${targetId}', getCurrentSectionId()); return false;" style="color: var(--primary-color); text-decoration: underline; cursor: pointer;">${fullMatch}</a>`;
+                            }
+                            return match;
+                        });
+                    }
+
+                    if (hasChanges) {
+                        // Replace the text node with new HTML content
+                        const wrapper = document.createElement('span');
+                        wrapper.innerHTML = text;
+
+                        // Replace text node with wrapper's children
+                        const parent = node.parentNode;
+                        if (parent && wrapper.childNodes.length > 0) {
+                            // Insert all child nodes before the original text node
+                            Array.from(wrapper.childNodes).forEach(child => {
+                                parent.insertBefore(child, node);
+                            });
+                            // Remove the original text node
+                            parent.removeChild(node);
+                        }
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'A') {
+                    // Recursively process child nodes, but skip existing links
+                    Array.from(node.childNodes).forEach(processTextNodes);
+                }
+            }
+
+            processTextNodes(tempDiv);
+            return tempDiv.innerHTML;
+        }
+
+        function findArticleId(articleNumber) {
+            // Find the correct article ID from the constitution index
+            if (window.constitutionIndex) {
+                const article = window.constitutionIndex.find(item =>
+                    item.type === 'article' && item.articleNumber === articleNumber
+                );
+                if (article) return article.id;
+            }
+
+            // Fallback: construct probable ID
+            const partNum = getPart(articleNumber);
+            return `part-${partNum}-article-${articleNumber}`;
+        }
+
+        function getCurrentSectionId() {
+            // Find the currently visible section ID
+            const visibleElements = document.querySelectorAll('[id]');
+            for (const element of visibleElements) {
+                const rect = element.getBoundingClientRect();
+                if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+                    return element.id;
+                }
+            }
+            return null;
+        }
+
         function getScheduleContent(schedule) {
             let content = schedule.title || '';
 
@@ -2035,6 +2208,74 @@
 
             drawer.classList.remove('open');
             overlay.classList.remove('show');
+        }
+
+        function setupBackNavigation() {
+            // Handle browser back/forward button
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.isReference) {
+                    // Restore scroll position from reference navigation
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: event.state.scrollPos || 0,
+                            behavior: 'smooth'
+                        });
+
+                        // Update breadcrumb to show we're back
+                        const currentElement = document.getElementById(window.location.hash.substring(1));
+                        if (currentElement) {
+                            updateBreadcrumb(currentElement);
+                        }
+                    }, 100);
+                } else {
+                    // Normal navigation - just navigate to the hash
+                    const hash = window.location.hash.substring(1);
+                    if (hash) {
+                        navigateToSection(hash);
+                    }
+                }
+            });
+        }
+
+        function linkifyAllContent() {
+            try {
+                // Apply linkification to all article content after rendering
+                const articleContents = document.querySelectorAll('.article-content');
+                articleContents.forEach(content => {
+                    // Skip if content already has reference links or is marked as processed
+                    if (!content.hasAttribute('data-linkified') && !content.querySelector('a[onclick*="navigateToReference"]')) {
+                        try {
+                            const originalHTML = content.innerHTML;
+                            const linkedHTML = linkifyReferences(originalHTML);
+                            if (linkedHTML !== originalHTML) {
+                                content.innerHTML = linkedHTML;
+                            }
+                            content.setAttribute('data-linkified', 'true');
+                        } catch (e) {
+                            console.warn('Failed to linkify content:', e);
+                        }
+                    }
+                });
+
+                // Also apply to Q&A content
+                const answerContents = document.querySelectorAll('.answer');
+                answerContents.forEach(content => {
+                    if (!content.hasAttribute('data-linkified') && !content.querySelector('a[onclick*="navigateToReference"]')) {
+                        try {
+                            const originalHTML = content.innerHTML;
+                            const linkedHTML = linkifyReferences(originalHTML);
+                            if (linkedHTML !== originalHTML) {
+                                content.innerHTML = linkedHTML;
+                            }
+                            content.setAttribute('data-linkified', 'true');
+                        } catch (e) {
+                            console.warn('Failed to linkify Q&A content:', e);
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Error in linkifyAllContent:', e);
+            }
         }
 
     </script>
