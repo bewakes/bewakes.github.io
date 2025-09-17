@@ -1116,12 +1116,18 @@
 
             if (qnaData && Array.isArray(qnaData)) {
                 qnaData.forEach((item, index) => {
+                    // Include similar questions in searchable content
+                    let searchableContent = item.answer;
+                    if (item.similar_questions && Array.isArray(item.similar_questions)) {
+                        searchableContent += ' ' + item.similar_questions.join(' ');
+                    }
+
                     window.qnaIndex.push({
                         type: 'qna',
                         id: `qna-${index}`,
                         path: 'Questions & Answers',
                         title: item.question,
-                        content: item.answer,
+                        content: searchableContent,
                         priority: 1,
                         qnaIndex: index
                     });

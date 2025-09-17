@@ -1,698 +1,426 @@
 [
   {
     "question": "What is the Constitution of Nepal?",
-    "answer": "The Constitution of Nepal, adopted on 20 September 2015, is the fundamental law of the country. Any other law that contradicts it is considered invalid."
+    "answer": "The Constitution of Nepal, adopted on 20 September 2015, is the fundamental law of the country. Any other law that contradicts it is considered invalid.",
+    "similar_questions": [
+      "What is Nepal's fundamental law?",
+      "When was Nepal's constitution adopted?"
+    ]
+  },
+  {
+    "question": "What type of state is Nepal according to the constitution?",
+    "answer": "According to Article 4, Nepal is an independent, indivisible, sovereign, secular, inclusive, democratic, socialism-oriented, federal democratic republican state. The constitution explicitly defines 'secular' as ensuring religious and cultural freedoms, including protection of religion and culture handed down from time immemorial.",
+    "similar_questions": [
+      "What is the nature of the Nepalese state?",
+      "How is Nepal defined as a country in the constitution?"
+    ]
   },
   {
     "question": "Who holds the sovereignty of Nepal?",
-    "answer": "The sovereignty and state authority of Nepal rest with the people of Nepal."
+    "answer": "The sovereignty and state authority of Nepal rest with the people of Nepal.",
+    "similar_questions": [
+      "Who has supreme power in Nepal?",
+      "Where does Nepal's authority come from?"
+    ]
   },
   {
     "question": "What does 'Nation' mean in the Constitution?",
-    "answer": "The nation is defined as all Nepalese people, who are multi-ethnic, multi-lingual, multi-religious, and multi-cultural, united by common aspirations, independence, and prosperity."
-  },
-  {
-    "question": "What type of state is Nepal?",
-    "answer": "Nepal is an independent, indivisible, sovereign, secular, inclusive, democratic, socialism-oriented, federal democratic republican state."
+    "answer": "The nation is defined as all Nepalese people, who are multi-ethnic, multi-lingual, multi-religious, and multi-cultural, united by common aspirations, independence, and prosperity.",
+    "similar_questions": [
+      "How is the nation defined in Nepal?",
+      "What makes up the Nepalese nation?"
+    ]
   },
   {
     "question": "What does 'secular' mean in Nepal's Constitution?",
-    "answer": "In Nepal’s Constitution, 'secular' means protecting and ensuring religious and cultural freedom, including traditions handed down from ancient times."
+    "answer": "In Nepal's Constitution, 'secular' means protecting and ensuring religious and cultural freedom, including traditions handed down from ancient times.",
+    "similar_questions": [
+      "How does Nepal define secularism?",
+      "What is the meaning of secular state in Nepal?"
+    ]
   },
   {
-    "question": "What are the basic elements of Nepal’s national interest?",
-    "answer": "The national interest includes safeguarding Nepal’s freedom, sovereignty, territorial integrity, nationality, independence, dignity, people’s rights, border security, and economic prosperity."
-  },
-  {
-    "question": "Which languages are recognized in Nepal?",
-    "answer": "All mother tongues spoken in Nepal are recognized as the languages of the nation."
+    "question": "What are the basic elements of Nepal's national interest?",
+    "answer": "The national interest includes safeguarding Nepal's freedom, sovereignty, territorial integrity, nationality, independence, dignity, people's rights, border security, and economic prosperity.",
+    "similar_questions": [
+      "What constitutes Nepal's national interest?",
+      "What are Nepal's core national priorities?"
+    ]
   },
   {
     "question": "What is the official language of Nepal?",
-    "answer": "Nepali, written in the Devanagari script, is the official language of Nepal. However, individual states may adopt additional official languages spoken by the majority in that state."
+    "answer": "According to Article 7, the Nepali language in the Devanagari script is the official language of Nepal. However, states may determine one or more languages of the nation spoken by a majority within the state as additional official languages through state law. All languages spoken as mother tongues in Nepal are recognized as languages of the nation.",
+    "similar_questions": [
+      "Which language is officially recognized in Nepal?",
+      "What languages can be used officially in Nepal?"
+    ]
   },
   {
-    "question": "What is the national flag of Nepal?",
-    "answer": "Nepal’s national flag consists of two triangular shapes with a crimson background, blue borders, a white crescent moon with eight rays on the top, and a white twelve-rayed sun at the bottom."
-  },
-  {
-    "question": "What are Nepal’s national symbols?",
-    "answer": "National symbols include: the national anthem, coat of arms, Rhododendron Arboreum (flower), crimson colour, the cow (animal), and Lophophorus (bird)."
+    "question": "What are Nepal's national symbols?",
+    "answer": "According to Articles 8-9, Nepal's national symbols include: the national flag (two triangular figures with crimson base and deep blue borders, featuring a white crescent moon and sun), the Rhododendron Arboreum as the national flower, crimson as the national color, the cow as the national animal, and the Lophophorus as the national bird. The national anthem and coat-of-arms are specified in the constitutional schedules.",
+    "similar_questions": [
+      "What are Nepal's official symbols?",
+      "What is the national flag and other symbols of Nepal?"
+    ]
   },
   {
     "question": "Can any citizen be deprived of citizenship?",
-    "answer": "No. Every citizen has the right to obtain citizenship. Nepal provides single federal citizenship with state identity."
+    "answer": "No. Article 10 states that no citizen of Nepal may be deprived of the right to obtain citizenship. This provides strong protection against arbitrary revocation of citizenship. The constitution establishes single federal citizenship with state identity, ensuring citizens cannot lose their fundamental citizenship status.",
+    "similar_questions": [
+      "Is it possible to lose Nepalese citizenship?",
+      "Can the government revoke someone's citizenship?"
+    ]
   },
   {
     "question": "How can someone become a citizen of Nepal?",
-    "answer": "Citizenship can be obtained by descent (if parents are citizens), by birth (under specific conditions), or through naturalization as provided by law."
+    "answer": "According to Article 11, citizenship can be acquired through: (1) descent - if father or mother was a Nepalese citizen at birth, (2) naturalization - for foreign women married to Nepalese citizens and other specific cases, (3) honorary citizenship granted by the government. Children found in Nepal whose parents are unknown are considered citizens by descent. The constitution ensures single federal citizenship with state identity.",
+    "similar_questions": [
+      "How can someone become a Nepalese citizen?",
+      "What are the different ways to get Nepalese citizenship?"
+    ]
   },
   {
-    "question": "What rights does the Constitution guarantee to citizens?",
-    "answer": "Key rights include: right to live with dignity, freedom of opinion, freedom to assemble, equality before law, right to communication, right to justice, right against torture and untouchability, right to property, and freedom of religion."
+    "question": "What are the fundamental rights guaranteed to citizens?",
+    "answer": "The constitution guarantees numerous fundamental rights including: right to live with dignity (no death penalty), right to equality, freedom of opinion and expression, freedom to assemble peacefully, freedom to form political parties and unions, right to privacy, right to information, right to education, right to health, right to employment, right to housing, right against exploitation, right to clean environment, and protection from torture and discrimination. These rights are detailed in Articles 16-45.",
+    "similar_questions": [
+      "What basic rights do Nepalese citizens have?",
+      "What freedoms are protected by the constitution?"
+    ]
   },
   {
     "question": "Is the death penalty allowed in Nepal?",
-    "answer": "No. The Constitution clearly states that no law can provide for the death penalty."
+    "answer": "No. The Constitution clearly states that no law can provide for the death penalty.",
+    "similar_questions": [
+      "Does Nepal have capital punishment?",
+      "Can someone be executed in Nepal?"
+    ]
   },
   {
     "question": "What does equality mean in the Constitution?",
-    "answer": "All citizens are equal before the law. Discrimination based on caste, religion, ethnicity, gender, language, or economic condition is not allowed."
+    "answer": "All citizens are equal before the law. No discrimination shall be made in the application of general laws on grounds of origin, religion, race, caste, tribe, sex, physical condition, condition of health, marital status, pregnancy, economic condition, language or region, ideology or on similar other grounds.",
+    "similar_questions": [
+      "How does the constitution ensure equality?",
+      "What does equal treatment mean in Nepal?"
+    ]
   },
   {
-    "question": "Do victims of crime have rights?",
-    "answer": "Yes. Victims have the right to receive information about the investigation, justice, compensation, and social rehabilitation."
+    "question": "What is the right to information and how can citizens access it?",
+    "answer": "According to Article 27, every citizen has the right to demand and receive information on any matter of their interest or of public interest. However, no one can be compelled to provide information where confidentiality must be maintained according to law. This ensures government transparency while protecting necessary secrets.",
+    "similar_questions": [
+      "Can citizens request government information?",
+      "What information can the public access from the government?"
+    ]
   },
   {
-    "question": "What protections exist against torture and unfair detention?",
-    "answer": "No one can be subjected to torture, cruel treatment, or held under preventive detention without sufficient grounds. Victims have the right to compensation."
-  },
-  {
-    "question": "What does the Constitution say about untouchability?",
-    "answer": "Untouchability and caste-based discrimination in any form are prohibited and punishable by law."
+    "question": "What privacy rights do citizens have?",
+    "answer": "Article 28 guarantees that the privacy of any person, their residence, property, documents, data, correspondence, and matters relating to their character shall be inviolable except in accordance with law. This protects citizens from unauthorized surveillance and intrusion into their private affairs.",
+    "similar_questions": [
+      "How is personal privacy protected?",
+      "What privacy protections exist under the constitution?"
+    ]
   },
   {
     "question": "Do citizens have the right to practice their religion?",
-    "answer": "Yes. Everyone is free to profess, practice, and protect their religion. Religious communities can also manage their sites and trusts under the law."
+    "answer": "Article 26 guarantees freedom to profess, practice and protect one's religion according to personal conviction. Religious denominations can operate and protect religious sites and trusts. However, this freedom cannot be used to harm public health, decency, morality, breach peace, convert others, or jeopardize others' religion. The state can regulate religious sites and trust management by law.",
+    "similar_questions": [
+      "Is religious freedom protected in Nepal?",
+      "Can people practice any religion freely?"
+    ]
   },
   {
-    "question": "Can I practice any religion freely?",
-    "answer": "Yes, but you cannot harm public health, peace, or morality, nor forcefully convert others or disrespect their religion."
+    "question": "What protections exist against torture and abuse?",
+    "answer": "Article 22 prohibits all forms of physical or mental torture, cruel, inhuman or degrading treatment of arrested or detained persons. Such acts are punishable by law, and victims have the right to compensation. Article 23 also regulates preventive detention, requiring sufficient grounds of immediate threat to sovereignty, territorial integrity, or public peace.",
+    "similar_questions": [
+      "Are there protections against police brutality?",
+      "What happens if someone is tortured in custody?"
+    ]
   },
   {
-    "question": "Do I have the right to access information from the government?",
-    "answer": "Yes, every citizen has the right to demand and receive information. However, confidential matters protected by law do not have to be disclosed."
+    "question": "What does the Constitution say about untouchability?",
+    "answer": "Article 24 prohibits all forms of untouchability and discrimination in public and private places based on origin, caste, tribe, community, profession, occupation, or physical condition. It prohibits caste-based restrictions on goods and services, superiority/inferiority demonstrations, workplace discrimination, and hate speech. Violations are punishable as severe social offenses with compensation rights for victims.",
+    "similar_questions": [
+      "What protections exist against discrimination?",
+      "How does the constitution prohibit caste-based discrimination?"
+    ]
   },
   {
-    "question": "Is my privacy protected?",
-    "answer": "Yes, your privacy in residence, property, data, documents, and personal matters is protected, unless limited by law."
+    "question": "What rights do citizens have when arrested or detained?",
+    "answer": "According to Article 20, citizens have extensive rights when arrested: they must be informed of arrest grounds, have right to legal counsel from the time of arrest, must be produced before judicial authority within 24 hours, cannot be punished for acts that weren't crimes when committed, are presumed innocent until proven guilty, cannot be tried twice for the same offense, and cannot be compelled to testify against themselves.",
+    "similar_questions": [
+      "What protections exist for people who are arrested?",
+      "What are the rights of detained persons?"
+    ]
+  },
+  {
+    "question": "Do victims of crime have rights?",
+    "answer": "Yes. Victims have the right to receive information about the investigation, justice, compensation, and social rehabilitation.",
+    "similar_questions": [
+      "What rights do crime victims have?",
+      "How are victims of crime protected?"
+    ]
   },
   {
     "question": "Can anyone exploit me because of my religion, caste, or tradition?",
-    "answer": "No, you cannot be exploited for any reason. Slavery, human trafficking, or forced labor are strictly prohibited."
+    "answer": "No, you cannot be exploited for any reason. Slavery, human trafficking, or forced labor are strictly prohibited.",
+    "similar_questions": [
+      "Is exploitation based on caste or religion allowed?",
+      "What protections exist against forced labor?"
+    ]
   },
   {
-    "question": "Do I have the right to live in a clean environment?",
-    "answer": "Yes, every citizen has the right to a clean and healthy environment and to compensation if harmed by pollution."
+    "question": "What environmental rights are guaranteed?",
+    "answer": "Article 30 guarantees every citizen the right to live in a clean and healthy environment. Victims of environmental pollution or degradation have the right to compensation according to law. The constitution allows for legal provisions that balance environment and development in national development works.",
+    "similar_questions": [
+      "What environmental protections exist?",
+      "Do citizens have the right to a clean environment?"
+    ]
   },
   {
-    "question": "What rights do I have regarding education?",
-    "answer": "You have the right to free and compulsory basic education, free secondary education, and special support if you are disabled, indigent, or from marginalized groups."
+    "question": "What education rights do citizens have?",
+    "answer": "Article 31 guarantees: right of access to basic education for all citizens, compulsory and free education up to basic level and free education up to secondary level from the state, free higher education for citizens with disabilities and economically indigent citizens, free education through braille for visually impaired and sign language for hearing/speaking impaired citizens, and right for every Nepalese community to get education in mother tongue and establish educational institutions.",
+    "similar_questions": [
+      "What educational opportunities are guaranteed?",
+      "Is education free in Nepal according to the constitution?"
+    ]
   },
   {
     "question": "Can I use and promote my mother tongue and culture?",
-    "answer": "Yes, every community has the right to use, preserve, and promote their language, culture, and heritage."
+    "answer": "Article 32 guarantees that every person and community has the right to use their languages and participate in their cultural life. Every Nepalese community has the right to preserve and promote its language, script, culture, and heritage. Article 31 also ensures that every Nepalese community can get education in their mother tongue and establish educational institutions for this purpose.",
+    "similar_questions": [
+      "Can minority groups use their own languages?",
+      "What cultural protections exist for different communities?"
+    ]
   },
   {
-    "question": "Do I have the right to employment?",
-    "answer": "Yes, every citizen has the right to employment and to choose their work."
+    "question": "What employment and labor rights exist?",
+    "answer": "Articles 33-34 guarantee: right to employment and choose employment, right to appropriate labor practices, right to appropriate remuneration and social security for laborers, right to form trade unions and engage in collective bargaining, prohibition of forced labor (except compulsory public service), and protection from labor exploitation including child labor.",
+    "similar_questions": [
+      "What rights do workers have?",
+      "What labor protections exist in Nepal?"
+    ]
   },
   {
-    "question": "What rights do workers have?",
-    "answer": "Workers have the right to fair wages, social security, to form unions, and to collective bargaining."
-  },
-  {
-    "question": "Do I have the right to health services?",
-    "answer": "Yes, every citizen has the right to free basic health services, emergency care, clean drinking water, and sanitation."
-  },
-  {
-    "question": "Do I have the right to food?",
-    "answer": "Yes, every citizen has the right to food security, to not suffer from hunger, and to food sovereignty."
+    "question": "What health and food rights are protected?",
+    "answer": "Articles 35-36 guarantee: right to free basic health services from the state, no denial of emergency health services, right to information about medical treatment, equal access to health services, right to clean drinking water and sanitation, right to food, protection from food scarcity dangers, and right to food sovereignty. The state must enhance investment in public health sector.",
+    "similar_questions": [
+      "What healthcare rights do citizens have?",
+      "Is healthcare free under the constitution?"
+    ]
   },
   {
     "question": "Do I have the right to housing?",
-    "answer": "Yes, every citizen has the right to appropriate housing, and you cannot be evicted unlawfully."
+    "answer": "Yes, every citizen has the right to appropriate housing, and you cannot be evicted unlawfully.",
+    "similar_questions": [
+      "Is housing a constitutional right?",
+      "Can I be evicted without legal process?"
+    ]
   },
   {
     "question": "What special rights do women have?",
-    "answer": "Women have equal property and family rights, safe motherhood rights, protection from violence, proportional inclusion in state bodies, and special opportunities in education, health, and employment."
+    "answer": "Article 38 specifically outlines women's rights including: equal lineage rights without gender discrimination, right to safe motherhood and reproductive health, protection from all forms of violence and exploitation, right to participate in state bodies through proportional inclusion, special opportunities in education, health, employment and social security through positive discrimination, and equal rights to property and family affairs for spouses.",
+    "similar_questions": [
+      "What special protections do women have?",
+      "How does the constitution protect women's rights?"
+    ]
   },
   {
-    "question": "What rights do children have?",
-    "answer": "Children have rights to name, identity, education, health, care, and protection from child marriage, child labor, trafficking, abuse, and violence."
+    "question": "What are the rights of children?",
+    "answer": "Article 39 guarantees children's rights including: right to name and birth registration with identity, right to education, health, maintenance, proper care, sports and entertainment, right to elementary child development and participation, protection from hazardous work, child marriage, illegal transportation, and recruitment in armed groups, right to juvenile-friendly justice, and special protection for helpless, orphaned, disabled, or conflict-affected children.",
+    "similar_questions": [
+      "How are children protected under the constitution?",
+      "What rights do minors have in Nepal?"
+    ]
   },
   {
-    "question": "What rights do Dalits have?",
-    "answer": "Dalits have rights to inclusion in state bodies, free education with scholarships, health and social security, protection of traditional occupations, and land and housing support."
+    "question": "What specific rights do Dalit communities have?",
+    "answer": "Article 40 provides specific rights for Dalits including: proportional inclusion in state bodies, special provisions for empowerment in public services and employment, free education with scholarships from primary to higher education, special provisions for health and social security, right to use and develop traditional occupations with state priority in related modern businesses, provision of land for landless Dalits, and housing arrangements for those without homes.",
+    "similar_questions": [
+      "What protections exist for Dalit communities?",
+      "What special provisions are there for historically marginalized groups?"
+    ]
   },
   {
     "question": "What rights do senior citizens have?",
-    "answer": "Senior citizens have the right to special protection and social security from the State."
+    "answer": "Senior citizens have the right to special protection and social security from the State.",
+    "similar_questions": [
+      "How are elderly people protected under the constitution?",
+      "What benefits do senior citizens get?"
+    ]
   },
   {
-    "question": "Do marginalized communities and minorities have rights?",
-    "answer": "Yes, they have the right to inclusion in state bodies, special opportunities in education, health, housing, employment, and recognition of their diversity."
+    "question": "What are the provisions for social justice and inclusion?",
+    "answer": "Article 42 ensures that socially backward women, Dalit, indigenous peoples, Madhesi, Tharu, minorities, persons with disabilities, marginalized communities, Muslims, backward classes, gender and sexual minorities, youth, farmers, laborers, and citizens from backward regions have the right to participate in state bodies on an inclusive basis and receive special opportunities in education, health, housing, employment, and social security.",
+    "similar_questions": [
+      "How does the constitution promote social equality?",
+      "What provisions exist for marginalized communities?"
+    ]
   },
   {
-    "question": "As a consumer, what rights do I have?",
-    "answer": "You have the right to quality goods and services, and to compensation if harmed by substandard goods or services."
+    "question": "What consumer rights are protected?",
+    "answer": "Article 44 guarantees every consumer the right to obtain quality goods and services. Persons who suffer injury from substandard goods or services have the right to obtain compensation according to law. This ensures protection against defective products and services in the marketplace.",
+    "similar_questions": [
+      "What protections exist for consumers?",
+      "What rights do buyers have against faulty products?"
+    ]
   },
   {
     "question": "Can I be exiled from Nepal?",
-    "answer": "No, no citizen can be exiled."
+    "answer": "Article 45 explicitly states that no citizen shall be exiled. This provides absolute protection against banishment or forced removal of citizens from their country.",
+    "similar_questions": [
+      "Can the government send citizens away from the country?",
+      "Is exile permitted under the constitution?"
+    ]
   },
   {
-    "question": "If my fundamental rights are violated, what can I do?",
-    "answer": "You can go to court and seek constitutional remedies to enforce your rights."
+    "question": "What are the duties of citizens?",
+    "answer": "According to Article 48, every citizen has the following duties: (a) to safeguard the nationality, sovereignty and integrity of Nepal while being loyal to the nation, (b) to abide by the Constitution and law, (c) to render compulsory service when the State requires, and (d) to protect and preserve public property.",
+    "similar_questions": [
+      "What responsibilities do Nepalese citizens have?",
+      "What obligations must citizens fulfill?"
+    ]
   },
   {
-    "question": "Do I only have rights, or do I also have duties?",
-    "answer": "Every citizen has duties: to safeguard Nepal’s sovereignty and integrity, obey the law, provide compulsory service when required, and protect public property."
+    "question": "What is the structure of the federal system in Nepal?",
+    "answer": "According to Article 56, Nepal has a three-level federal structure: (1) Federation (central government), (2) State (provincial level), and (3) Local level (Village Institutions, Municipalities, and District Assemblies). Each level exercises state power according to the constitution and respective laws, with specific powers enumerated in different schedules.",
+    "similar_questions": [
+      "How many levels of government are there in Nepal?",
+      "What is the federal structure of Nepal?"
+    ]
+  },
+  {
+    "question": "Who is the head of state and what are their powers?",
+    "answer": "According to Article 61, the President is the head of state of Nepal. The President's main duty is to abide by and protect the constitution and promote national unity. The President performs functions on recommendation and consent of the Council of Ministers (except functions specifically assigned to other bodies). The President is elected by an electoral college of Federal Parliament and State Assembly members for a five-year term.",
+    "similar_questions": [
+      "What is the role of the President in Nepal?",
+      "Who leads the country and what do they do?"
+    ]
+  },
+  {
+    "question": "How is the Prime Minister selected and what are their powers?",
+    "answer": "According to Article 76, the President appoints the leader of the parliamentary party with majority in the House of Representatives as Prime Minister. If no party has clear majority, the President appoints a member who can command majority with support of two or more parties. The Prime Minister heads the Council of Ministers (maximum 25 members) and is responsible for executive functions of the federal government.",
+    "similar_questions": [
+      "How is the head of government chosen in Nepal?",
+      "What is the process for selecting the Prime Minister?"
+    ]
+  },
+  {
+    "question": "What is the structure of the Federal Parliament?",
+    "answer": "According to Articles 83-84, the Federal Parliament consists of two houses: (1) House of Representatives with 275 members (165 elected through first-past-the-post system, 110 through proportional representation), and (2) National Assembly with 59 members (56 elected by electoral college from states, 3 nominated by President). The House of Representatives has a 5-year term, while National Assembly members serve 6-year terms with one-third retiring every two years.",
+    "similar_questions": [
+      "How is the parliament structured in Nepal?",
+      "What are the two houses of parliament in Nepal?"
+    ]
+  },
+  {
+    "question": "What voting rights do citizens have?",
+    "answer": "According to Article 84, every citizen who has completed 18 years of age has the right to vote in elections. Citizens can vote in one election constituency as provided by federal law. For House of Representatives, citizens elect representatives through both direct voting (first-past-the-post) and proportional representation systems.",
+    "similar_questions": [
+      "At what age can someone vote in Nepal?",
+      "Who is eligible to vote in elections?"
+    ]
+  },
+  {
+    "question": "Who can become a member of parliament and what are the qualifications?",
+    "answer": "According to Article 87, to become a Federal Parliament member, one must: be a Nepalese citizen, be at least 25 years old (House of Representatives) or 35 years old (National Assembly), not have been convicted of a criminal offense involving moral turpitude, not be disqualified by federal law, and not hold any office of profit. No person can be a member of both houses simultaneously.",
+    "similar_questions": [
+      "What are the requirements to become an MP?",
+      "Who is eligible to run for parliament?"
+    ]
+  },
+  {
+    "question": "How are taxes imposed and collected?",
+    "answer": "According to Article 115, no tax can be levied or collected except in accordance with law. Article 60 states that Federation, State, and Local levels may impose taxes on matters within their jurisdiction and collect revenue from these sources. The government must make provisions for equitable distribution of collected revenue among the three levels of government.",
+    "similar_questions": [
+      "How does taxation work in Nepal?",
+      "Who has the authority to collect taxes?"
+    ]
+  },
+  {
+    "question": "What is the judicial system structure?",
+    "answer": "According to Article 127, Nepal has three levels of courts: (1) Supreme Court (highest court with final authority to interpret constitution and laws), (2) High Court, and (3) District Court. The Supreme Court consists of Chief Justice and up to 20 other judges. Local level judicial bodies may also be formed. All courts are under the Supreme Court except as otherwise provided in the constitution.",
+    "similar_questions": [
+      "How are courts organized in Nepal?",
+      "What is the hierarchy of courts in the country?"
+    ]
+  },
+  {
+    "question": "How can citizens access courts and get justice?",
+    "answer": "Article 133 grants extraordinary power to the Supreme Court to issue writs (habeas corpus, mandamus, certiorari, prohibition, quo warranto) for enforcement of fundamental rights and settlement of constitutional questions. Citizens can file petitions to declare laws void if inconsistent with the constitution. Article 20 guarantees indigent parties the right to free legal aid, and Article 39 ensures juvenile-friendly justice for children.",
+    "similar_questions": [
+      "How can ordinary citizens approach courts?",
+      "What legal remedies are available to citizens?"
+    ]
+  },
+  {
+    "question": "What is the impeachment process for high officials?",
+    "answer": "According to Article 101, one-fourth of House of Representatives members can move impeachment against President, Vice-President, Chief Justice, Supreme Court judges, and constitutional body heads for serious constitutional violations, incompetence, or misconduct. For President/Vice-President, two-thirds majority of both houses is required. For others, two-thirds majority of House of Representatives is sufficient. An impeachment recommendation committee investigates charges before proceedings.",
+    "similar_questions": [
+      "How can high officials be removed from office?",
+      "What is the procedure for impeaching government officials?"
+    ]
+  },
+  {
+    "question": "How is the budget process handled?",
+    "answer": "According to Articles 119-124, the Finance Minister presents annual revenue and expenditure estimates to Parliament by mid-May each year. Money bills must originate in the House of Representatives. The budget process includes provisions for supplementary estimates, votes on account, and votes of credit for emergencies. A Federal Consolidated Fund receives all government revenues, and expenditures require parliamentary approval except for charged expenditures.",
+    "similar_questions": [
+      "How does the government create and approve budgets?",
+      "What is the process for government spending approval?"
+    ]
   },
   {
     "question": "What does the Constitution say about Ayurveda and traditional medicine in Nepal?",
-    "answer": "The Constitution requires the State to protect and promote Ayurveda as a traditional medical system, along with natural therapy and homeopathy."
-  },
-  {
-    "question": "How is private sector investment in health managed?",
-    "answer": "Private investment in health must be service-oriented, regulated, and managed, while the State will also enhance its own investment in the health sector."
-  },
-  {
-    "question": "Will there be more hospitals and health workers in the future?",
-    "answer": "Yes. The Constitution directs the State to increase the number of health institutions and health workers, while focusing on health research, to make services widely available and of better quality."
-  },
-  {
-    "question": "How is Nepal planning to reduce maternal and infant deaths?",
-    "answer": "By improving healthcare services, reducing maternal and infant mortality rates, encouraging family planning, and managing population growth according to the nation’s capacity."
-  },
-  {
-    "question": "What steps will be taken for settlements in Nepal?",
-    "answer": "The State will manage unplanned settlements and develop planned and systematic ones."
-  },
-  {
-    "question": "How does the Constitution ensure food security?",
-    "answer": "It ensures sustainable food production, supply, storage, and fair distribution, encouraging agriculture that suits the local climate and soil, while promoting food sovereignty."
-  },
-  {
-    "question": "How will remote and backward regions get basic goods?",
-    "answer": "The State will give special priority to remote and backward regions in planned supply systems and ensure equal access for all citizens."
-  },
-  {
-    "question": "What is being done for transportation in Nepal?",
-    "answer": "The Constitution directs investment in transportation, ensuring easy and equal access for citizens, making it safe, systematic, disability-friendly, and environmentally friendly by promoting public transport."
-  },
-  {
-    "question": "Will citizens get health insurance?",
-    "answer": "Yes. The Constitution requires the State to arrange access to medical treatment and ensure citizen’s health insurance."
-  },
-  {
-    "question": "What does the constitution say about creating jobs in Nepal?",
-    "answer": "It aims to make the labor force skilled and professional, create employment within the country, and ensure that everyone has the opportunity to work."
-  },
-  {
-    "question": "Will workers get social security and protection?",
-    "answer": "Yes, the constitution guarantees social security and basic rights for workers, in line with the idea of decent labor."
-  },
-  {
-    "question": "Does the constitution ban child labor?",
-    "answer": "Yes, it calls for the abolition of all forms of labor exploitation, including child labor."
-  },
-  {
-    "question": "Can workers take part in how companies are managed?",
-    "answer": "Yes, the constitution encourages workers to participate in management and promotes good relations between workers and entrepreneurs."
+    "answer": "The Constitution requires the State to protect and promote Ayurveda as a traditional medical system, along with natural therapy and homeopathy.",
+    "similar_questions": [
+      "Is traditional medicine recognized in Nepal?",
+      "What support does Ayurveda get from the government?"
+    ]
   },
   {
     "question": "What about Nepalis working abroad?",
-    "answer": "The constitution requires foreign employment to be safe, systematic, and free from exploitation, while also protecting the rights of workers."
-  },
-  {
-    "question": "Will the skills and money Nepalis earn abroad be used in Nepal?",
-    "answer": "Yes, the constitution encourages using capital, skills, technology, and experience from foreign employment in productive sectors within Nepal."
-  },
-  {
-    "question": "Are there special protections for women?",
-    "answer": "Yes, the constitution prioritizes single women in jobs, supports rehabilitation and empowerment of women facing violence or exclusion, and ensures necessary reproductive health services."
-  },
-  {
-    "question": "How does the constitution value housework like childcare?",
-    "answer": "It requires that work such as childcare and family care be economically recognized and valued."
-  },
-  {
-    "question": "What about children’s rights?",
-    "answer": "The constitution requires the best interests of the child to be prioritized."
-  },
-  {
-    "question": "How are marginalized groups like freed bonded laborers, landless people, or squatters supported?",
-    "answer": "They should be identified and rehabilitated by providing housing, land, or employment for their livelihoods."
-  },
-  {
-    "question": "What does it say about young people?",
-    "answer": "The state must create opportunities for youth participation in national development, give them access to education, health, and employment, and support their overall empowerment."
-  },
-  {
-    "question": "How are indigenous nationalities treated?",
-    "answer": "They should be able to participate in decisions affecting them, with protection of their identity, knowledge, culture, and traditions."
-  },
-  {
-    "question": "Are minority groups like Madhesis, Muslims, and backward classes included?",
-    "answer": "Yes, the constitution makes special provisions for these communities to ensure equal opportunities and protection."
-  },
-  {
-    "question": "Will poorer citizens get priority in social security?",
-    "answer": "Yes, the constitution requires giving priority to the indigent across all communities in social security and justice."
-  },
-  {
-    "question": "What about sports and athletes?",
-    "answer": "The state must invest in sports to build healthy and disciplined citizens and enhance Nepal’s national pride internationally."
-  },
-  {
-    "question": "How are NGOs managed?",
-    "answer": "NGOs must follow a single-door system for approval and operation, and their role and investments must be transparent and accountable."
-  },
-  {
-    "question": "What about justice and corruption?",
-    "answer": "Justice must be speedy, fair, and accessible, with use of mediation for minor disputes. Corruption in all sectors must be controlled."
-  },
-  {
-    "question": "What is Nepal’s policy on tourism?",
-    "answer": "Tourism should be eco-friendly, promote Nepal’s cultural and natural heritage, and benefit local communities."
-  },
-  {
-    "question": "What is Nepal’s foreign policy?",
-    "answer": "Nepal follows an independent foreign policy based on the UN Charter, non-alignment, Panchsheel, and world peace, while protecting sovereignty and national interests."
-  },
-  {
-    "question": "Does the government have to report progress?",
-    "answer": "Yes, the government must submit an annual report on implementing these principles to the President, who presents it to the Parliament."
-  },
-  {
-    "question": "Can citizens go to court if these policies aren’t followed?",
-    "answer": "No, the constitution says courts cannot be used to question whether these policies have been implemented or not."
-  },
-  {
-    "question": "What happens if the Speaker and Deputy Speaker of the House of Representatives are not elected or both positions are vacant?",
-    "answer": "The senior-most member present, by age, will chair the meeting of the House of Representatives."
-  },
-  {
-    "question": "When does the office of the Speaker or Deputy Speaker of the House of Representatives become vacant?",
-    "answer": "It becomes vacant if they stop being a member of the House, resign in writing, or if two-thirds of the House members pass a resolution saying their conduct is not suitable."
-  },
-  {
-    "question": "Can the Speaker and Deputy Speaker remain in office even if the House of Representatives is dissolved?",
-    "answer": "Yes. They remain in office until the day before nominations are filed for the next election."
-  },
-  {
-    "question": "Who chairs the meeting if there is a resolution against the Speaker’s conduct?",
-    "answer": "The Deputy Speaker chairs the meeting, and the Speaker can still take part and vote."
-  },
-  {
-    "question": "When must the National Assembly elect its Chairperson and Vice-Chairperson?",
-    "answer": "They must be elected within 15 days of the Assembly’s first meeting."
-  },
-  {
-    "question": "Is there any requirement about gender in the National Assembly leadership?",
-    "answer": "Yes. Either the Chairperson or Vice-Chairperson must be a woman."
-  },
-  {
-    "question": "Who chairs the National Assembly if both the Chairperson and Vice-Chairperson positions are vacant?",
-    "answer": "The senior-most member by age among those present chairs the meeting."
-  },
-  {
-    "question": "When does the office of the Chairperson or Vice-Chairperson of the National Assembly become vacant?",
-    "answer": "It becomes vacant if they stop being a member, resign in writing, or if two-thirds of the Assembly members pass a resolution against their conduct."
-  },
-  {
-    "question": "Who can summon sessions of the Federal Parliament?",
-    "answer": "The President summons sessions within 30 days after elections and later from time to time. The interval between two sessions cannot exceed six months."
-  },
-  {
-    "question": "What happens if many members want a session during recess?",
-    "answer": "If one-fourth of House members request it in writing, the President must call a session."
-  },
-  {
-    "question": "What is the quorum required for Parliament meetings?",
-    "answer": "At least one-fourth of total members must be present for decisions to be made."
-  },
-  {
-    "question": "Can the President address Parliament?",
-    "answer": "Yes. The President can address either House or a joint session and must address the first session after elections and the first session of each year."
-  },
-  {
-    "question": "Can Ministers attend both Houses?",
-    "answer": "Yes, the Prime Minister, Deputy Prime Minister, Ministers, Ministers of State, and Assistant Ministers can attend and take part in both Houses, but they cannot vote in a House where they are not members."
-  },
-  {
-    "question": "Can committees be formed in Parliament?",
-    "answer": "Yes. Both Houses can form committees, and joint committees can also be formed if needed."
-  },
-  {
-    "question": "Does a vacancy in membership stop Parliament’s work?",
-    "answer": "No. Parliament can continue business even if some seats are vacant."
-  },
-  {
-    "question": "How are decisions made in Parliament?",
-    "answer": "By majority vote of members present. The chairperson doesn’t vote except in case of a tie."
-  },
-  {
-    "question": "When does the Prime Minister need a vote of confidence?",
-    "answer": "If the Prime Minister wishes to prove confidence, if their party splits, or if a coalition partner withdraws support."
-  },
-  {
-    "question": "What is a motion of no-confidence?",
-    "answer": "If one-fourth of members submit it, the House can vote. If passed by majority, the Prime Minister must resign. It must also propose a new candidate for Prime Minister."
-  },
-  {
-    "question": "What is impeachment?",
-    "answer": "One-fourth of House members can propose impeachment of the President, Vice-President, Chief Justice, Judges, or officials of constitutional bodies for serious violations, incompetence, or misconduct. It requires two-thirds majority to pass."
-  },
-  {
-    "question": "What privileges do members of Parliament have?",
-    "answer": "They have full freedom of speech, cannot be prosecuted for votes or speeches in Parliament, and cannot be arrested during sessions except for criminal charges."
-  },
-  {
-    "question": "Can someone who is not a member attend or vote in Parliament?",
-    "answer": "No. If they do, they can be fined 5,000 rupees for each instance."
-  },
-  {
-    "question": "Can I challenge a law in Nepal if I think it violates my fundamental rights?",
-    "answer": "Yes. Any citizen can file a petition in the Supreme Court to declare a law void if it contradicts the Constitution or restricts fundamental rights."
-  },
-  {
-    "question": "What special powers does the Supreme Court have?",
-    "answer": "The Supreme Court can issue extraordinary orders, such as habeas corpus or mandamus, to enforce rights, resolve constitutional disputes, and declare inconsistent laws void."
-  },
-  {
-    "question": "What kinds of writs can the Supreme Court issue?",
-    "answer": "It can issue writs like habeas corpus (release from unlawful detention), mandamus (order to perform duty), certiorari (cancel lower court decisions), prohibition (stop actions beyond authority), and quo warranto (challenge someone's authority to hold office)."
-  },
-  {
-    "question": "Can the Supreme Court interfere in Parliament’s internal matters?",
-    "answer": "Generally no, except when Parliament acts beyond its legal jurisdiction."
-  },
-  {
-    "question": "Who leads the administration of justice in Nepal?",
-    "answer": "The Chief Justice of the Supreme Court has the ultimate responsibility for ensuring effective justice in all courts of Nepal."
-  },
-  {
-    "question": "What is the Constitutional Bench of the Supreme Court?",
-    "answer": "It is a special bench of the Supreme Court with the Chief Justice and four judges, handling major constitutional disputes like federal vs. state conflicts and election disputes."
-  },
-  {
-    "question": "Do the Supreme Court, Judicial Council, and Judicial Service Commission have to report their work?",
-    "answer": "Yes. They must submit annual reports to the President, who forwards them to the Federal Parliament."
-  },
-  {
-    "question": "What is the role of the High Court?",
-    "answer": "High Courts hear appeals from District Courts, can issue writs, and ensure enforcement of fundamental and legal rights within their State."
-  },
-  {
-    "question": "Who appoints High Court judges?",
-    "answer": "The Chief Justice appoints them on the recommendation of the Judicial Council, and candidates must meet legal and professional qualifications."
-  },
-  {
-    "question": "Can judges practice law after retirement?",
-    "answer": "Supreme Court judges cannot practice law after retirement, but retired High Court judges may practice in the Supreme Court and other High Courts, except the one where they served."
-  },
-  {
-    "question": "What is the responsibility of District Courts?",
-    "answer": "District Courts handle most cases first, oversee local judicial bodies, and can issue writs like habeas corpus and prohibition."
-  },
-  {
-    "question": "What are specialized courts?",
-    "answer": "Specialized courts or tribunals can be formed by federal law to handle specific types of cases, but not for single individual cases."
-  },
-  {
-    "question": "What is the Judicial Council?",
-    "answer": "It is a body led by the Chief Justice that recommends appointments, transfers, and disciplinary actions of judges."
-  },
-  {
-    "question": "What is the Judicial Service Commission?",
-    "answer": "It manages the appointment, transfer, and promotion of gazetted officers in the judicial service."
-  },
-  {
-    "question": "Who is the Attorney General?",
-    "answer": "The Attorney General is the chief legal advisor to the Government of Nepal, appointed by the President on the Prime Minister’s recommendation."
-  },
-  {
-    "question": "What does the Attorney General do?",
-    "answer": "The Attorney General advises the government on legal matters, represents the state in court cases, and monitors whether court rulings are properly implemented."
-  },
-  {
-    "question": "What is the role of the Chief Attorney at the State level?",
-    "answer": "Each State has a Chief Attorney, who is the legal advisor to the State Government and is subordinate to the Attorney General."
-  },
-  {
-    "question": "Who holds the executive power in a State?",
-    "answer": "The State Council of Ministers, led by the Chief Minister, holds the executive power of the State."
-  },
-  {
-    "question": "Who is the Chief of State?",
-    "answer": "The Chief of State is a representative of the Federal Government in each State, appointed by the President."
-  },
-  {
-    "question": "What is the State Assembly?",
-    "answer": "It is the unicameral (single-chamber) legislature of a State, composed of members elected through both first-past-the-post and proportional representation systems."
-  },
-  {
-    "question": "Do political parties need to include people with disabilities when fielding candidates?",
-    "answer": "Yes, the constitution requires political parties to ensure representation of persons with disabilities when they field candidates."
-  },
-  {
-    "question": "What happens if a State Assembly seat becomes vacant with more than six months left in its term?",
-    "answer": "The vacant seat must be filled using the same electoral system through which the seat was originally filled."
-  },
-  {
-    "question": "Is there a requirement for women’s representation in the State Assembly?",
-    "answer": "Yes, at least one-third of the total members elected from each political party in the State Assembly must be women."
-  },
-  {
-    "question": "Who can become a candidate for the State Assembly?",
-    "answer": "Any citizen of Nepal who is a voter in the concerned State, at least 25 years old, not convicted of crimes involving moral turpitude, not disqualified by law, and not holding an office of profit can be a candidate. However, a person cannot contest from more than one constituency at the same time."
-  },
-  {
-    "question": "What is the term of the State Assembly?",
-    "answer": "Normally, the State Assembly has a term of five years unless dissolved earlier. In cases of emergency, it can be extended for up to one year, but must end within six months after the emergency is lifted."
-  },
-  {
-    "question": "What qualifications must one have to be a member of the State Assembly?",
-    "answer": "One must be a Nepali citizen, a voter of the concerned State, at least 25 years old, free from criminal conviction of moral turpitude, not disqualified by law, and not holding any office of profit."
-  },
-  {
-    "question": "What happens if a member of the State Assembly no longer meets the qualifications?",
-    "answer": "Their seat becomes vacant, and the Constitutional Bench of the Supreme Court makes the final decision if a dispute arises."
-  },
-  {
-    "question": "How are the Speaker and Deputy Speaker of the State Assembly chosen?",
-    "answer": "They are elected from among the members within 15 days of the first meeting. One of them must be a woman, and they must be from different parties, unless only one party is represented."
-  },
-  {
-    "question": "What is required for a State Assembly meeting to take decisions?",
-    "answer": "At least one-fourth of the members must be present for quorum, and decisions are taken by a majority of those present and voting."
-  },
-  {
-    "question": "Do State Assembly members have freedom of speech inside the Assembly?",
-    "answer": "Yes, members enjoy full freedom of speech in the State Assembly and cannot be prosecuted for what they say or how they vote there."
-  },
-  {
-    "question": "What is a vote of confidence and no-confidence in the State Assembly?",
-    "answer": "A Chief Minister may seek a vote of confidence to prove majority support. If they fail, they must resign. Similarly, one-fourth of members can file a motion of no-confidence, which, if passed, removes the Chief Minister and appoints a replacement."
-  },
-  {
-    "question": "Can Ministers attend State Assembly meetings if they are not members?",
-    "answer": "Yes, Ministers can attend and take part in discussions, but if they are not members of the Assembly, they cannot vote."
-  },
-  {
-    "question": "Who manages the internal business of the State Assembly?",
-    "answer": "The State Assembly has the exclusive right to regulate and decide its internal business, and courts cannot question its proceedings."
-  },
-  {
-    "question": "Can the State Assembly make laws?",
-    "answer": "Yes, it has legislative powers over matters listed in Schedules 6, 7, and 9 of the Constitution."
-  },
-  {
-    "question": "What is a Money Bill?",
-    "answer": "A Money Bill deals with taxation, State funds, borrowing, guarantees, financial obligations, and related matters. It can only be introduced as a Government Bill."
-  },
-  {
-    "question": "How does a Bill become law?",
-    "answer": "A Bill passed by the State Assembly is sent to the Chief of State for assent. Once signed, it becomes an Act. If sent back for reconsideration and passed again, the Chief of State must give assent."
-  },
-  {
-    "question": "What is an Ordinance?",
-    "answer": "An Ordinance is a temporary law issued by the Chief of State when the State Assembly is not in session, on the recommendation of the State Government. It must be approved by the Assembly later or it will lapse."
-  },
-  {
-    "question": "How are financial matters handled at the State level?",
-    "answer": "All revenues go into the State Consolidated Fund. Expenditures require approval by the State Assembly through Appropriation Acts, except certain charges like salaries of key officials, debts, or court judgments."
-  },
-  {
-    "question": "Can the State or Local level levy taxes?",
-    "answer": "Yes, but only according to the law. The State and Local levels may levy taxes within their jurisdiction as listed in the Constitution, while respecting national economic policies."
-  },
-  {
-    "question": "How are Village and Municipal Executives structured?",
-    "answer": "Each Village Body has a Chairperson, Vice-Chairperson, Ward Chairpersons, and members (including women and Dalit/minority representatives). Each Municipality has a Mayor, Deputy Mayor, Ward Chairpersons, and members with similar inclusivity provisions."
-  },
-  {
-    "question": "Do Local Assemblies also have law-making powers?",
-    "answer": "Yes, Village Assemblies and Municipal Assemblies can make laws on matters listed in Schedules 8 and 9 of the Constitution."
-  },
-  {
-    "question": "How is coordination maintained between Federal, State, and Local governments?",
-    "answer": "Their relations are based on cooperation, co-existence, and coordination. The Federal Government may issue directives on national matters, and an Inter-State Council exists to resolve disputes."
-  },
-  {
-    "question": "Who investigates corruption by public officials?",
-    "answer": "The Commission for the Investigation of Abuse of Authority investigates corruption by public officials and can file cases in court if corruption is found."
-  },
-  {
-    "question": "Who audits government accounts?",
-    "answer": "The Auditor General of Nepal audits government accounts, ensuring financial transparency and accountability."
-  },
-  {
-    "question": "Who can become the Auditor General of Nepal?",
-    "answer": "A person who has either served in the Special Class of the Government of Nepal or has at least 20 years of audit-related experience after completing a bachelor's degree in management, commerce, or accounting, or has passed a chartered accountancy exam."
-  },
-  {
-    "question": "Are there any restrictions on political party membership for the Auditor General?",
-    "answer": "Yes, the Auditor General must not be a member of any political party at the time of appointment."
-  },
-  {
-    "question": "What is the minimum age to become the Auditor General?",
-    "answer": "The person must be at least 45 years old."
-  },
-  {
-    "question": "What other personal qualities are required for the Auditor General?",
-    "answer": "The person must be of high moral character."
-  },
-  {
-    "question": "Who decides the salary and service conditions of the Auditor General?",
-    "answer": "The salary and service conditions are decided by Federal law and cannot be changed to the Auditor General’s disadvantage while in office, except during a state of emergency due to severe economic crisis."
-  },
-  {
-    "question": "Can the Auditor General take another government job after leaving office?",
-    "answer": "No, once appointed, the Auditor General cannot hold another government service job. However, they may hold political positions or roles involving investigation, research, or advisory work."
-  },
-  {
-    "question": "What does the Auditor General do?",
-    "answer": "The Auditor General audits the accounts of all federal, state, and local government offices, including major bodies like the Supreme Court, Parliament, Nepal Army, Nepal Police, and constitutional bodies, ensuring regularity, economy, efficiency, effectiveness, and propriety."
-  },
-  {
-    "question": "Does the Auditor General also oversee state-owned companies?",
-    "answer": "Yes, if the Government owns more than 50% of a company, the Auditor General must be consulted when appointing its auditor and can issue audit guidelines."
-  },
-  {
-    "question": "What powers does the Auditor General have during audits?",
-    "answer": "The Auditor General can examine any financial documents and the office heads are required to provide all necessary information and records."
-  },
-  {
-    "question": "Who prescribes how government accounts should be maintained?",
-    "answer": "The Auditor General prescribes the format of government accounts, as provided for in Federal law."
-  },
-  {
-    "question": "Can the Auditor General audit other offices beyond those mentioned?",
-    "answer": "Yes, Federal law may require additional offices or bodies to be audited by the Auditor General."
-  },
-  {
-    "question": "What is the National Inclusion Commission allowed to do?",
-    "answer": "The National Inclusion Commission can delegate its powers and duties to its Chairperson, members, or even government employees, under certain conditions."
-  },
-  {
-    "question": "Can the National Inclusion Commission have offices in different parts of Nepal?",
-    "answer": "Yes, it can set up offices in different States as needed."
-  },
-  {
-    "question": "What is the Indigenous Nationalities Commission?",
-    "answer": "It is a body with a Chairperson and up to four members, appointed by the President on the recommendation of the Constitutional Council, to represent indigenous nationalities."
-  },
-  {
-    "question": "How long do members of the Indigenous Nationalities Commission serve?",
-    "answer": "They serve for six years from the date of appointment."
-  },
-  {
-    "question": "What is the Madhesi Commission?",
-    "answer": "It is a body with a Chairperson and up to four members, appointed by the President, to represent the Madhesi community."
-  },
-  {
-    "question": "What is the Tharu Commission?",
-    "answer": "It is a body with a Chairperson and up to four members, appointed by the President, to represent the Tharu community."
-  },
-  {
-    "question": "What is the Muslim Commission?",
-    "answer": "It is a body with a Chairperson and up to four members, appointed by the President, to represent the Muslim community."
-  },
-  {
-    "question": "How long do members of the Madhesi, Tharu, and Muslim Commissions serve?",
-    "answer": "They also serve for six years from the date of appointment."
-  },
-  {
-    "question": "Will these Commissions ever be reviewed?",
-    "answer": "Yes, after ten years of the Constitution's commencement, the Federal Parliament will review them."
-  },
-  {
-    "question": "What is the National Security Council?",
-    "answer": "It is a council chaired by the Prime Minister, with key ministers, the Chief Secretary, and the Army Chief, to recommend policies on national security and defense."
-  },
-  {
-    "question": "Who commands the Nepal Army?",
-    "answer": "The President is the Supreme Commander-in-Chief of the Nepal Army."
-  },
-  {
-    "question": "Can women and minority groups join the Nepal Army?",
-    "answer": "Yes, their inclusion is ensured by law, based on equality and inclusion principles."
-  },
-  {
-    "question": "Besides defense, can the Army be used for other purposes?",
-    "answer": "Yes, the Government can mobilize the Army for development, construction, and disaster management."
-  },
-  {
-    "question": "Does each State have its own police?",
-    "answer": "Yes, every State has its own police, in addition to the Nepal Police, Armed Police Force, and National Investigation Department at the federal level."
-  },
-  {
-    "question": "How can political parties be formed?",
-    "answer": "Anyone sharing a common political ideology and program can form a party, but it must be democratic and registered with the Election Commission."
-  },
-  {
-    "question": "What rules must a political party follow to be registered?",
-    "answer": "It must hold democratic elections every five years, have inclusive representation in its leadership, and not use names, flags, or symbols that threaten unity."
-  },
-  {
-    "question": "Can Nepal have only one political party system?",
-    "answer": "No, the Constitution forbids restricting democracy to just one party."
-  },
-  {
-    "question": "Who can declare a state of emergency?",
-    "answer": "The President can declare it in case of war, rebellion, severe economic crisis, natural disaster, or epidemic."
-  },
-  {
-    "question": "Can fundamental rights be suspended during an emergency?",
-    "answer": "Yes, but some rights, like habeas corpus and certain basic protections, cannot be suspended."
-  },
-  {
-    "question": "Can the Constitution be amended?",
-    "answer": "Yes, except for provisions protecting sovereignty and territorial integrity. Amendments require a two-thirds majority in both Houses."
+    "answer": "The constitution requires foreign employment to be safe, systematic, and free from exploitation, while also protecting the rights of workers.",
+    "similar_questions": [
+      "How are Nepali migrant workers protected?",
+      "What rights do Nepalis working overseas have?"
+    ]
+  },
+  {
+    "question": "What is Nepal's foreign policy?",
+    "answer": "Nepal follows an independent foreign policy based on the UN Charter, non-alignment, Panchsheel, and world peace, while protecting sovereignty and national interests.",
+    "similar_questions": [
+      "What principles guide Nepal's international relations?",
+      "How does Nepal conduct foreign affairs?"
+    ]
   },
   {
     "question": "Can there be a referendum in Nepal?",
-    "answer": "Yes, if two-thirds of the Federal Parliament decides, important national matters can be decided by referendum."
+    "answer": "Yes, if two-thirds of the Federal Parliament decides, important national matters can be decided by referendum.",
+    "similar_questions": [
+      "Is public voting on major issues allowed?",
+      "Can citizens directly vote on national matters?"
+    ]
+  },
+  {
+    "question": "Can the Constitution be amended?",
+    "answer": "Yes, except for provisions protecting sovereignty and territorial integrity. Amendments require a two-thirds majority in both Houses.",
+    "similar_questions": [
+      "Can the constitution be changed?",
+      "What is the process for constitutional amendments?"
+    ]
   },
   {
     "question": "Who has the power to pardon or reduce sentences?",
-    "answer": "The President has this power, in accordance with law."
+    "answer": "The President has this power, in accordance with law.",
+    "similar_questions": [
+      "Can the President pardon criminals?",
+      "Who can reduce prison sentences?"
+    ]
   },
   {
-    "question": "Who appoints ambassadors?",
-    "answer": "The President appoints ambassadors and receives foreign representatives, based on inclusion."
-  },
-  {
-    "question": "Where is the capital of Nepal?",
-    "answer": "The capital is in Kathmandu."
-  },
-  {
-    "question": "Do leaders need to have citizenship by descent?",
-    "answer": "Yes, for top offices like President, Prime Minister, Chief Justice, and security chiefs. Other constitutional posts allow birth or naturalized citizens under conditions."
-  },
-  {
-    "question": "Can Nepali citizens with foreign permanent residency hold top posts?",
-    "answer": "No, unless they give up the foreign permanent residency at least three months earlier."
-  },
-  {
-    "question": "How are officials like Chief Justice and Constitutional Body members appointed?",
-    "answer": "They are appointed on recommendation of the Constitutional Council, and must go through parliamentary hearings."
-  },
-  {
-    "question": "Will old laws remain valid after this Constitution?",
-    "answer": "Yes, unless they contradict the Constitution. In that case, they will be invalid after one year."
+    "question": "What happens if my fundamental rights are violated?",
+    "answer": "You can go to court and seek constitutional remedies to enforce your rights.",
+    "similar_questions": [
+      "How can I enforce my constitutional rights?",
+      "What can I do if the government violates my rights?"
+    ]
   }
 ]
