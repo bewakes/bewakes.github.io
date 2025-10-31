@@ -5,6 +5,10 @@
   margin-top: 1.3rem;
   line-height: 1.5;
 }
+
+p {
+    line-height: 2.3rem !important;
+}
 h1.title {
     font-family: Open Sans;
     font-size: 3rem;
